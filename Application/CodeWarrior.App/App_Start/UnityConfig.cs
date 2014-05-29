@@ -1,8 +1,11 @@
 using System;
+using CodeWarrior.App.Controllers;
+using CodeWarrior.DAL.DbContext;
+using CodeWarrior.DAL.Interfaces;
+using CodeWarrior.DAL.Repositories;
 using Microsoft.Practices.Unity;
-using Microsoft.Practices.Unity.Configuration;
 
-namespace CodeWarrior.App.App_Start
+namespace CodeWarrior.App
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -10,7 +13,7 @@ namespace CodeWarrior.App.App_Start
     public class UnityConfig
     {
         #region Unity Container
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
+        private static readonly Lazy<IUnityContainer> Container = new Lazy<IUnityContainer>(() =>
         {
             var container = new UnityContainer();
             RegisterTypes(container);
@@ -22,7 +25,7 @@ namespace CodeWarrior.App.App_Start
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return container.Value;
+            return Container.Value;
         }
         #endregion
 
@@ -32,17 +35,13 @@ namespace CodeWarrior.App.App_Start
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterTypes(
-                AllClasses.FromLoadedAssemblies(),
-                WithMappings.FromMatchingInterface,
-                WithName.Default
-                );
-
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<IApplicationDbContext, ApplicationDbContext>();
+            container.RegisterType<IQuestionRepository, QuestionRepository>();
         }
     }
 }
