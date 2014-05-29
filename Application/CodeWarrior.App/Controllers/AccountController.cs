@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Http;
 using CodeWarrior.App.Providers;
 using CodeWarrior.App.Results;
-using CodeWarrior.App.ViewModels;
+using CodeWarrior.App.ViewModels.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;

@@ -2,9 +2,9 @@
 
 (function(app) {
     app.controller("LoginCtrl", [
-        "$scope", "identityService", "notifierService", "$location", function ($scope, identityService, notifierService, $location) {
+        "$scope", "identityService", "notifierService", "$location", function($scope, identityService, notifierService, $location) {
             $scope.loginProviders = [];
-            $scope.init = function () {
+            $scope.init = function() {
                 if (identityService.isLoggedIn()) {
                     $location.path("/");
                 }
@@ -15,24 +15,23 @@
                 });
             }();
             $scope.login = function (user) {
-                if (user && user.userName && user.password) {
-                    identityService.login(user).then(function (data) {
+                $scope.loginFormSubmitted = true;
+                if ($scope.LoginForm.$valid) {
+                    identityService.login(user).success(function(data) {
                         if (data.userName && data.access_token) {
                             identityService.setAccessToken(data.access_token);
                             identityService.setAuthorizedUserData(data);
                             $location.path("/");
                         }
+                    }).error(function(error) {
+                        if (error.error_description) {
+                            notifierService.notify({ responseType: "error", message: error.error_description });
+                        }
                     });
-                } else {
-                    var notification = {
-                        responseType: "error",
-                        message: "Invalid username or password."
-                    };
-                    notifierService.notify(notification);
                 }
             };
 
-            $scope.externalLogin = function (loginProvider) {
+            $scope.externalLogin = function(loginProvider) {
 
                 sessionStorage["state"] = loginProvider.state;
                 sessionStorage["loginUrl"] = loginProvider.url;

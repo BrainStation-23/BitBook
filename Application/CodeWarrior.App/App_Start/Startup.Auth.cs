@@ -1,4 +1,5 @@
 ﻿using System;
+using CodeWarrior.SharedLibrary.Configurations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -16,7 +17,8 @@ namespace CodeWarrior.App
         {
             PublicClientId = "self";
 
-            UserManagerFactory = () => new UserManager<IdentityUser>(new UserStore<IdentityUser>("MongoConnection"));
+            UserManagerFactory =
+                () => new UserManager<IdentityUser>(new UserStore<IdentityUser>(MongoDbConfiguration.MongoConnection));
 
             OAuthOptions = new OAuthAuthorizationServerOptions
             {

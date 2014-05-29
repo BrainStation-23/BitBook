@@ -1,8 +1,8 @@
 ﻿"use strict";
 
-(function (app) {
-    app.controller("QuestionAllCtrl", [
-        "$scope", "signalRConnectionService", function ($scope, signalRConnectionService) {
+(function(app) {
+    app.controller("QuestionListCtrl", [
+        "$scope", "signalRConnectionService", function($scope, signalRConnectionService) {
             var signalRConnection = signalRConnectionService.getSignalRConnection();
             console.log(signalRConnection);
 

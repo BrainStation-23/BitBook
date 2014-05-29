@@ -40,3 +40,16 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+#toast-container > div {
+    -webkit-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    box-shadow: none !important;
+    -ms-opacity: 1 !important;
+    opacity: 1 !important;
+    width: 335px !important;
+}

@@ -22,6 +22,7 @@ namespace CodeWarrior.App
                 "~/Scripts/Application/app.js",
                 "~/Scripts/Application/Services/apiService.js",
                 "~/Scripts/Application/Services/identityService.js",
+                "~/Scripts/Application/Services/utilityService.js",
                 "~/Scripts/Application/Services/notifierService.js",
                 "~/Scripts/Application/Services/signalRConnectionService.js",
                 "~/Scripts/Application/Directives/topbarDirective.js",
@@ -39,14 +40,13 @@ namespace CodeWarrior.App
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Scripts/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Scripts/bootstrap.js",
-                "~/Scripts/respond.js"));
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/toastr.css",
+                "~/Content/font-awesome.css",
                 "~/Content/site.css"));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

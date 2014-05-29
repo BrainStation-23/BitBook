@@ -2,7 +2,7 @@
 
 (function(app) {
     app.factory("identityService", [
-        "$rootScope", "apiService", function($rootScope, apiService) {
+        "$rootScope", "$http", "apiService", function($rootScope, $http, apiService) {
             var setAuthorizedUserData = function(data) {
                 $rootScope.authenticatedUser = data;
             };
@@ -76,15 +76,22 @@
 
             var login = function(user) {
                 var data = {
-                    grant_type: "password",
                     UserName: user.userName,
-                    Password: user.password
+                    Password: user.password,
+                    grant_type: "password"
                 };
-                var config = {
-                    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-                };
-                return apiService.post("/token", data);
-                //return $.post("/token", data);
+                return $http({
+                    method: "POST",
+                    url: "/token",
+                    data: data,
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for (var p in obj) {
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        }
+                        return str.join("&");
+                    }
+                });
             };
 
             var logout = function() {
