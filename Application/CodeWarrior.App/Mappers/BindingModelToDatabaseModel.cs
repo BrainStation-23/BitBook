@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Antlr.Runtime;
 using AutoMapper;
 using CodeWarrior.App.ViewModels.Questions;
 using CodeWarrior.Model;
@@ -15,8 +14,8 @@ namespace CodeWarrior.App.Mappers
             Mapper.CreateMap<Question, Question>();
 
             Mapper.CreateMap<QuestionBindingModel, Question>()
-                .ForMember(question=>question.PostedOn,
-                expr => expr.MapFrom(questionModel => DateTime.UtcNow))
+                .ForMember(question => question.PostedOn,
+                    expr => expr.MapFrom(questionModel => DateTime.UtcNow))
 
                 .ForMember(question => question.Tags,
                     expr => expr.MapFrom(questionModel => questionModel.Tags ?? new string[] {}))
