@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace CodeWarrior.DAL.Interfaces
 {
-    public interface IRepository<TEntity>
-        where TEntity : class
+    public interface IRepository<T>
+        where T : class
     {
-        TEntity FindById(string id);
-        MongoCursor<TEntity> FindAll();
-        IQueryable<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate);
-        void Insert(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(int id);
+        T FindById<TKey>(TKey id);
+        MongoCursor<T> FindAll(IMongoQuery query = null);
+        IEnumerable<T> Where(Expression<Func<T, bool>> where = null);
+        void Insert(T entity);
+        void Update(T entity);
+        void Remove<TKey>(TKey id);
+        void RemoveAll();
     }
 }

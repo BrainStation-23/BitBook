@@ -4,9 +4,9 @@ using MongoDB.Driver;
 
 namespace CodeWarrior.DAL.DbContext
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : IApplicationDbContext
     {
-        public MongoDatabase Database;
+        public MongoDatabase Database { get; set; }
 
         public ApplicationDbContext()
         {

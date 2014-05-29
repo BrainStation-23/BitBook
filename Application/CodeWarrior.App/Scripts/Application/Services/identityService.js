@@ -11,12 +11,16 @@
                 $rootScope.authenticatedUser = {};
             };
 
+            var getAuthorizedHeaders = function (accessToken) {
+                return { "Authorization": "Bearer " + accessToken };
+            };
+
             var getSecurityHeaders = function() {
 
                 var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
 
                 if (accessToken) {
-                    return { "Authorization": "Bearer " + accessToken };
+                    return getAuthorizedHeaders(accessToken);
                 }
 
                 return {};
@@ -30,7 +34,7 @@
                 }
             };
 
-            var clearAccessToken = function () {
+            var clearAccessToken = function() {
                 localStorage.removeItem("accessToken");
                 sessionStorage.removeItem("accessToken");
             };
@@ -60,9 +64,7 @@
                 var headers;
 
                 if (typeof (accessToken) !== "undefined") {
-                    headers = {
-                        "Authorization": "Bearer " + accessToken
-                    };
+                    headers = getAuthorizedHeaders(accessToken);
                 } else {
                     headers = getSecurityHeaders();
                 }
@@ -85,7 +87,7 @@
                 return $.post("/token", data);
             };
 
-            var logout = function () {
+            var logout = function() {
                 var config = {
                     headers: getSecurityHeaders()
                 };
@@ -99,7 +101,7 @@
                 return apiService.post("api/Account/Register", user, config);
             };
 
-            var restoreSessionStorageFromLocalStorage = function () {
+            var restoreSessionStorageFromLocalStorage = function() {
                 var backupText = localStorage["sessionStorageBackup"],
                     backup;
 
@@ -114,7 +116,7 @@
                 }
             };
 
-            var verifyStateMatch = function (fragment) {
+            var verifyStateMatch = function(fragment) {
                 var state;
 
                 if (typeof (fragment.access_token) !== "undefined") {
@@ -133,6 +135,7 @@
                 login: login,
                 logout: logout,
                 getSecurityHeaders: getSecurityHeaders,
+                getAuthorizedHeaders: getAuthorizedHeaders,
                 register: register,
                 setAuthorizedUserData: setAuthorizedUserData,
                 clearAuthorizedUserData: clearAuthorizedUserData,

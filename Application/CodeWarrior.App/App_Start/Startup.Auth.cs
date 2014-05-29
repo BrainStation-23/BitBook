@@ -1,5 +1,4 @@
 ﻿using System;
-using CodeWarrior.SharedLibrary.Configurations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
