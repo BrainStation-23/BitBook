@@ -1,7 +1,7 @@
-﻿<h1>{{newQuestion}}</h1>
+﻿<h3>{{newQuestion}} New Question</h3>
 
 <ul>
-    <li ng-repeat="question in questions">
-        {{question}}
+    <li ng-repeat="question in questions track by $index" ng-click="clickInQuestion(question)">
+        {{question.title}}
     </li>
 </ul>

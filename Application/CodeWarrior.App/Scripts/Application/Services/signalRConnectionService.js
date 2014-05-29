@@ -1,9 +1,9 @@
 ﻿(function (app) {
     app.factory("signalRConnectionService", function () {
         return {
-            getSignalRConnection: function () {
+            getSignalRConnection: function (accessToken) {
                 var conn = $.connection.signalRNotification;
-                console.log(conn);
+                $.connection.hub.qs = { "token": accessToken };
                 $.connection.hub.logging = true;
                 $.connection.hub.start();
                 return conn;

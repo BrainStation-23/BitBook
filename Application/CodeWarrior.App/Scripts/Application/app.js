@@ -83,6 +83,10 @@ var _$ = {};
                     "/home/AddQuestion", {
                         templateUrl: "Templates/Question/Add.html",
                         controller: "QuestionAddCtrl"
+                    }).when(
+                    "/home/AllQuestions", {
+                        templateUrl: "Templates/Question/all.html",
+                        controller: "QuestionAllCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }
