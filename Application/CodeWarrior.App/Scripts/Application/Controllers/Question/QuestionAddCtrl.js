@@ -7,21 +7,21 @@
             var userName = "";
             var signalRConnection;
             $scope.userNotification = 0;
-            identityService.getUserInfo().success(function (result) {
-                userName = result.userName;
-                console.log(result.userName);
-                signalRConnection = signalRConnectionService.getSignalRConnection(result.accessToken);
-                console.log(signalRConnection);
-            });
+            var accessToken = sessionStorage.getItem("accessToken");
+            console.log(accessToken);
+            signalRConnection = signalRConnectionService.getSignalRConnection(accessToken);
+            
 
             $scope.addQuestion = function (question) {
                 signalRConnection.server.addQuestionNotification(question.title, userName);
             };
+
             signalRConnection.client.sendUserNotification = function (message) {
-                $scope.userNotification = ++$scope.userNotification;
-                console.log(message);
-                $scope.$apply();
-            };
+                    $scope.userNotification = ++$scope.userNotification;
+                    console.log(message);
+                    $scope.$apply();
+                };
+           
         }
     ]);
 })(_$.app);

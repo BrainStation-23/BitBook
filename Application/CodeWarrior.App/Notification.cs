@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using CodeWarrior.App.RealTimeNotification;
 using Microsoft.AspNet.SignalR;
@@ -13,24 +10,21 @@ namespace CodeWarrior.App
     [Authorize]
     public class Notification : Hub
     {
-        private readonly static ConnectionMapping<string> Connections =
-            new ConnectionMapping<string>();
         public void SendMessageByUserId(string userId)
         {
-           // Clients.User(userId).SendUserNotification("Click On Your Question.");
+            // Clients.User(userId).SendUserNotification("Click On Your Question.");
             Clients.Group(userId).SendUserNotification("Click On Your Question.");
         }
-        public void AddQuestionNotification(string question,string userName)
+
+        public void AddQuestionNotification(string question, string userName)
         {
-            Clients.All.NewQuestionAdded(question,userName);
+            Clients.All.NewQuestionAdded(question, userName);
         }
 
         public override Task OnConnected()
         {
-            string name = Context.User.Identity.Name;
-
+            var name = Context.User.Identity.Name;
             Groups.Add(Context.ConnectionId, name);
-
             return base.OnConnected();
         }
 

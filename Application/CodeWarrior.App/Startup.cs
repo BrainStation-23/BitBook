@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin;
 using Owin;
 
@@ -13,7 +15,10 @@ namespace CodeWarrior.App
         public void Configuration(IAppBuilder app)
         {
             app.MapSignalR();
+          //  app.MapSignalR<>()
             ConfigureAuth(app);
+            //var idProvider = new PrincipalUserIdProvider();
+            //GlobalHost.DependencyResolver.Register(typeof(IUserIdProvider), () => idProvider);
         }
     }
 }
