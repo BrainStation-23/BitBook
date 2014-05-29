@@ -37,7 +37,7 @@ namespace CodeWarrior.DAL.Repositories
             return null == query ? Collection.FindAll() : Collection.Find(query);
         }
 
-        public IEnumerable<T> FindAll(Expression<Func<T, bool>> where = null)
+        public IEnumerable<T> FindAll(Expression<Func<T, bool>> where)
         {
             var entities = Collection.AsQueryable();
             if (null != where) entities = entities.Where(where);

@@ -13,7 +13,7 @@ namespace CodeWarrior.DAL.Interfaces
     {
         T FindById<TKey>(TKey id);
         MongoCursor<T> FindAll(IMongoQuery query = null);
-        IEnumerable<T> FindAll(Expression<Func<T, bool>> where = null);
+        IEnumerable<T> FindAll(Expression<Func<T, bool>> where);
         void Insert(T entity);
         void Update(T entity);
         void Remove<TKey>(TKey id);
