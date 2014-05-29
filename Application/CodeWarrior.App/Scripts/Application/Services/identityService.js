@@ -11,6 +11,10 @@
                 $rootScope.authenticatedUser = {};
             };
 
+            var getAuthorizedHeaders = function (accessToken) {
+                return { "Authorization": "Bearer " + accessToken };
+            };
+
             var getSecurityHeaders = function() {
 
                 var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
@@ -20,10 +24,6 @@
                 }
 
                 return {};
-            };
-
-            var getAuthorizedHeaders = function(accessToken) {
-                return { "Authorization": "Bearer " + accessToken };
             };
 
             var setAccessToken = function(accessToken, persistent) {

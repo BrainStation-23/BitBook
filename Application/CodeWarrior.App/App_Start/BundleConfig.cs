@@ -10,6 +10,7 @@ namespace CodeWarrior.App
             bundles.Add(new ScriptBundle("~/bundles/library").Include(
                 "~/Scripts/jquery-{version}.js",
                 "~/Scripts/jquery.signalR-2.0.3.js",
+                "~/Scripts/underscore.js",
                 "~/Scripts/bootstrap.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/toastr.js",

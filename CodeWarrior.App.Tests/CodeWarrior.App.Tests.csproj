@@ -95,6 +95,12 @@
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="Telerik.JustMock">
+      <HintPath>..\packages\JustMock.2014.1.1623.1\lib\Net35\Telerik.JustMock.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.JustMock.Container">
+      <HintPath>..\packages\JustMock.2014.1.1623.1\lib\Net35\Telerik.JustMock.Container.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
