@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CodeWarrior.App.Models
+namespace CodeWarrior.App.ViewModels
 {
     public class ExternalLoginViewModel
     {

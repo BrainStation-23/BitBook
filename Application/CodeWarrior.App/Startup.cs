@@ -12,6 +12,7 @@ namespace CodeWarrior.App
     {
         public void Configuration(IAppBuilder app)
         {
+            app.MapSignalR();
             ConfigureAuth(app);
         }
     }

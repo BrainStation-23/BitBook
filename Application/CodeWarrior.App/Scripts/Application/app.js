@@ -56,10 +56,10 @@ var _$ = {};
         }
     };
 
-    var app =  _$.app = angular.module("codeWarriorApp", ["ngRoute", "ngResource"]);
+    var app = _$.app = angular.module("codeWarriorApp", ["ngRoute", "ngResource"]);
 
     app.config([
-        "$routeProvider", function($routeProvider) {
+        "$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
             $routeProvider.when("/", {
                     templateUrl: "Templates/Home/Index.html",
                     controller: "HomeCtrl"
@@ -79,6 +79,10 @@ var _$ = {};
                     "/account/profile", {
                         templateUrl: "Templates/Account/Profile.html",
                         controller: "ProfileCtrl"
+                    }).when(
+                    "/home/AddQuestion", {
+                        templateUrl: "Templates/Question/Add.html",
+                        controller: "QuestionAddCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }
@@ -119,13 +123,13 @@ var _$ = {};
                         } else if (typeof (sessionStorage["loginUrl"]) !== "undefined") {
                             loginUrl = sessionStorage["loginUrl"];
                             sessionStorage.removeItem("loginUrl");
-                            $location.path("/account/externalRegister");
                             var externalRegister = {
                                 data: data,
                                 fragment: fragment,
                                 loginUrl: loginUrl
                             };
                             sessionStorage.setItem("ExternalRegister", JSON.stringify(externalRegister));
+                            $location.path("/account/externalRegister");
                         } else {
                             $location.path("/account/login");
                         }
@@ -148,4 +152,5 @@ var _$ = {};
             }
         });
     });
+
 })();
