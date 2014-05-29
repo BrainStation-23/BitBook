@@ -1,0 +1,11 @@
+﻿<ul class="nav navbar-nav navbar-right" ng-if="authenticatedUser.hasRegistered">
+    <li>
+        <a ng-href="#/account/profile">Hello, {{authenticatedUser.userName}}</a>
+    </li>
+    <li><a href="javascript:void(0)" ng-click=logout()>Log off</a></li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right" ng-if="!authenticatedUser.hasRegistered">
+    <li><a ng-href="#/account/register">Register</a></li>
+    <li><a ng-href="#/account/login">Login</a></li>
+</ul>

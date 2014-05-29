@@ -1,0 +1,32 @@
+﻿<h2>Register</h2>
+
+<form class="form-horizontal" role="form">
+
+    <h4>Create a Local account</h4>
+    <hr />
+
+    <div class="form-group">
+        <label for="UserName" class="col-md-2 control-label">UserName</label>
+        <div class="col-md-10">
+            <input type="text" ng-model="user.userName" id="UserName" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Password" class="col-md-2 control-label">Password</label>
+        <div class="col-md-10">
+            <input type="password" ng-model="user.password" id="Password" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword" class="col-md-2 control-label">Confirm Password</label>
+        <div class="col-md-10">
+            <input type="password" ng-model="user.confirmPassword" id="ConfirmPassword" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" ng-click="register(user)" />
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,69 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>CodeWarrior App</title>
+
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CodeWarrior" />
+    <meta property="og:url" content="" />
+    <meta property="og:title" content="CodeWarrior: Single Page Application" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="CodeWarrior application is on single page application technology. It is built with ASP.NET WebApi, Angular.js and MongoDb." />
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body ng-app="codeWarriorApp">
+    <div ng-controller="BaseCtrl">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" ng-href="#/">CodeWarriorApp</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <div data-cd-topbar></div>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <div ng-view></div>
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - CodeWarrior Application</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/library")
+    @Scripts.Render("~/bundles/application")
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be the site's ID. -->
+    <script>
+        (function (b, o, i, l, e, r) {
+            b.GoogleAnalyticsObject = l; b[l] || (b[l] =
+            function () { (b[l].q = b[l].q || []).push(arguments) }); b[l].l = +new Date;
+            e = o.createElement(i); r = o.getElementsByTagName(i)[0];
+            e.src = '//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e, r);
+        }(window, document, 'script', 'ga'));
+        ga('create', 'UA-XXXXX-X'); ga('send', 'pageview');
+    </script>
+</body>
+</html>
