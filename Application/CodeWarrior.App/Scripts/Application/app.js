@@ -28,7 +28,7 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Account/Profile.html",
                         controller: "ProfileCtrl"
                     }).when(
-                    "/home/AddQuestion", {
+                    "/questions/add", {
                         templateUrl: "Templates/Question/Add.html",
                         controller: "QuestionAddCtrl"
                     })

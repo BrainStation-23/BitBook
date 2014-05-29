@@ -21,7 +21,7 @@
     <meta property="og:url" content="" />
     <meta property="og:title" content="CodeWarrior: Single Page Application" />
     <meta property="og:image" content="" />
-    <meta property="og:description" content="CodeWarrior application is on single page application technology. It is built with ASP.NET WebApi, Angular.js and MongoDb." />
+    <meta property="og:description" content="CodeWarrior is a single page application built with ASP.NET WebApi, Angular.js and MongoDb." />
     
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -39,6 +39,9 @@
                     <a class="navbar-brand" ng-href="#/">CodeWarriorApp</a>
                 </div>
                 <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a ng-href="#/questions/add" ng-if="authenticatedUser.hasRegistered">Add Question</a></li>
+                    </ul>
                     <div data-cd-topbar></div>
                 </div>
             </div>
