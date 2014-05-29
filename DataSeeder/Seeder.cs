@@ -23,9 +23,12 @@ namespace DataSeeder
                 Title = TextFaker.Sentence(),
                 Description = TextFaker.Sentences(5)
             };
+
             var repository = new QuestionRepository(new ApplicationDbContext());
+
             repository.Insert(question);
-            Console.Write(repository.FindAll().ToJson());
+
+            Console.Write(repository.Where().ToJson());
             
         }
     }
