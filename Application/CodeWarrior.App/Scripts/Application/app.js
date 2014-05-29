@@ -56,7 +56,7 @@ var _$ = {};
         }
     };
 
-    var app =  _$.app = angular.module("codeWarriorApp", ["ngRoute", "ngResource"]);
+    var app = _$.app = angular.module("codeWarriorApp", ["ngRoute", "ngResource"]);
 
     app.config([
         "$routeProvider", function($routeProvider) {
@@ -119,13 +119,13 @@ var _$ = {};
                         } else if (typeof (sessionStorage["loginUrl"]) !== "undefined") {
                             loginUrl = sessionStorage["loginUrl"];
                             sessionStorage.removeItem("loginUrl");
-                            $location.path("/account/externalRegister");
                             var externalRegister = {
                                 data: data,
                                 fragment: fragment,
                                 loginUrl: loginUrl
                             };
                             sessionStorage.setItem("ExternalRegister", JSON.stringify(externalRegister));
+                            $location.path("/account/externalRegister");
                         } else {
                             $location.path("/account/login");
                         }

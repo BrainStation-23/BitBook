@@ -6,8 +6,8 @@
         You've successfully authenticated with <strong ng-bind="externalRegisterInfo.data.loginProvider"></strong>.
         Please enter a user name for this site below and click the Register button to finish logging in.
     </p>
-    <ul class="text-danger" data-bind="foreach: errors">
-        <li data-bind="text: $data"></li>
+    <ul class="text-danger" ng-if="externalRegisterError">
+        <li ng-repeat="externalRegisterError in externalRegisterErrors">{{ externalRegisterError }}</li>
     </ul>
     <div class="form-group">
         <label for="RegisterExternalUserName" class="col-md-2 control-label">User name</label>
