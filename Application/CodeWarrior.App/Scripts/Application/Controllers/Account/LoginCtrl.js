@@ -4,7 +4,10 @@
     app.controller("LoginCtrl", [
         "$scope", "identityService", "notifierService", "$location", function ($scope, identityService, notifierService, $location) {
             $scope.loginProviders = [];
-            $scope.init = function() {
+            $scope.init = function () {
+                if (identityService.isLoggedIn()) {
+                    $location.path("/");
+                }
                 identityService.getExternalLogins().then(function(result) {
                     if (result.data) {
                         $scope.loginProviders = result.data;

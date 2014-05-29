@@ -3,6 +3,11 @@
 (function(app) {
     app.controller("RegisterCtrl", [
         "$scope", "$location", "identityService", "notifierService", function ($scope, $location, identityService, notifierService) {
+            $scope.init = function() {
+                if (identityService.isLoggedIn()) {
+                    $location.path("/");
+                }
+            }();
             $scope.register = function(user) {
                 identityService.register(user).success(function() {
                     identityService.login(user).success(function (data) {
