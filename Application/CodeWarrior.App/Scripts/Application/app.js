@@ -116,9 +116,8 @@ var _$ = {};
                 identityService.getUserInfo(fragment.access_token).success(function(data) {
                     if (typeof (data.userName) !== "undefined" && typeof (data.hasRegistered) !== "undefined" && typeof (data.loginProvider) !== "undefined") {
                         if (data.hasRegistered) {
-                            data.AccessToken = fragment.access_token;
                             identityService.setAuthorizedUserData(data);
-                            identityService.setAccessToken(fragment.access_token);
+                            identityService.setAccessToken(fragment.access_token, false);
                             $location.path("/");
                         } else if (typeof (sessionStorage["loginUrl"]) !== "undefined") {
                             loginUrl = sessionStorage["loginUrl"];
