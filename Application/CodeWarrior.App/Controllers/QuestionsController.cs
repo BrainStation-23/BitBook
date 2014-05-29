@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using CodeWarrior.App.ViewModels;
-using CodeWarrior.App.ViewModels.Questions;
+﻿using CodeWarrior.App.ViewModels.Questions;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
-using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -40,15 +34,15 @@ namespace CodeWarrior.App.Controllers
         // POST api/questions
         public IHttpActionResult Post(QuestionBindingModel question)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var ques = AutoMapper.Mapper.Map<QuestionBindingModel, Question>(question);
-            _questionRepository.Insert(ques);
+            var questionModel = AutoMapper.Mapper.Map<QuestionBindingModel, Question>(question);
+            _questionRepository.Insert(questionModel);
 
-            return Ok(ques);
+            return Ok(questionModel);
         }
 
         // PUT api/questions/5

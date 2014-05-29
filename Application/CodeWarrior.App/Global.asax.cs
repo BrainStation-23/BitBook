@@ -15,6 +15,8 @@ namespace CodeWarrior.App
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            UnityConfig.GetConfiguredContainer();
+
             Bootstrapper.Run();
         }
     }
