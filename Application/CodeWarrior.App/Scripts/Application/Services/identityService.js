@@ -11,7 +11,7 @@
                 $rootScope.authenticatedUser = {};
             };
 
-            var getAuthorizedHeaders = function (accessToken) {
+            var getAuthorizedHeaders = function(accessToken) {
                 return { "Authorization": "Bearer " + accessToken };
             };
 
@@ -83,8 +83,8 @@
                 var config = {
                     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
                 };
-                //return apiService.post("/token", data);
-                return $.post("/token", data);
+                return apiService.post("/token", data);
+                //return $.post("/token", data);
             };
 
             var logout = function() {
@@ -129,6 +129,10 @@
                 }
             };
 
+            var getAccessToken = function() {
+                return sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
+            };
+
             return {
                 getExternalLogins: getExternalLogins,
                 getUserInfo: getUserInfo,
@@ -140,10 +144,12 @@
                 setAuthorizedUserData: setAuthorizedUserData,
                 clearAuthorizedUserData: clearAuthorizedUserData,
                 setAccessToken: setAccessToken,
+                getAccessToken: getAccessToken,
                 clearAccessToken: clearAccessToken,
                 archiveSessionStorageToLocalStorage: archiveSessionStorageToLocalStorage,
                 restoreSessionStorageFromLocalStorage: restoreSessionStorageFromLocalStorage,
-                verifyStateMatch: verifyStateMatch
+                verifyStateMatch: verifyStateMatch,
+                isLoggedIn: getAccessToken
             };
         }
     ]);

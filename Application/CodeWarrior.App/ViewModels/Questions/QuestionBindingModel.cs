@@ -7,6 +7,8 @@ namespace CodeWarrior.App.ViewModels.Questions
 {
     public class QuestionBindingModel
     {
+        public string Id { get; set; }
+
         [Required]
         public string CreatedBy { get; set; }
 

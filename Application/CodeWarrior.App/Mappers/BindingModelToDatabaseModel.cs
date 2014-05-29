@@ -12,6 +12,8 @@ namespace CodeWarrior.App.Mappers
     {
         protected override void Configure()
         {
+            Mapper.CreateMap<Question, Question>();
+
             Mapper.CreateMap<QuestionBindingModel, Question>()
                 .ForMember(question=>question.PostedOn,
                 expr => expr.MapFrom(questionModel => DateTime.UtcNow))
