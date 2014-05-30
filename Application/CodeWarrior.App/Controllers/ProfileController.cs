@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using CodeWarrior.DAL.DbContext;
+﻿using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
-using MongoDB.AspNet.Identity;
+using Microsoft.AspNet.Identity;
+using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
+    //[Authorize]
     public class ProfileController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
@@ -24,7 +20,14 @@ namespace CodeWarrior.App.Controllers
         // GET api/profile
         public ApplicationUser Get(string id = null)
         {
-            return null;
+            var user = _userRepository.FindById(id ?? User.Identity.GetUserId());
+
+            if (user != null)
+            {
+                user.FriendRequests = null;
+                user.Friends = null;
+            }
+            return user;
         }
     }
 }
