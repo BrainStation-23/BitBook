@@ -39,6 +39,10 @@ var _$ = _$ || {};
                     "/questions/allQuestions", {
                         templateUrl: "Templates/Question/all.html",
                         controller: "QuestionListCtrl"
+                    }).when(
+                    "/posts/add", {
+                        templateUrl: "Templates/Post/Add.html",
+                        controller: "PostAddCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }
