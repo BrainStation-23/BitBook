@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeWarrior.DAL.DbContext;
+using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
 using MongoDB.Bson;
@@ -11,7 +12,15 @@ namespace DataSeeder
         public static void Seed()
         {
             SeedQuestions();
+            SeedUsers();
+
             Console.ReadKey();
+        }
+
+        private static void SeedUsers()
+        {
+            IUserRepository repository = new UserRepository(new ApplicationDbContext());
+            //repository.Insert();
         }
 
         private static void SeedQuestions()
@@ -19,8 +28,8 @@ namespace DataSeeder
             var question = new Question
             {
                 CreatedBy = ObjectId.GenerateNewId().ToString(),
-                Title = "dfgd df dfg fgdflgk dlfkg  dlfgjk",
-                Description = "dfg dlfgk dfklgdfgjk\n dflkgj dlfkgdlfkgjdflkgjdfklg\n ldkfgldkfg\n dnflgkdlfkgj d"
+                Title = Faker.TextFaker.Sentence(),
+                Description = Faker.TextFaker.Sentence()
             };
 
             var repository = new QuestionRepository(new ApplicationDbContext());

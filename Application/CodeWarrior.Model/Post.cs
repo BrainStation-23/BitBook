@@ -25,7 +25,13 @@ namespace CodeWarrior.Model
             get { return LikedBy.Count; }
         }
 
-        public List<string> LikedBy { get; set; }
+        private List<string> _likedBy;
+
+        public List<string> LikedBy
+        {
+            get { return _likedBy ?? (_likedBy = new List<string>()); }
+            set { _likedBy = value; }
+        }
 
         public List<Comment> Comments { get; set; }
     }

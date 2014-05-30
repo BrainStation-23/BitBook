@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using MongoDB.AspNet.Identity;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -13,5 +14,9 @@ namespace CodeWarrior.Model
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public List<string> Friends { get; set; }
+
+        public List<string> FriendRequests { get; set; }
     }
 }
