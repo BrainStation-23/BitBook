@@ -321,7 +321,10 @@ namespace CodeWarrior.App.Controllers
 
             var user = new ApplicationUser
             {
-                UserName = model.UserName
+                UserName = model.UserName,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email
             };
 
             var result = await UserManager.CreateAsync(user, model.Password);
