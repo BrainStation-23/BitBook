@@ -88,7 +88,7 @@
 
             var login = function(user) {
                 var data = {
-                    UserName: user.userName,
+                    UserName: user.email,
                     Password: user.password,
                     grant_type: "password"
                 };

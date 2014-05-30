@@ -2,17 +2,18 @@
 
 (function(app) {
     app.controller("LoginCtrl", [
-        "$scope", "identityService", "notifierService", "$location", function($scope, identityService, notifierService, $location) {
+        "$scope", "identityService", "notifierService", function($scope, identityService, notifierService) {
             $scope.loginProviders = [];
             $scope.init = function() {
                 if (identityService.isLoggedIn()) {
-                    $location.path("/");
+                    $scope.redirectToHome();
+                } else {
+                    identityService.getExternalLogins().then(function (result) {
+                        if (result.data) {
+                            $scope.loginProviders = result.data;
+                        }
+                    });
                 }
-                identityService.getExternalLogins().then(function(result) {
-                    if (result.data) {
-                        $scope.loginProviders = result.data;
-                    }
-                });
             }();
             $scope.login = function (user) {
                 $scope.loginFormSubmitted = true;
@@ -21,7 +22,7 @@
                         if (data.userName && data.access_token) {
                             identityService.setAccessToken(data.access_token);
                             identityService.setAuthorizedUserData(data);
-                            $location.path("/");
+                            $scope.redirectToHome();
                         }
                     }).error(function(error) {
                         if (error.error_description) {

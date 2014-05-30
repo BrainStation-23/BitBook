@@ -4,14 +4,17 @@ var _$ = _$ || {};
 
 (function() {
 
-    var app = _$.app = angular.module("codeWarriorApp", ["ngRoute", "ngResource"]);
+    var app = _$.app = angular.module("bitBookApp", ["ngRoute", "ngResource"]);
 
     app.config([
         "$routeProvider", "$locationProvider", function($routeProvider) {
             $routeProvider.when("/", {
-                    templateUrl: "Templates/Home/Index.html",
-                    controller: "HomeCtrl"
+                    redirectTo: "/account/login"
                 }).when(
+                    "/home", {
+                        templateUrl: "Templates/Home/Index.html",
+                        controller: "HomeCtrl"
+                    }).when(
                     "/account/login", {
                         templateUrl: "Templates/Account/Login.html",
                         controller: "LoginCtrl"
@@ -72,23 +75,31 @@ var _$ = _$ || {};
 
                 if (typeof (fragment.error) !== "undefined") {
                     utilityService.cleanUpLocation();
-                    $location.path("/account/login");
+                    $scope.redirectToLogin();
+
                 } else if (typeof (fragment.access_token) !== "undefined") {
+
                     utilityService.cleanUpLocation();
-                    identityService.getUserInfo(fragment.access_token).success(function(data) {
+                    identityService.getUserInfo(fragment.access_token).success(function (data) {
+
                         if (typeof (data.userName) !== "undefined" && typeof (data.hasRegistered) !== "undefined" && typeof (data.loginProvider) !== "undefined") {
                             if (data.hasRegistered) {
+
                                 identityService.setAuthorizedUserData(data);
                                 identityService.setAccessToken(fragment.access_token, false);
-                                $location.path("/");
+                                $location.path("/home");
+
                             } else if (typeof (sessionStorage["loginUrl"]) !== "undefined") {
+
                                 loginUrl = sessionStorage["loginUrl"];
                                 sessionStorage.removeItem("loginUrl");
+
                                 var externalRegister = {
                                     data: data,
                                     fragment: fragment,
                                     loginUrl: loginUrl
                                 };
+
                                 sessionStorage.setItem("ExternalRegister", JSON.stringify(externalRegister));
                                 $location.path("/account/externalRegister");
                             } else {
@@ -97,7 +108,7 @@ var _$ = _$ || {};
                         } else {
                             $location.path("/account/login");
                         }
-                    }).error(function() {
+                    }).error(function () {
                         $location.path("/account/login");
                     });
                 } else {

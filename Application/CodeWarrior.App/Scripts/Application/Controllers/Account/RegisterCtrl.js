@@ -5,7 +5,7 @@
         "$scope", "$location", "identityService", "notifierService", function ($scope, $location, identityService, notifierService) {
             $scope.init = function () {
                 if (identityService.isLoggedIn()) {
-                    $location.path("/");
+                    $scope.redirectToHome();
                 }
             }();
 
@@ -17,7 +17,7 @@
                             if (data.userName && data.access_token) {
                                 identityService.setAccessToken(data.access_token);
                                 identityService.setAuthorizedUserData(data);
-                                $location.path("/");
+                                $scope.redirectToHome();
                             }
                         });
                     }).error(function (error) {
