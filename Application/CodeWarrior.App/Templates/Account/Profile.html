@@ -1,29 +1,19 @@
-﻿<h3>Account Profile Page</h3>
+﻿<style>
+    h3 {
+        color: #FF9900;
+        font-weight: 600;
+        margin-bottom: 0.75em;
+    }
+</style>
+
+<h3>Account Profile Page</h3>
 
 <hr />
 
-<form class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-2 control-label">First Name</label>
-        <div class="col-md-10">
-            <p ng-bind="user.firstName"></p>
-        </div>
-    </div>
+<p><span class="bold">Email:</span> {{user.userName ? user.userName : 'Not available'}}</p>
 
-    <div class="form-group">
-        <label class="col-md-2 control-label">Last Name</label>
-        <div class="col-md-10">
-            <p ng-bind="user.lastName"></p>
-        </div>
-    </div>
+<p><span class="bold">First Name:</span> {{user.firstName ? user.firstName : 'Not available'}}</p>
 
-    <div class="form-group">
-        <label class="col-md-2 control-label">Email</label>
-        <div class="col-md-10">
-            <p ng-bind="user.userName"></p>
-        </div>
-    </div>
+<p><span class="bold">Last Name:</span> {{user.lastName ? user.lastName : 'Not available'}}</p>
 
-</form>
-
-<a ng-href="#/account/profile/edit" class="btn btn-primary">Edit</a>
+<a ng-href="#/account/profile/edit" class="btn btn-primary">Edit Profile</a>
