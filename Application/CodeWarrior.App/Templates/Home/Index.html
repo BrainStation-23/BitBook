@@ -32,7 +32,7 @@
     
     <div class="row userNewsFeed" ng-repeat="post in posts">
         <div class="col-xs-12">
-            <img src="" class="userIcon" alt="" /> Atish Kumar Dipongkor
+            <img src="" class="userIcon" alt="" /> {{post.postedBy.firstName}} {{post.postedBy.lastName}} 
             <p class="postMessage"> {{post.message}} </p>
 
             <a href="javascript:void(0)" ng-click="toggleLike(post)" class="postLike">{{post.likedByMe ? 'Unlike' : 'Like'}}</a> |
