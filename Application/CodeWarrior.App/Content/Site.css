@@ -104,6 +104,10 @@ input[type="checkbox"].input-validation-error {
             margin: 0px 1px 6px 0px;
         }
 
+        .userNewsFeed .commentDisplay a.userInfoLink:hover {
+            text-decoration: none;
+        }
+
     .userNewsFeed .postMessage {
         padding: 10px 0px 2px 0px;
     }

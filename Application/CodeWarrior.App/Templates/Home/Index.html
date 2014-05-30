@@ -35,14 +35,17 @@
 
             <div class="commentDisplay" ng-show="post.comments.length">
                 <p ng-repeat="comment in post.comments" class="comment">
-                    <img src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini"/>
-                    <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
+                    
+                    <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
+                        <img src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
+                        <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
+                    </a>
                     <span>said {{comment.description}}</span>
+
                 </p>
-                <hr />
             </div>
 
-            <textarea class="col-lg-9 commentMessage" ng-model="newComment.description" name="Comment" id="Comment" placeholder="Write a comment"></textarea>
+            <textarea class="col-lg-9 commentMessage" ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
 
             <div>
                 <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />

@@ -4,6 +4,7 @@
     app.controller("HomeCtrl", [
         "$scope", "identityService", "apiService", "notifierService", function ($scope, identityService, apiService, notifierService) {
             $scope.posts = [];
+            $scope.newComment = {};
 
             $scope.init = function () {
                 if (!identityService.isLoggedIn()) {
@@ -15,7 +16,6 @@
                     apiService.get("/api/posts/", config).success(function (result) {
                         if (result) {
                             $scope.posts = result;
-                            console.log($scope.posts);
                         }
                     });
                 }
@@ -28,7 +28,6 @@
                         headers: identityService.getSecurityHeaders()
                     };
                     apiService.post("/api/posts", post, config).success(function (result) {
-                        console.log(result);
                         $scope.posts.splice(0, 0, result);
                     }).error(function (error) {
                         if (error.modelState) {
@@ -92,17 +91,17 @@
                     });
                 }
             };
-
+            
             $scope.addComment = function (post, newComment) {
-               
+
                 newComment.postId = post.id;
                 var config = {
                     headers: identityService.getSecurityHeaders()
                 };
 
                 apiService.post("/api/comments", newComment, config).success(function (result) {
-                    post.comments.push(result);
                     $scope.newComment.description = "";
+                    post.comments.push(result);
                 }).error(function (error) {
                     if (error.modelState) {
                         $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
