@@ -1,9 +1,11 @@
-﻿using CodeWarrior.App.ViewModels.Posts;
+﻿using System;
+using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
+using MongoDB.Bson;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -26,17 +28,23 @@ namespace CodeWarrior.App.Controllers
                 return BadRequest(ModelState);
             }
 
-            var commentModel = AutoMapper.Mapper.Map<CommentBindingModel, Comment>(comment);
-
-            commentModel.CommentedBy = User.Identity.GetUserId();
+            comment.CommentedBy = User.Identity.GetUserId();
 
             var post = _postRepository.FindById(comment.PostId);
 
-            post.Comments.Add(commentModel);
+            var commentTobeSaved = new Comment
+            {
+                CommentedBy = User.Identity.GetUserId(),
+                Description = comment.Description,
+                CommentedOn = DateTime.UtcNow,
+                Id = ObjectId.GenerateNewId().ToString()
+            };
+
+            post.Comments.Add(commentTobeSaved);
 
             _postRepository.Update(post);
 
-            return Ok(commentModel);
+            return Ok(commentTobeSaved);
         }
     }
 }

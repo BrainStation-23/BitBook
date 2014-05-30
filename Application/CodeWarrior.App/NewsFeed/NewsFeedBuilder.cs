@@ -53,7 +53,12 @@ namespace CodeWarrior.App.NewsFeed
                     var vComments = new List<CommentViewModel>();
                     foreach (var comment in post.Comments)
                     {
-                        var vComment = AutoMapper.Mapper.Map<Comment, CommentViewModel>(comment);
+                        var vComment = new CommentViewModel
+                        {
+                            CommentedOn = comment.CommentedOn.ToLocalTime(),
+                            Description = comment.Description,
+                            Id = comment.Id
+                        };
                         vComment.CommentedBy = users[comment.CommentedBy];
                         vComments.Add(vComment);
                     }
