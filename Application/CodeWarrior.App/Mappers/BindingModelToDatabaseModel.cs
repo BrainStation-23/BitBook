@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AutoMapper;
+using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.App.ViewModels.Questions;
 using CodeWarrior.Model;
 
@@ -25,6 +26,16 @@ namespace CodeWarrior.App.Mappers
 
                 .ForMember(question => question.Answers,
                     expr => expr.MapFrom(questionModel => new List<Answer>()));
+
+            Mapper.CreateMap<PostBindingModel, Post>()
+                .ForMember(post => post.PostedOn,
+                    expr => expr.MapFrom(postModel => DateTime.UtcNow))
+
+                .ForMember(post => post.Likes,
+                    expr => expr.MapFrom(postModel => new List<ApplicationUser>()))
+
+                .ForMember(post => post.Comments,
+                    expr => expr.MapFrom(postModel => new List<Comment>()));
         }
     }
 }

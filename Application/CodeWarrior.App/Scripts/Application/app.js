@@ -30,7 +30,7 @@ var _$ = _$ || {};
                     }).when(
                     "/account/profile/edit", {
                         templateUrl: "Templates/Account/Edit.html",
-                        controller: "AccountEditCtrl"
+                        controller: "ProfileEditCtrl"
                     }).when(
                     "/questions/add", {
                         templateUrl: "Templates/Question/Add.html",

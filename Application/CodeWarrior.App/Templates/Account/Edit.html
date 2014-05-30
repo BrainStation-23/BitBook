@@ -1,30 +1,16 @@
-﻿<h2>Register</h2>
+﻿<h2>Profile Update Form</h2>
 
-<form class="form-horizontal" role="form" name="LocalRegisterForm" novalidate>
+<hr />
 
-    <h4>Create a Local account</h4>
+<form class="form-horizontal" role="form" name="AccountEditForm" novalidate>
+
+    <h4>Edit your account information</h4>
     <hr />
 
     <ul class="text-danger" ng-if="localRegisterErrors">
         <li ng-repeat="localRegisterError in localRegisterErrors">{{ localRegisterError }}</li>
     </ul>
-
-    <div class="form-group">
-        <label for="FirstName" class="col-md-2 control-label">First Name</label>
-        <div class="col-md-10">
-            <input type="text" ng-model="user.firstName" name="FirstName" id="FirstName" class="form-control" ng-required="true" />
-            <span class="field-validation-error" ng-if="localRegisterFormSubmitted && LocalRegisterForm.FirstName.$invalid">The First Name field is invalid.</span>
-        </div>
-    </div>
     
-    <div class="form-group">
-        <label for="LastName" class="col-md-2 control-label">Last Name</label>
-        <div class="col-md-10">
-            <input type="text" ng-model="user.lastName" name="LastName" id="LastName" class="form-control" ng-required="true" />
-            <span class="field-validation-error" ng-if="localRegisterFormSubmitted && LocalRegisterForm.LastName.$invalid">The Last Name field is invalid.</span>
-        </div>
-    </div>
-
     <div class="form-group">
         <label for="UserName" class="col-md-2 control-label">User Name</label>
         <div class="col-md-10">
@@ -34,13 +20,21 @@
     </div>
 
     <div class="form-group">
-        <label for="Password" class="col-md-2 control-label">Password</label>
+        <label for="FirstName" class="col-md-2 control-label">First Name</label>
         <div class="col-md-10">
-            <input type="password" ng-model="user.password" id="Password" name="Password" class="form-control" ng-required="true" />
-            <span class="field-validation-error" ng-if="localRegisterFormSubmitted && LocalRegisterForm.Password.$invalid">The Password field is invalid.</span>
+            <input type="text" ng-model="user.firstName" name="FirstName" id="FirstName" class="form-control" ng-required="true" />
+            <span class="field-validation-error" ng-if="localRegisterFormSubmitted && LocalRegisterForm.FirstName.$invalid">The First Name field is invalid.</span>
         </div>
     </div>
-    
+
+    <div class="form-group">
+        <label for="LastName" class="col-md-2 control-label">Last Name</label>
+        <div class="col-md-10">
+            <input type="text" ng-model="user.lastName" name="LastName" id="LastName" class="form-control" ng-required="true" />
+            <span class="field-validation-error" ng-if="localRegisterFormSubmitted && LocalRegisterForm.LastName.$invalid">The Last Name field is invalid.</span>
+        </div>
+    </div>
+
     <div class="form-group">
         <label for="Email" class="col-md-2 control-label">Email</label>
         <div class="col-md-10">
@@ -51,7 +45,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="button" class="btn btn-success" value="Register" ng-click="register(user)" />
+            <input type="button" class="btn btn-success" value="Update" ng-click="update(user)" />
         </div>
     </div>
 

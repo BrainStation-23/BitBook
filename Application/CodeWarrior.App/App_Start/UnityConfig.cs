@@ -23,9 +23,19 @@ namespace CodeWarrior.App
 
         public static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterTypes(
+                AllClasses.FromLoadedAssemblies(),
+                WithMappings.FromMatchingInterface,
+                WithName.Default
+                );
+
             container.RegisterType<AccountController>(new InjectionConstructor());
+
+            /*
             container.RegisterType<IApplicationDbContext, ApplicationDbContext>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
+            container.RegisterType<IPostRepository, PostRepository>();
+             */
         }
     }
 }
