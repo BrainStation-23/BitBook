@@ -7,6 +7,7 @@ namespace CodeWarrior.App.Mappers
         public static void Configure()
         {
             Mapper.Initialize(x => x.AddProfile<BindingModelToDatabaseModel>());
+            Mapper.Initialize(x => x.AddProfile<DatabaseModelToViewModel>());
         }
     }
 }
