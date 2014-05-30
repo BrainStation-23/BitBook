@@ -2,7 +2,7 @@
 
 (function(app) {
     app.factory("apiService", [
-        "$http", "$q", function ($http, $q) {
+        "$http", "$q", function($http, $q) {
 
             _$.http = $http;
 
@@ -26,16 +26,16 @@
                 return deferred.promise;
             };
             var post = function(url, data, config) {
-                return $http.post(url, config);
+                return $http.post(url, data, config);
             };
-            var remove = function(url,config) {
+            var remove = function(url, config) {
                 $http.delete(url, config);
             };
             return {
                 get: get,
                 save: save,
                 post: post,
-                remove:remove
+                remove: remove
             };
         }
     ]);
