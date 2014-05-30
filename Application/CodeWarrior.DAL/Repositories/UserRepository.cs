@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodeWarrior.DAL.DbContext;
+﻿using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
 using MongoDB.Driver.Builders;
@@ -16,7 +11,7 @@ namespace CodeWarrior.DAL.Repositories
         public UserRepository(IApplicationDbContext applicationDbContext) 
             : base(applicationDbContext)
         {
-
+            Collection = ApplicationDbContext.Database.GetCollection<ApplicationUser>("AspNetUsers");
         }
 
         public MongoDB.Driver.MongoCursor<ApplicationUser> SearchByName(string name)
