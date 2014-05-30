@@ -56,7 +56,12 @@ input[type="checkbox"].input-validation-error {
 
 .topBarSearchForm {
     padding: 10px;
-    width: 200px;
+    width: 300px;
+}
+
+.topBarSearchForm input {
+    -ms-border-radius: 0 !important;
+    border-radius: 0 !important;
 }
 
 .userNewsFeed .userIcon {
