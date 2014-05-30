@@ -53,11 +53,11 @@
                 };
                 console.log(post);
                 if (post.likedByMe) {
+
                     post.likedByMe = false;
                     post.likeCount--;
-                    $scope.toggleLikeText = "Unlike";
                     apiService.post("/api/like", {}, config).success(function (result) {
-                        $scope.toggleLikeText = "Unlike";
+                        console.log(result);
 
                     }).error(function (error) {
                         if (error.modelState) {
@@ -72,13 +72,13 @@
                             notifierService.notify(data);
                         }
                     });
+
                 } else {
+
                     post.likedByMe = true;
                     post.likeCount++;
-                    $scope.toggleLikeText = "Like";
-
                     apiService.remove("/api/like", config).success(function (result) {
-                        $scope.toggleLikeText = "Like";
+                        console.log(result);
 
                     }).error(function (error) {
                         if (error.modelState) {
@@ -93,6 +93,7 @@
                             notifierService.notify(data);
                         }
                     });
+
                 }
             };
         }

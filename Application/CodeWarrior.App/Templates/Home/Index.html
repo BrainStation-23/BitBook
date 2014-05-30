@@ -41,6 +41,8 @@
             <p>{{post.likeCount}} Person like this</p>
 
             <textarea class="col-lg-9" ng-model="comment" name="Comment" id="Comment" placeholder="Write a comment"></textarea>
+           
+            <input type="button" ng-click="addComment(posts)" class="btn btn-success" value="Add" />
         </div>
     </div>
 
