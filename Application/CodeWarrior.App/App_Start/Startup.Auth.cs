@@ -1,4 +1,5 @@
 ﻿using System;
+using CodeWarrior.Model;
 using CodeWarrior.SharedLibrary.Configurations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
@@ -18,7 +19,7 @@ namespace CodeWarrior.App
             PublicClientId = "self";
 
             UserManagerFactory =
-                () => new UserManager<IdentityUser>(new UserStore<IdentityUser>(MongoDbConfiguration.MongoConnection));
+                () => new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(MongoDbConfiguration.MongoConnection));
 
             OAuthOptions = new OAuthAuthorizationServerOptions
             {
@@ -32,7 +33,7 @@ namespace CodeWarrior.App
 
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }
 
-        public static Func<UserManager<IdentityUser>> UserManagerFactory { get; set; }
+        public static Func<UserManager<ApplicationUser>> UserManagerFactory { get; set; }
 
         public static string PublicClientId { get; private set; }
 
