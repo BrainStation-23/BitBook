@@ -341,7 +341,9 @@
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionAddCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionListCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Search\UserSearchCtrl.js" />
     <Content Include="Scripts\Application\Directives\topbarDirective.js" />
+    <Content Include="Scripts\Application\Services\userService.js" />
     <Content Include="Scripts\Application\Services\utilityService.js" />
     <Content Include="Scripts\Application\Services\apiService.js" />
     <Content Include="Scripts\Application\Services\identityService.js" />
@@ -660,6 +662,7 @@
     <Content Include="Templates\Partial\TopBar.html" />
     <Content Include="Templates\Question\Add.html" />
     <Content Include="Templates\Question\All.html" />
+    <Content Include="Templates\Search\SearcResult.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

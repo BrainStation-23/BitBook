@@ -1,0 +1,11 @@
+﻿<h2>User Search</h2>
+
+<div ng-repeat="user in users" class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+        <div class="row"><span>{{user.firstName}}</span> <span>{{user.lastName}}</span></div>
+        <div class="row">
+            <input type="button" class="btn btn-success" ng-click="addFriend(user)" />{{!user.friendRequestSent?'Add Friend':'Friend Request Sent'}}
+        </div>
+    </div>
+</div>
