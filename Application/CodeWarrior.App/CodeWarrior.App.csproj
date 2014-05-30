@@ -274,6 +274,7 @@
     </Compile>
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\BindingModelToDatabaseModel.cs" />
+    <Compile Include="NewsFeed\NewsFeedBuilder.cs" />
     <Compile Include="ViewModels\Account\AccountBindingModels.cs" />
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="Notification.cs" />

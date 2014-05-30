@@ -11,5 +11,10 @@ namespace CodeWarrior.DAL.Repositories
         {
 
         }
+
+        public System.Collections.Generic.IEnumerable<Post> ByUser(string userId)
+        {
+            return Where(post => post.PostedBy == userId);
+        }
     }
 }
