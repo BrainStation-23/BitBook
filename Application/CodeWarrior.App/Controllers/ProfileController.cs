@@ -1,4 +1,5 @@
-﻿using CodeWarrior.App.ViewModels.Account;
+﻿using System.Web;
+using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Profile;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
@@ -50,6 +51,17 @@ namespace CodeWarrior.App.Controllers
             _userRepository.Update(dbUser);
 
             return Ok();
+        }
+
+        // POST api/Profile/Upload
+        public IHttpActionResult Post([FromBody] HttpPostedFile avatar)
+        {
+            return Ok();
+        }
+
+        public class UploadBindingModel
+        {
+            public HttpPostedFile Avatar { get; set; }
         }
     }
 }

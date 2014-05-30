@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("ProfileEditCtrl", [
-        "$scope", "identityService", "notifierService", "apiService", "$rootScope", function($scope, identityService, notifierService, apiService, $rootScope) {
+        "$scope", "identityService", "notifierService", "apiService", "$rootScope", "$fileUploader", function($scope, identityService, notifierService, apiService, $rootScope, $fileUploader) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
@@ -43,6 +43,21 @@
                     });
                 }
             };
+
+            $scope.uploader = $fileUploader.create({
+                scope: $scope,
+                url: "/api/profile",
+                filters: [
+                    function(item) {
+                        return true;
+                    }
+                ],
+                headers: {
+                    "Accept": 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
+                }
+            });
         }
     ]);
 })(_$.app);

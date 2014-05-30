@@ -4,7 +4,7 @@ var _$ = _$ || {};
 
 (function() {
 
-    var app = _$.app = angular.module("bitBookApp", ["ngRoute", "ngResource"]);
+    var app = _$.app = angular.module("bitBookApp", ["ngRoute", "ngResource", "angularFileUpload"]);
 
     app.config([
         "$routeProvider", "$locationProvider", function($routeProvider) {
