@@ -2,6 +2,10 @@
 <hr />
 
 <form class="form-horizontal" role="form" name="AddPostForm" novalidate>
+    
+    <ul class="text-danger" ng-if="postCreateErrors">
+        <li ng-repeat="postCreateError in postCreateErrors">{{ postCreateError }}</li>
+    </ul>
 
     <div class="form-group">
         <label for="Message" class="col-md-2 control-label">Say Something</label>
@@ -24,6 +28,23 @@
 
 <hr />
 
-<div ng-repeat="post in posts">
+<div ng-if="hasAnyNewsFeed" id="userNewsFeed">
+    
+    <div ng-repeat="post in posts">
+
+        <img src="" class="userIcon" /> Atish Kumar Dipongkor
+        <p class="postMessage"> {{post.message}} </p>
+
+        <a ng-click="toggleLike(post.id)" class="postLike" ng-model="toggleLikeText">{{toggleLikeText}}</a> |
+        <a ng-click="comment(post.id)" class="postComment">Comment</a>
+        
+        <p>{{post.likeCount}} Person like this</p>
+
+    </div>
 
 </div>
+
+<div ng-if="!hasAnyNewsFeed">
+    You have no news feed.
+</div>
+
