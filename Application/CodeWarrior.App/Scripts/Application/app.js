@@ -34,18 +34,6 @@ var _$ = _$ || {};
                     "/account/profile/edit", {
                         templateUrl: "Templates/Account/Edit.html",
                         controller: "ProfileEditCtrl"
-                    }).when(
-                    "/questions/add", {
-                        templateUrl: "Templates/Question/Add.html",
-                        controller: "QuestionAddCtrl"
-                    }).when(
-                    "/questions/allQuestions", {
-                        templateUrl: "Templates/Question/all.html",
-                        controller: "QuestionListCtrl"
-                    }).when(
-                    "/posts/add", {
-                        templateUrl: "Templates/Post/Add.html",
-                        controller: "PostAddCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }

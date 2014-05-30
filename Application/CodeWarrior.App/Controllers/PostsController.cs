@@ -4,6 +4,7 @@ using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
+using Microsoft.AspNet.Identity;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -40,6 +41,9 @@ namespace CodeWarrior.App.Controllers
             }
 
             var postModel = AutoMapper.Mapper.Map<PostBindingModel, Post>(post);
+
+            postModel.PostedBy = User.Identity.GetUserId();
+
             _postRepository.Insert(postModel);
 
             return Ok(postModel);
