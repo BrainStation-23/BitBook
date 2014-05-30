@@ -36,6 +36,8 @@ namespace CodeWarrior.App
                 "~/Scripts/Application/Controllers/Account/ProfileCtrl.js",
                 "~/Scripts/Application/Controllers/Account/ProfileEditCtrl.js",
                 "~/Scripts/Application/Controllers/Account/PasswordManageCtrl.js",
+                "~/Scripts/Application/Controllers/Account/AccountFriendListCtrl.js",
+                "~/Scripts/Application/Controllers/Friend/FriendProfileCtrl.js",
                 "~/Scripts/Application/Controllers/Question/QuestionAddCtrl.js",
                 "~/Scripts/Application/Controllers/Question/QuestionListCtrl.js",
                 "~/Scripts/Application/Controllers/Post/PostAddCtrl.js",

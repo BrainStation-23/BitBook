@@ -120,3 +120,16 @@ div.info {
 div.clearBoth {
     clear: both;
 } 
+
+.block {
+    border: 1px solid #CCCCCC;
+    -webkit-box-shadow: 0 2px 5px 0 #CCCCCC;
+    -ms-box-shadow: 0 2px 5px 0 #CCCCCC;
+    box-shadow: 0 2px 5px 0 #CCCCCC;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.friendIcon img {
+    height: 50px; width: 60px;
+}

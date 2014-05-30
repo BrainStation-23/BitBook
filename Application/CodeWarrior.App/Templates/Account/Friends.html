@@ -1,0 +1,22 @@
+﻿<h3>All Friends</h3>
+
+<hr />
+
+<div class="alert alert-info" ng--if="!friends.length">
+    Sorry! Your current friend list is empty.
+</div>
+
+<div ng-if="friends.length">
+    <div ng-repeat="friend in friends" class="block">
+        <div class="row">
+            <div class="col-xs-4">
+                <img ng-src="{{friend.avatarUrl}}" alt="" />
+                {{friend.firstName}} {{friend.lastName}}
+            </div>
+            <div class="col-xs-4 col-lg-offset-2">
+                <a ng-href="#/account/friends/{{friend.id}}" class="btn btn-primary">View Profile</a>
+                <a class="btn btn-danger">Unfriend</a>
+            </div>
+        </div>
+    </div>
+</div>

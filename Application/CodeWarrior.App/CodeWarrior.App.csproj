@@ -336,6 +336,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Scripts\Application\app.js" />
+    <Content Include="Scripts\Application\Controllers\Account\AccountFriendListCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ExternalRegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\LoginCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
@@ -343,6 +344,7 @@
     <Content Include="Scripts\Application\Controllers\Account\PasswordManageCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\RegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\BaseCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Friend\FriendProfileCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionAddCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionListCtrl.js" />
@@ -661,9 +663,11 @@
     <Content Include="Templates\Account\ChangePassword.html" />
     <Content Include="Templates\Account\Edit.html" />
     <Content Include="Templates\Account\ExternalRegister.html" />
+    <Content Include="Templates\Account\Friends.html" />
     <Content Include="Templates\Account\Login.html" />
     <Content Include="Templates\Account\Profile.html" />
     <Content Include="Templates\Account\Register.html" />
+    <Content Include="Templates\Friend\Profile.html" />
     <Content Include="Templates\Home\Index.html" />
     <Content Include="Templates\Partial\TopBar.html" />
     <Content Include="Templates\Question\Add.html" />
