@@ -1,5 +1,5 @@
 ﻿
-namespace CodeWarrior.App.ViewModels.Posts
+namespace CodeWarrior.App.ViewModels.Account
 {
     public class ApplicationUserViewModel
     {

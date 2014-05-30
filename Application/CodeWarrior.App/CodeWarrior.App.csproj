@@ -288,7 +288,7 @@
     <Compile Include="RealTimeNotification\ConnectionMapping.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Posts\ApplicationUserViewModel.cs" />
+    <Compile Include="ViewModels\Account\ApplicationUserViewModel.cs" />
     <Compile Include="ViewModels\Posts\CommentBindingModel.cs" />
     <Compile Include="ViewModels\Posts\CommentViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostBindingModel.cs" />

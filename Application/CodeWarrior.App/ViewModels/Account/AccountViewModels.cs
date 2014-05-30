@@ -38,10 +38,5 @@ namespace CodeWarrior.App.ViewModels.Account
         public string ProviderKey { get; set; }
     }
 
-    public class ApplicationUserViewModel
-    {
-        public string UserName { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
+
 }

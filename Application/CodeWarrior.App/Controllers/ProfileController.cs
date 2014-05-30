@@ -1,4 +1,5 @@
 ﻿using CodeWarrior.App.ViewModels.Account;
+using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.App.ViewModels.Profile;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;

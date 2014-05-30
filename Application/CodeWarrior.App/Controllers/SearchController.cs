@@ -1,11 +1,11 @@
-﻿using CodeWarrior.App.ViewModels;
+﻿using CodeWarrior.App.ViewModels.Account;
+using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using MongoDB.Bson;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -18,7 +18,7 @@ namespace CodeWarrior.App.Controllers
         {
         }
 
-        public IEnumerable<object> Get([FromUri] SearchCriteria criteria)
+        public IEnumerable<object> Get([FromUri] ViewModels.SearchCriteria criteria)
         {
             switch (criteria.Type.ToLower())
             {
@@ -29,11 +29,13 @@ namespace CodeWarrior.App.Controllers
             return null;
         }
 
-        private IEnumerable<ApplicationUser> SearchUser(SearchCriteria criteria)
+        private IEnumerable<ApplicationUserViewModel> SearchUser(ViewModels.SearchCriteria criteria)
         {
             var repository = new UserRepository(ApplicationDbContext);
-            var users = repository.SearchByName(criteria.Key);
-            return users.ToList();
+            return
+                repository.SearchByName(criteria.Key)
+                    .Select(AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>)
+                    .ToList();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using CodeWarrior.App.ViewModels.Account;
 
 namespace CodeWarrior.App.ViewModels.Posts
 {

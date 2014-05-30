@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;

@@ -71,9 +71,11 @@ namespace CodeWarrior.App.Controllers
         }
 
         // DELETE api/post/5
-        public void Delete(string id)
+        public IHttpActionResult Delete(string id)
         {
             _postRepository.Remove(id);
+
+            return Ok();
         }
     }
 }
