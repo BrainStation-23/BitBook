@@ -13,30 +13,17 @@ namespace CodeWarrior.App.Mappers
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Question, Question>();
+            //Mapper.CreateMap<PostBindingModel, Post>()
+            //    .ForMember(post => post.LikeCount,
+            //        expr => expr.Ignore())
+            //    .ForMember(post => post.PostedOn,
+            //        expr => expr.MapFrom(postModel => DateTime.UtcNow))
 
-            Mapper.CreateMap<QuestionBindingModel, Question>()
-                .ForMember(question => question.PostedOn,
-                    expr => expr.MapFrom(questionModel => DateTime.UtcNow))
+            //    .ForMember(post => post.LikedBy,
+            //        expr => expr.MapFrom(postModel => new List<string>()))
 
-                .ForMember(question => question.Tags,
-                    expr => expr.MapFrom(questionModel => questionModel.Tags ?? new string[] {}))
-
-                .ForMember(question => question.Comments,
-                    expr => expr.MapFrom(questionModel => new List<Comment>()))
-
-                .ForMember(question => question.Answers,
-                    expr => expr.MapFrom(questionModel => new List<Answer>()));
-
-            Mapper.CreateMap<PostBindingModel, Post>()
-                .ForMember(post => post.PostedOn,
-                    expr => expr.MapFrom(postModel => DateTime.UtcNow))
-
-                .ForMember(post => post.LikedBy,
-                    expr => expr.MapFrom(postModel => new List<string>()))
-
-                .ForMember(post => post.Comments,
-                    expr => expr.MapFrom(postModel => new List<Comment>()));
+            //    .ForMember(post => post.Comments,
+            //        expr => expr.MapFrom(postModel => new List<Comment>()));
 
             Mapper.CreateMap<CommentBindingModel, Comment>()
                 .ForMember(comment => comment.CommentedOn,

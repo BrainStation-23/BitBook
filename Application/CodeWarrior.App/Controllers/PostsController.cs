@@ -1,4 +1,5 @@
-﻿using CodeWarrior.App.NewsFeed;
+﻿using System;
+using CodeWarrior.App.NewsFeed;
 using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
@@ -42,13 +43,18 @@ namespace CodeWarrior.App.Controllers
                 return BadRequest(ModelState);
             }
 
-            var postModel = AutoMapper.Mapper.Map<PostBindingModel, Post>(post);
+            var model = new Post()
+            {
+                Message = post.Message,
+                PostedBy = User.Identity.GetUserId(),
+                PostedOn = DateTime.UtcNow,
+                LikedBy = new List<string>(),
+                Comments = new List<Comment>()
+            };
+            model.PostedBy = User.Identity.GetUserId();
+            _postRepository.Insert(model);
 
-            postModel.PostedBy = User.Identity.GetUserId();
-
-            _postRepository.Insert(postModel);
-
-            return Ok(postModel);
+            return Ok(model);
         }
 
         // PUT api/post/5
