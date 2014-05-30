@@ -22,8 +22,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWarrior.SharedLibrary",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeWarrior.Scripts.Tests", "CodeWarrior.Scripts.Tests\CodeWarrior.Scripts.Tests.csproj", "{FFF23DCF-5176-48FC-96AB-C70668E22375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataSeeder", "DataSeeder\DataSeeder.csproj", "{DA0C4933-D2A5-4C08-957D-108A84B48D84}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,10 +52,6 @@ Global
 		{FFF23DCF-5176-48FC-96AB-C70668E22375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFF23DCF-5176-48FC-96AB-C70668E22375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF23DCF-5176-48FC-96AB-C70668E22375}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA0C4933-D2A5-4C08-957D-108A84B48D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA0C4933-D2A5-4C08-957D-108A84B48D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA0C4933-D2A5-4C08-957D-108A84B48D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA0C4933-D2A5-4C08-957D-108A84B48D84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
