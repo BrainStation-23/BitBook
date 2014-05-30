@@ -26,6 +26,7 @@ namespace CodeWarrior.App
             container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<IApplicationDbContext, ApplicationDbContext>();
             container.RegisterType<IQuestionRepository, QuestionRepository>();
+            container.RegisterType<IPostRepository, PostRepository>();
         }
     }
 }
