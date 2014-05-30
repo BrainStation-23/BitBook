@@ -101,7 +101,8 @@
                 };
 
                 apiService.post("/api/comments", newComment, config).success(function (result) {
-                    console.log(result);
+                    post.comments.push(result);
+                    $scope.newComment.description = "";
                 }).error(function (error) {
                     if (error.modelState) {
                         $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {

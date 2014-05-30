@@ -15,6 +15,10 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Home/Index.html",
                         controller: "HomeCtrl"
                     }).when(
+                    "/friendRequest/", {
+                        templateUrl: "Templates/Request/friendRequest.html",
+                        controller: "FriendRequestCtrl"
+                    }).when(
                     "/search/:key", {
                         templateUrl: "Templates/Search/SearcResult.html",
                         controller: "UserSearchCtrl"

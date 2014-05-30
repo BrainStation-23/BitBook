@@ -1,13 +1,14 @@
-﻿<h2>Search Result</h2>
+﻿<h2>Friend Request(s)</h2>
 
 <div class="findFriendrow" ng-repeat="user in users">
-    <img ng-src="{{user.avatarUrl}}" alt="{{user.firstName}}" />
+    <img ng-src='{{user.avatarUrl}}' alt="{{user.firstName}}" />
     <div class="infoContainer">
         <div class="info"><a ng-href="#/profile/{{user.id}}"><i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}</a></div>
         <div>
-            <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.friendRequestSent">
-                {{user.friendRequestSent ? 'Friend Request Sent' : 'Add Friend'}}
+            <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.addedAsFriend">
+                {{user.addedAsFriend ? 'Request Confirmed' : 'Confirm'}}
             </button>
+            <button class="btn btn-danger" ng-click="rejectFriend(user)" ng-hide="user.addedAsFriend">Reject</button>
         </div>
     </div>
     <div class="clearBoth"></div>
@@ -16,6 +17,6 @@
 <div class="clearBoth"></div>
 <div ng-if="!users.length">
     <div class="alert alert-info">
-        No result found based on your search!
+        You have no pending friend request!
     </div>
 </div>
