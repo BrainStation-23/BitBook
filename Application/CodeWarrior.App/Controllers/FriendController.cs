@@ -78,8 +78,13 @@ namespace CodeWarrior.App.Controllers
             if (null == friend) return BadRequest();
 
             var me = _userRepository.FindById(User.Identity.GetUserId());
+            friend.FriendRequests.Remove(me.Id);
+            me.FriendRequests.Remove(friend.Id);
             me.Friends.Remove(friend.Id);
             friend.Friends.Remove(me.Id);
+
+            _userRepository.Update(me);
+            _userRepository.Update(friend);
 
             return Ok();
         }

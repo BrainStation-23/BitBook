@@ -11,6 +11,19 @@
                 };
             };
 
+            $scope.rejectFriend = function(user) {
+                var config = $.extend(getConfig(), {
+                    params: {
+                        id: user.id
+                    }
+                });
+
+                apiService.remove('/api/friend/', config)
+                    .success(function() {
+                        user.friendRequestSent = true;
+                    });
+            };
+
             $scope.addFriend = function (user) {
                 var config = $.extend(getConfig(), {
                     params: {

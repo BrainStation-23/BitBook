@@ -6,8 +6,9 @@
         <div class="info">{{user.firstName}} {{user.lastName}}</div>
         <div>
             <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.addedAsFriend">
-                {{user.addedAsFriend ? 'Friend Request Confirmed' : 'Confirm Friend Request'}}
+                {{user.addedAsFriend ? 'Request Confirmed' : 'Confirm'}}
             </button>
+            <button class="btn btn-danger" ng-click="rejectFriend(user)" ng-hide="user.addedAsFriend">Reject</button>
         </div>
     </div>
     <div class="clearBoth"></div>
