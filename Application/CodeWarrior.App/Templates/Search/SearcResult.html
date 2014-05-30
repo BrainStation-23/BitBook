@@ -3,7 +3,7 @@
 <div class="findFriendrow" ng-repeat="user in users">
     <img ng-src="{{user.avatarUrl}}" alt="{{user.firstName}}" />
     <div class="infoContainer">
-        <div class="info">{{user.firstName}} {{user.lastName}}</div>
+        <div class="info"><a ng-href="#/profile/{{user.id}}"><i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}</a></div>
         <div>
             <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.friendRequestSent">
                 {{user.friendRequestSent ? 'Friend Request Sent' : 'Add Friend'}}
