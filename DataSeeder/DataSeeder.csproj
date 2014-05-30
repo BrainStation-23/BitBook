@@ -77,6 +77,10 @@
       <Project>{4cc4a1ab-7a4a-41ac-ad2a-6536c7128aef}</Project>
       <Name>CodeWarrior.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Application\CodeWarrior.SharedLibrary\CodeWarrior.SharedLibrary.csproj">
+      <Project>{c08903da-d246-4e87-b478-cda46678600b}</Project>
+      <Name>CodeWarrior.SharedLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

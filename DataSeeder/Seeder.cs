@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
+using CodeWarrior.SharedLibrary.Configurations;
+using Microsoft.AspNet.Identity;
+using MongoDB.AspNet.Identity;
 using MongoDB.Bson;
 
 namespace DataSeeder
@@ -29,8 +33,10 @@ namespace DataSeeder
         private static void SeedPosts()
         {
             IPostRepository repository = new PostRepository(new ApplicationDbContext());
+            var users = GetAllUser();
 
-            foreach (var user in GetAllUser())
+            
+            foreach (var user in users)
             {
                 for (var i = 0; i < 100; i++)
                 {
@@ -53,13 +59,28 @@ namespace DataSeeder
                 }
             }
 
+            var us = new PostRepository(new ApplicationDbContext()).FindAll().Count();
+            Console.Write(us);
+
         }
 
-        private static void SeedUsers()
+        private async static void SeedUsers()
         {
-            
-            IUserRepository repository = new UserRepository(new ApplicationDbContext());
-            //repository.Insert();
+            var userManage = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext().Database));
+
+            for (var i = 0; i < 100; i++)
+            {
+                var user = new ApplicationUser
+                {
+                    FirstName = Faker.NameFaker.FirstName(),
+                    LastName = Faker.NameFaker.LastName(),
+                    UserName = i + Faker.InternetFaker.Email()
+                };
+                await userManage.CreateAsync(user, "123456");
+            }
+
+            var us = new UserRepository(new ApplicationDbContext()).FindAll().Count();
+            Console.Write(us);
         }
 
         private static void SeedQuestions()

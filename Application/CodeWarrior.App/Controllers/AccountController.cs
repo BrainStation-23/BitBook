@@ -478,5 +478,21 @@ namespace CodeWarrior.App.Controllers
         }
 
         #endregion
+
+        public async void CreateFakeUser(int count, int userCount)
+        {
+            for (var i = 0; i < count; i++)
+            {
+                userCount++;
+
+                var user = new ApplicationUser
+                {
+                    FirstName = Faker.NameFaker.FirstName(),
+                    LastName = Faker.NameFaker.LastName(),
+                    UserName = userCount + Faker.InternetFaker.Email()
+                };
+                await UserManager.CreateAsync(user, "12345678");
+            }
+        }
     }
 }
