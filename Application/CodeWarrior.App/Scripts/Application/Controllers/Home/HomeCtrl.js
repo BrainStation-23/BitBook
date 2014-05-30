@@ -51,32 +51,10 @@
                     headers: identityService.getSecurityHeaders(),
                     params: { id: post.id }
                 };
-                console.log(post);
+               
                 if (post.likedByMe) {
-
                     post.likedByMe = false;
                     post.likeCount--;
-                    apiService.post("/api/like", {}, config).success(function (result) {
-                        console.log(result);
-
-                    }).error(function (error) {
-                        if (error.modelState) {
-                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
-                                return items;
-                            }));
-                        } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
-                        }
-                    });
-
-                } else {
-
-                    post.likedByMe = true;
-                    post.likeCount++;
                     apiService.remove("/api/like", config).success(function (result) {
                         console.log(result);
 
@@ -94,6 +72,25 @@
                         }
                     });
 
+                } else {
+                    post.likedByMe = true;
+                    post.likeCount++;
+                    apiService.post("/api/like", {}, config).success(function (result) {
+                        console.log(result);
+
+                    }).error(function (error) {
+                        if (error.modelState) {
+                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
+                                return items;
+                            }));
+                        } else {
+                            var data = {
+                                responseType: "error",
+                                message: error.message
+                            };
+                            notifierService.notify(data);
+                        }
+                    });
                 }
             };
         }
