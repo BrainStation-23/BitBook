@@ -40,7 +40,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a ng-href="#/questions/add" ng-if="authenticatedUser.hasRegistered">Add Question</a></li>
+                        <li ng-if="authenticatedUser.hasRegistered">
+                            <form novalidate class="topBarSearchForm" ng-submit="search()">
+                                <input type="search" class="form-control" ng-model="searchKey" placeholder="search friends by name" />
+                            </form>
+                        </li>
                     </ul>
                     <div data-cd-topbar></div>
                 </div>

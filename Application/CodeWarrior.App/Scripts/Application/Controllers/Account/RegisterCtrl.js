@@ -8,6 +8,7 @@
                     $location.path("/");
                 }
             }();
+
             $scope.register = function (user) {
                 $scope.localRegisterFormSubmitted = true;
                 if ($scope.LocalRegisterForm.$valid) {

@@ -19,7 +19,13 @@ namespace CodeWarrior.Model
         [BsonRequired]
         public string PosteddBy { get; set; }
 
-        public List<ApplicationUser> Likes{ get; set; }
+        [BsonIgnore]
+        public int LikeCount
+        {
+            get { return LikedBy.Count; }
+        }
+
+        public List<string> LikedBy { get; set; }
 
         public List<Comment> Comments { get; set; }
     }
