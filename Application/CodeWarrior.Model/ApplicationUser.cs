@@ -12,8 +12,22 @@ namespace CodeWarrior.Model
         [Required]
         public string LastName { get; set; }
 
-        public List<string> Friends { get; set; }
+        public string AvatarUrl { get; set; }
 
-        public List<string> FriendRequests { get; set; }
+        private List<string> _friends;
+
+        public List<string> Friends
+        {
+            get { return _friends ?? (_friends = new List<string>()); }
+            set { _friends = value; }
+        }
+
+        private List<string> _friendRequests;
+
+        public List<string> FriendRequests
+        {
+            get { return _friendRequests ?? (_friendRequests = new List<string>()); }
+            set { _friendRequests = value; }
+        }
     }
 }

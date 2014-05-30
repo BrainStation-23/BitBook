@@ -21,12 +21,12 @@ namespace CodeWarrior.App.Controllers
             _postRepository = postRepository;
         }
 
-        public IEnumerable<Post> Get()
+        public IEnumerable<PostViewModel> Get()
         {
             var userRepository =
                 (IUserRepository)
                     GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IUserRepository));
-            return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository).BuildFeed();
+            return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository, userRepository).BuildFeed();
         }
 
         public Post Get(int id)
