@@ -2,12 +2,15 @@
 
 (function(app) {
     app.controller("ProfileCtrl", [
-        "$scope", "$location", "identityService", "notifierService", function ($scope, $location, identityService, notifierService) {
+        "$scope", "$location", "identityService", "notifierService", "apiService", function($scope, $location, identityService, notifierService, apiService) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
-                    $location.path("/");
+                    $scope.redirectToLogin();
                 } else {
-                    identityService.getUserInfo().success(function (data) {
+                    var config = {
+                        headers: identityService.getSecurityHeaders()
+                    };
+                    apiService.get("/api/profile", config).success(function(data) {
                         $scope.user = data;
                         notifierService.notify({ responseType: "success", message: "Profile data fetched successfully." });
                     });
