@@ -11,7 +11,7 @@ using MongoDB.Driver.Builders;
 
 namespace CodeWarrior.DAL.Repositories
 {
-    public class UserRepository : BaseRepository<User>, IUserRepository
+    public class UserRepository : BaseRepository<ApplicationUser>, IUserRepository
     {
         public UserRepository(IApplicationDbContext applicationDbContext) 
             : base(applicationDbContext)
@@ -19,9 +19,9 @@ namespace CodeWarrior.DAL.Repositories
 
         }
 
-        public MongoDB.Driver.MongoCursor<User> SearchByName(string name)
+        public MongoDB.Driver.MongoCursor<ApplicationUser> SearchByName(string name)
         {
-            return Collection.Find(Query.Text(name, "english"));
+            return Collection.Find(Query.Text(name, "en"));
         }
     }
 }

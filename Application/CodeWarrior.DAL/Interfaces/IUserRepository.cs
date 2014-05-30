@@ -8,8 +8,8 @@ using MongoDB.Driver;
 
 namespace CodeWarrior.DAL.Interfaces
 {
-    public interface IUserRepository: IRepository<User>
+    public interface IUserRepository : IRepository<ApplicationUser>
     {
-        MongoCursor<User> SearchByName(string name);
+        MongoCursor<ApplicationUser> SearchByName(string name);
     }
 }
