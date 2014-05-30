@@ -38,6 +38,7 @@ namespace CodeWarrior.App
                 "~/Scripts/Application/Controllers/Question/QuestionAddCtrl.js",
                 "~/Scripts/Application/Controllers/Question/QuestionListCtrl.js",
                 "~/Scripts/Application/Controllers/Post/PostAddCtrl.js",
+                "~/Scripts/Application/Controllers/Request/FriendRequestCtrl.js",
                 "~/Scripts/Application/Controllers/Search/UserSearchCtrl.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

@@ -1,4 +1,6 @@
-﻿using CodeWarrior.DAL.DbContext;
+﻿using AutoMapper;
+using CodeWarrior.App.ViewModels.Account;
+using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
 using Microsoft.AspNet.Identity;
@@ -34,14 +36,24 @@ namespace CodeWarrior.App.Controllers
 
             return firends;
         }
-        
+
+        [Route("Requests")]
+        public IEnumerable<ApplicationUserViewModel> GetRequests()
+        {
+            var me = _userRepository.FindById(User.Identity.GetUserId());
+            var pendingFriends = me.FriendRequests.Select(_userRepository.FindById).ToList();
+
+            return pendingFriends.Select(Mapper.Map<ApplicationUser, ApplicationUserViewModel>).ToList();
+        }
+
         public IHttpActionResult Post(string id)
         {
             var friend = _userRepository.FindById(id);
             if (null == friend) return BadRequest();
 
             var me = _userRepository.FindById(User.Identity.GetUserId());
-            if (friend.FriendRequests.Contains(me.Id))
+
+            if (me.FriendRequests.Contains(friend.Id) || friend.FriendRequests.Contains(me.Id))
             {
                 friend.FriendRequests.Remove(me.Id);
                 friend.Friends.Add(me.Id);

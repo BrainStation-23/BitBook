@@ -345,6 +345,7 @@
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionAddCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionListCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Request\FriendRequestCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Search\UserSearchCtrl.js" />
     <Content Include="Scripts\Application\Directives\topbarDirective.js" />
     <Content Include="Scripts\Application\Services\userService.js" />
@@ -666,6 +667,7 @@
     <Content Include="Templates\Partial\TopBar.html" />
     <Content Include="Templates\Question\Add.html" />
     <Content Include="Templates\Question\All.html" />
+    <Content Include="Templates\Request\friendRequest.html" />
     <Content Include="Templates\Search\SearcResult.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
