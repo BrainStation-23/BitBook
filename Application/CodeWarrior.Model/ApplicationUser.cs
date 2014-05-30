@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
-﻿using MongoDB.AspNet.Identity;
+using System.ComponentModel.DataAnnotations;
+using MongoDB.AspNet.Identity;
 
 namespace CodeWarrior.Model
 {
     public class ApplicationUser : IdentityUser
     {
+        [Required]
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
 
         public string AvatarUrl { get; set; }

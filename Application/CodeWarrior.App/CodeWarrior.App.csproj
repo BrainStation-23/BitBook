@@ -51,6 +51,9 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="Faker">
+      <HintPath>..\..\packages\Faker.1.2\lib\Faker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\..\packages\Microsoft.AspNet.SignalR.Core.2.0.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -223,6 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DataSeeder.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\OAuthConfiguration.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -288,6 +292,7 @@
     <Compile Include="ViewModels\Posts\CommentBindingModel.cs" />
     <Compile Include="ViewModels\Posts\CommentViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostBindingModel.cs" />
+    <Compile Include="ViewModels\Profile\ApplicationUserBindingModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="ViewModels\Questions\QuestionBindingModel.cs" />
     <Compile Include="ViewModels\SearchCriteria.cs" />
