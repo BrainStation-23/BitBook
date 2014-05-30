@@ -80,3 +80,30 @@ input[type="checkbox"].input-validation-error {
 #userNewsFeed .postComment {
     
 }
+
+div.findFriendrow {
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    float: left;
+    margin: 3px 3px 10px 3px;
+    padding: 3px;
+    width: 270px;
+}
+
+div.findFriendrow img {
+    float: left;
+    width: 100px;
+    padding-right:10px;
+}
+div.findFriendrow div.infoContainer {
+    float: left;
+}
+
+div.info {
+    height: 58px;
+}
+div.clearBoth {
+    clear: both;
+} 

@@ -1,25 +1,19 @@
 ﻿<h2>Search Result</h2>
 
-<div ng-repeat="user in users" class="row">
-    <div class="col-xs-12">
-        <div class="row">
-            <div class="col-xs-3">
-                <img ng-src="user.avatarUrl" alt="{{user.firstName}}" />
-            </div>
-            <div class="col-xs-2">
-                <h3>
-                    <span>{{user.firstName}} {{user.lastName}}</span>
-                </h3>
-            </div>
-            <div class="col-xs-6 col-lg-offset-1">
-                <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.friendRequestSent">
-                    {{user.friendRequestSent ? 'Friend Request Sent' : 'Add Friend'}}
-                </button>
-            </div>
+<div class="findFriendrow" ng-repeat="user in users">
+    <img src="/Content/Images/noimage.png" alt="{{user.firstName}}" />
+    <div class="infoContainer">
+        <div class="info">{{user.firstName}} {{user.lastName}}</div>
+        <div>
+            <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.friendRequestSent">
+                {{user.friendRequestSent ? 'Friend Request Sent' : 'Add Friend'}}
+            </button>
         </div>
     </div>
+    <div class="clearBoth"></div>
 </div>
 
+<div class="clearBoth"></div>
 <div ng-if="!users.length">
     <div class="alert alert-info">
         No result found based on your search!
