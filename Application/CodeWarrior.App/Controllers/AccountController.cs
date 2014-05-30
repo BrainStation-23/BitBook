@@ -353,7 +353,7 @@ namespace CodeWarrior.App.Controllers
 
             var user = new ApplicationUser
             {
-                UserName = model.UserName
+                UserName = model.Email
             };
             user.Logins.Add(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
             var result = await UserManager.CreateAsync(user);

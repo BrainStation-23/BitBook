@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using CodeWarrior.App.ViewModels;
-using CodeWarrior.App.ViewModels.Questions;
+﻿using CodeWarrior.App.ViewModels;
 using CodeWarrior.DAL.DbContext;
-using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {

@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 ﻿using MongoDB.AspNet.Identity;
 
 namespace CodeWarrior.Model
@@ -6,5 +7,9 @@ namespace CodeWarrior.Model
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public List<string> Friends { get; set; }
+
+        public List<string> FriendRequests { get; set; }
     }
 }
