@@ -26,7 +26,7 @@ namespace CodeWarrior.App.Controllers
             var userRepository =
                 (IUserRepository)
                     GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IUserRepository));
-            return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository).Build;
+            return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository).BuildFeed();
         }
 
         public Post Get(int id)
