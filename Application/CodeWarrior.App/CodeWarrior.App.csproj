@@ -262,8 +262,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -277,7 +278,9 @@
     <Compile Include="RealTimeNotification\ConnectionMapping.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Posts\PostBindingModel.cs" />
     <Compile Include="ViewModels\Questions\QuestionBindingModel.cs" />
+    <Compile Include="ViewModels\SearchCriteria.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -317,6 +320,7 @@
     <Content Include="Scripts\Application\app.js" />
     <Content Include="Scripts\Application\Controllers\Account\ExternalRegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\LoginCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\RegisterCtrl.js" />
@@ -635,6 +639,7 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\underscore.js" />
+    <Content Include="Templates\Account\Edit.html" />
     <Content Include="Templates\Account\ExternalRegister.html" />
     <Content Include="Templates\Account\Login.html" />
     <Content Include="Templates\Account\Profile.html" />
