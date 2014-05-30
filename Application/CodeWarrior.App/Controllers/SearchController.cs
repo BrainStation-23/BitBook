@@ -22,13 +22,12 @@ namespace CodeWarrior.App.Controllers
         {
         }
 
-        public IEnumerable<object> Get(SearchCriteria criteria)
+        public IEnumerable<object> Get([FromUri] SearchCriteria criteria)
         {
             switch (criteria.Type.ToLower())
             {
                 case "user":
                     return SearchUser(criteria);
-
             }
 
             return null;
@@ -36,7 +35,9 @@ namespace CodeWarrior.App.Controllers
 
         private IEnumerable<ApplicationUser> SearchUser(SearchCriteria criteria)
         {
-            return new UserRepository(ApplicationDbContext).SearchByName(criteria.Key);
+            var repository = new UserRepository(ApplicationDbContext);
+            var users = repository.SearchByName(criteria.Key);
+            return users.ToList();
         }
     }
 }
