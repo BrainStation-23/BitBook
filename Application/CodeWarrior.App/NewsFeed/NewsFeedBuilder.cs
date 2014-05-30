@@ -59,6 +59,8 @@ namespace CodeWarrior.App.NewsFeed
                     }
                     view.Comments = vComments;
 
+                    view.LikedByMe = post.LikedBy.Any(u => u.Equals(_user.Id));
+
                     _postViews.Add(view);
                 }
             }
