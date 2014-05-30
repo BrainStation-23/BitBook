@@ -15,7 +15,7 @@ namespace CodeWarrior.App.Mappers
         {
             Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>()
                 .ForMember(viewModel => viewModel.AvatarUrl,
-                    expr => expr.MapFrom(userModel => userModel.AvatarUrl ?? "no_avatar.png"));
+                    expr => expr.MapFrom(userModel => userModel.AvatarUrl ?? "/Content/Images/noimage.png"));
 
             //Mapper.CreateMap<Post, PostViewModel>()
             //    .ForMember(viewModel => viewModel.LikedBy,

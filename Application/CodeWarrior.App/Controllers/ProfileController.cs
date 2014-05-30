@@ -1,9 +1,8 @@
-﻿using CodeWarrior.App.ViewModels.Account;
-using CodeWarrior.App.ViewModels.Posts;
+﻿using System.Web;
+using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Profile;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
-using CodeWarrior.Model;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 
@@ -40,7 +39,7 @@ namespace CodeWarrior.App.Controllers
 
         public IHttpActionResult Put(ApplicationUserBindingModel applicationUser)
         {
-            var dbUser = _userRepository.FindById(applicationUser.Id);
+            var dbUser = _userRepository.FindById(User.Identity.GetUserId());
 
             if (!ModelState.IsValid)
             {
@@ -51,13 +50,18 @@ namespace CodeWarrior.App.Controllers
             dbUser.LastName = applicationUser.LastName;
             _userRepository.Update(dbUser);
 
-            return Ok(
-                new ApplicationUserViewModel
-                {
-                    UserName = dbUser.UserName,
-                    FirstName = dbUser.FirstName,
-                    LastName = dbUser.LastName
-                });
+            return Ok();
+        }
+
+        // POST api/Profile/Upload
+        public IHttpActionResult Post([FromBody] HttpPostedFile avatar)
+        {
+            return Ok();
+        }
+
+        public class UploadBindingModel
+        {
+            public HttpPostedFile Avatar { get; set; }
         }
     }
 }
