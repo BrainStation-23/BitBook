@@ -69,15 +69,21 @@ input[type="checkbox"].input-validation-error {
     width: 85px;
 }
 
-.userNewsFeed .postMessage {
-    padding: 10px 0px 2px 0px;
-}
 .userNewsFeed {
     margin: 0px 0px 6px;
     padding: 11px;
     border: 1px solid rgb(179, 175, 175);
     background-color: aliceblue;
 }
+
+.userNewsFeed .commentBox {
+    float: none;
+}
+
+.userNewsFeed .postMessage {
+    padding: 10px 0px 2px 0px;
+}
+
 .userNewsFeed .postLike {
    
 }
@@ -85,6 +91,7 @@ input[type="checkbox"].input-validation-error {
 #userNewsFeed .postComment {
     
 }
+
 
 div.findFriendrow {
     border: 1px solid #BFBFBF;
