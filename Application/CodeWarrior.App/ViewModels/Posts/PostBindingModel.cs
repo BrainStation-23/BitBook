@@ -10,8 +10,6 @@ namespace CodeWarrior.App.ViewModels.Posts
         [Required]
         public string Message { get; set; }
 
-        public DateTime PostedOn { get; set; }
-
         public string PostedBy { get; set; }
     }
 }

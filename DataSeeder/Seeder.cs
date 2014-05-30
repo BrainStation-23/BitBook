@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using CodeWarrior.DAL.DbContext;
+﻿using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
-using CodeWarrior.SharedLibrary.Configurations;
 using Microsoft.AspNet.Identity;
 using MongoDB.AspNet.Identity;
-using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
 
 namespace DataSeeder
 {
@@ -81,23 +77,6 @@ namespace DataSeeder
 
             var us = new UserRepository(new ApplicationDbContext()).FindAll().Count();
             Console.Write(us);
-        }
-
-        private static void SeedQuestions()
-        {
-            var question = new Question
-            {
-                CreatedBy = ObjectId.GenerateNewId().ToString(),
-                Title = Faker.TextFaker.Sentence(),
-                Description = Faker.TextFaker.Sentence()
-            };
-
-            var repository = new QuestionRepository(new ApplicationDbContext());
-
-            repository.Insert(question);
-
-            Console.Write(repository.Where().ToJson());
-            
         }
     }
 }
