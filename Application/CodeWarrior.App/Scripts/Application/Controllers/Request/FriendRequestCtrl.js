@@ -2,10 +2,16 @@
 
 (function (app) {
     app.controller("FriendRequestCtrl", [
-        "$scope", "apiService", "identityService", function ($scope, apiService, identityService) {
+        "$scope", "apiService", "identityService", function($scope, apiService, identityService) {
             $scope.users = [];
 
-            var getConfig = function () {
+            var removeUser = function (user) {
+                $scope.users = _.select($scope.users, function (u) {
+                    return user.id != u.id;
+                });
+            };
+
+            var getConfig = function() {
                 return {
                     headers: identityService.getSecurityHeaders(),
                 };
@@ -20,11 +26,11 @@
 
                 apiService.remove('/api/friend/', config)
                     .success(function() {
-                        user.friendRequestSent = true;
-                    });
+                    removeUser(user);
+                });
             };
 
-            $scope.addFriend = function (user) {
+            $scope.addFriend = function(user) {
                 var config = $.extend(getConfig(), {
                     params: {
                         id: user.id
@@ -32,15 +38,15 @@
                 });
 
                 apiService.post('/api/friend/', {}, config)
-                        .success(function () {
-                            user.friendRequestSent = true;
-                        });
+                    .success(function() {
+                        removeUser(user);
+                    });
             };
 
-            $scope.init = function () {
-                apiService.get('/api/friend/requests/', getConfig()).success(function (result) {
+            $scope.init = function() {
+                apiService.get('/api/friend/requests/', getConfig()).success(function(result) {
                     $scope.users = result;
-                }).error(function (error) {
+                }).error(function(error) {
                     console.log(error);
                 });
             }();
