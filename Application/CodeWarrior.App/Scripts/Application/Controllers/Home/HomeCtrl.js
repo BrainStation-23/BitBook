@@ -16,6 +16,7 @@
                     apiService.get("/api/posts/", config).success(function (result) {
                         if (result) {
                             $scope.posts = result;
+                            console.log($scope.posts);
                         }
                     });
                 }
