@@ -39,8 +39,12 @@
             <a href="javascript:void(0)" ng-click="comment(post)" class="postComment">Comment</a>
 
             <p>{{post.likeCount}} Person like this</p>
+            
+            <p ng-repeat="comment in post.comments">{{comment.commentedBy}}</p>
 
-            <textarea class="col-lg-9" ng-model="comment" name="Comment" id="Comment" placeholder="Write a comment"></textarea>
+            <textarea class="col-lg-9" ng-model="newComment.description" name="Comment" id="Comment" placeholder="Write a comment"></textarea>
+            <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
+
         </div>
     </div>
 

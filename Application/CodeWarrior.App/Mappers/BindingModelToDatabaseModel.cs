@@ -25,11 +25,13 @@ namespace CodeWarrior.App.Mappers
             //    .ForMember(post => post.Comments,
             //        expr => expr.MapFrom(postModel => new List<Comment>()));
 
+            /*    
             Mapper.CreateMap<CommentBindingModel, Comment>()
                 .ForMember(comment => comment.CommentedOn,
                     expr => expr.MapFrom(commentModel => DateTime.UtcNow))
                 .ForMember(comment => comment.Id,
                     expr => expr.MapFrom(commentModel => ObjectId.GenerateNewId().ToString()));
+             */ 
         }
     }
 }
