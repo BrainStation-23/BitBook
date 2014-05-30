@@ -1,7 +1,7 @@
 ﻿<h2>Search Result</h2>
 
 <div class="findFriendrow" ng-repeat="user in users">
-    <img ng-src='{{"/Content/userImages/" + user.avatarUrl}}' alt="{{user.firstName}}" />
+    <img ng-src="{{user.avatarUrl}}" alt="{{user.firstName}}" />
     <div class="infoContainer">
         <div class="info">{{user.firstName}} {{user.lastName}}</div>
         <div>

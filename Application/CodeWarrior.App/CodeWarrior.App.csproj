@@ -340,6 +340,7 @@
     <Content Include="Scripts\Application\Controllers\Account\LoginCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Account\PasswordManageCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\RegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\BaseCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
@@ -658,6 +659,7 @@
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\underscore.js" />
+    <Content Include="Templates\Account\ChangePassword.html" />
     <Content Include="Templates\Account\Edit.html" />
     <Content Include="Templates\Account\ExternalRegister.html" />
     <Content Include="Templates\Account\Login.html" />

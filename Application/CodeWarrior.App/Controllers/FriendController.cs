@@ -59,10 +59,14 @@ namespace CodeWarrior.App.Controllers
                 friend.Friends.Add(me.Id);
                 me.FriendRequests.Remove(friend.Id);
                 me.Friends.Add(friend.Id);
+                
+                _userRepository.Update(me);
+                _userRepository.Update(friend);
             }
             else
             {
                 friend.FriendRequests.Add(me.Id);
+                _userRepository.Update(friend);
             }
 
             return Ok();

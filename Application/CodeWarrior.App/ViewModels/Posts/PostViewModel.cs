@@ -22,5 +22,7 @@ namespace CodeWarrior.App.ViewModels.Posts
         public List<ApplicationUserViewModel> LikedBy { get; set; }
         
         public List<CommentViewModel> Comments { get; set; }
+
+        public bool LikedByMe { get; set; }
     }
 }

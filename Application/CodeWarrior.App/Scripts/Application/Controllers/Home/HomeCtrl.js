@@ -1,6 +1,6 @@
 ﻿"use strict";
 
-(function(app) {
+(function (app) {
     app.controller("HomeCtrl", [
         "$scope", "identityService", "apiService", "notifierService", function ($scope, identityService, apiService, notifierService) {
             $scope.posts = [];
@@ -21,7 +21,7 @@
                 }
             }();
 
-            $scope.addPost = function(post) {
+            $scope.addPost = function (post) {
                 $scope.addPostSubmitted = true;
                 if ($scope.AddPostForm.$valid) {
                     var config = {
@@ -30,9 +30,9 @@
                     apiService.post("/api/posts", post, config).success(function (result) {
                         console.log(result);
                         $scope.posts.splice(0, 0, result);
-                    }).error(function(error) {
+                    }).error(function (error) {
                         if (error.modelState) {
-                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function(items) {
+                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                                 return items;
                             }));
                         } else {
@@ -51,14 +51,13 @@
                     headers: identityService.getSecurityHeaders(),
                     params: { id: post.id }
                 };
-                console.log(post);
+
                 if (post.likedByMe) {
+
                     post.likedByMe = false;
                     post.likeCount--;
-                    $scope.toggleLikeText = "Unlike";
-                    apiService.post("/api/like", {}, config).success(function (result) {
-                        $scope.toggleLikeText = "Unlike";
 
+                    apiService.remove("/api/like", config).success(function (result) {
                     }).error(function (error) {
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
@@ -73,13 +72,11 @@
                         }
                     });
                 } else {
+
                     post.likedByMe = true;
                     post.likeCount++;
-                    $scope.toggleLikeText = "Like";
 
-                    apiService.remove("/api/like", config).success(function (result) {
-                        $scope.toggleLikeText = "Like";
-
+                    apiService.post("/api/like", {}, config).success(function (result) {
                     }).error(function (error) {
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
@@ -94,6 +91,30 @@
                         }
                     });
                 }
+            };
+
+            $scope.addComment = function (post, newComment) {
+               
+                newComment.postId = post.id;
+                var config = {
+                    headers: identityService.getSecurityHeaders()
+                };
+
+                apiService.post("/api/comments", newComment, config).success(function (result) {
+                    console.log(result);
+                }).error(function (error) {
+                    if (error.modelState) {
+                        $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
+                            return items;
+                        }));
+                    } else {
+                        var data = {
+                            responseType: "error",
+                            message: error.message
+                        };
+                        notifierService.notify(data);
+                    }
+                });
             };
         }
     ]);

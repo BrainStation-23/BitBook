@@ -16,7 +16,6 @@ namespace CodeWarrior.App.ViewModels.Posts
         [Required]
         public string Description { get; set; }
 
-        [Required]
         public string CommentedBy { get; set; }
 
         public DateTime CommentedOn { get; set; }
