@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using CodeWarrior.Model;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CodeWarrior.App.ViewModels.Questions
 {

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using MongoDB.Bson;
@@ -37,7 +35,7 @@ namespace CodeWarrior.DAL.Repositories
             return null == query ? Collection.FindAll() : Collection.Find(query);
         }
 
-        public IEnumerable<T> Where(Expression<Func<T, bool>> predicate=null)
+        public IEnumerable<T> Where(Expression<Func<T, bool>> predicate = null)
         {
             var entities = Collection.AsQueryable();
             if (null != predicate) entities = entities.Where(predicate);

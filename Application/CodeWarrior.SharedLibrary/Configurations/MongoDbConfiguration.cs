@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Web.Configuration;
 
 namespace CodeWarrior.SharedLibrary.Configurations
 {
@@ -16,7 +17,7 @@ namespace CodeWarrior.SharedLibrary.Configurations
 
         public static string MongoConnection
         {
-            get { return ConfigurationManager.AppSettings["MongoConnection"]; }
+            get { return WebConfigurationManager.ConnectionStrings["MongoConnection"].ConnectionString; }
         }
     }
 }

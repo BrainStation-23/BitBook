@@ -136,6 +136,9 @@
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\..\packages\Microsoft.AspNet.Cors.5.1.2\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -148,6 +151,9 @@
     <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\..\packages\Microsoft.AspNet.WebApi.Cors.5.1.2\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.Owin, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -257,14 +263,13 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\BindingModelToDatabaseModel.cs" />
-    <Compile Include="ViewModels\AccountBindingModels.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ViewModels\Account\AccountBindingModels.cs" />
+    <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -279,9 +284,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
@@ -313,8 +321,9 @@
     <Content Include="Scripts\Application\Controllers\BaseCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionAddCtrl.js" />
-    <Content Include="Scripts\Application\Controllers\Question\QuestionAllCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Question\QuestionListCtrl.js" />
     <Content Include="Scripts\Application\Directives\topbarDirective.js" />
+    <Content Include="Scripts\Application\Services\utilityService.js" />
     <Content Include="Scripts\Application\Services\apiService.js" />
     <Content Include="Scripts\Application\Services\identityService.js" />
     <Content Include="Scripts\Application\Services\notifierService.js" />
@@ -599,6 +608,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />

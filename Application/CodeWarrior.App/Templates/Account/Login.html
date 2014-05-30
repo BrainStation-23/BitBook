@@ -3,25 +3,27 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" name="LoginForm">
 
                 <h4>Use a local account to log in.</h4>
                 <hr />
                 <div class="form-group">
                     <label for="UserName" class="col-md-2 control-label">UserName</label>
                     <div class="col-md-10">
-                        <input type="text" ng-model="user.userName" id="UserName" class="form-control" ng-required />
+                        <input type="text" ng-model="user.userName" id="UserName" name="UserName" class="form-control" ng-required="true" />
+                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.UserName.$invalid">The UserName field is required.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Password" class="col-md-2 control-label">Password</label>
                     <div class="col-md-10">
-                        <input type="password" ng-model="user.password" id="Password" class="form-control" ng-required />
+                        <input type="password" ng-model="user.password" id="Password" name="Password" class="form-control" ng-required="true" />
+                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.Password.$invalid">The Password field is required.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" ng-click="login(user)" />
+                        <input type="button" value="Log in" class="btn btn-default" ng-click="login(user)" />
                     </div>
                 </div>
                 <p>
@@ -44,6 +46,7 @@
                                     value="{{ loginProvider.name }}"
                                     title="Log in using your {{ loginProvider.name }} account"
                                     ng-click="externalLogin(loginProvider)">
+                                <i class="fa fa-{{ loginProvider.name | lowercase }} fa-lg"></i>
                                 {{ loginProvider.name }}
                             </button>
                         </span>
