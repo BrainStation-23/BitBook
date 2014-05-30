@@ -56,6 +56,7 @@ namespace CodeWarrior.App.NewsFeed
                         vComment.CommentedBy = users[comment.CommentedBy];
                         vComments.Add(vComment);
                     }
+                    view.Comments = vComments;
 
                     _postViews.Add(view);
                 }
