@@ -13,7 +13,9 @@ namespace CodeWarrior.App.Mappers
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>()
+                .ForMember(viewModel => viewModel.AvatarUrl,
+                    expr => expr.MapFrom(userModel => userModel.AvatarUrl ?? "no_avatar.png"));
             Mapper.CreateMap<Post, PostViewModel>();
             Mapper.CreateMap<Comment, CommentViewModel>();
         }
