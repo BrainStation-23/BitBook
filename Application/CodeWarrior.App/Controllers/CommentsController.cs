@@ -3,6 +3,7 @@ using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -26,6 +27,8 @@ namespace CodeWarrior.App.Controllers
             }
 
             var commentModel = AutoMapper.Mapper.Map<CommentBindingModel, Comment>(comment);
+
+            commentModel.CommentedBy = User.Identity.GetUserId();
 
             var post = _postRepository.FindById(comment.PostId);
 
