@@ -3,11 +3,19 @@
 (function(app) {
     app.controller("BaseCtrl", [
         "$scope", "$location", "identityService", "apiService", function($scope, $location, identityService, apiService) {
+            $scope.redirectToLogin = function() {
+                $location.path("/account/login");
+            };
+
+            $scope.redirectToHome = function () {
+                $location.path("/home");
+            };
+
             $scope.logout = function() {
                 identityService.logout().success(function() {
                     identityService.clearAccessToken();
                     identityService.clearAuthorizedUserData();
-                    $location.path("/account/login");
+                    $scope.redirectToLogin();
                 });
             };
 
@@ -24,7 +32,7 @@
                         console.log(error);
                     });
                 } else {
-                    $location.path("/account/login");
+                    $scope.redirectToLogin();
                 }
             };
         }

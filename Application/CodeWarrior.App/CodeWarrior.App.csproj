@@ -322,7 +322,6 @@
     <Content Include="Scripts\Application\Controllers\Account\LoginCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileCtrl.js" />
-    <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\RegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\BaseCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
@@ -643,7 +642,6 @@
     <Content Include="Templates\Account\ExternalRegister.html" />
     <Content Include="Templates\Account\Login.html" />
     <Content Include="Templates\Account\Profile.html" />
-    <Content Include="Templates\Account\ProfileEdit.html" />
     <Content Include="Templates\Account\Register.html" />
     <Content Include="Templates\Home\Index.html" />
     <Content Include="Templates\Partial\TopBar.html" />

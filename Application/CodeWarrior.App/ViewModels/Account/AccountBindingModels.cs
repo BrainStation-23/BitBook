@@ -33,11 +33,8 @@ namespace CodeWarrior.App.ViewModels.Account
     public class RegisterBindingModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Required]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Display(Name = "First name")]

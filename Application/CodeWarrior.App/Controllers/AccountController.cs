@@ -34,6 +34,7 @@ namespace CodeWarrior.App.Controllers
         {
             UserManager = userManager;
             AccessTokenFormat = accessTokenFormat;
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -321,10 +322,9 @@ namespace CodeWarrior.App.Controllers
 
             var user = new ApplicationUser
             {
-                UserName = model.UserName,
+                UserName = model.Email,
                 FirstName = model.FirstName,
-                LastName = model.LastName,
-                Email = model.Email
+                LastName = model.LastName
             };
 
             var result = await UserManager.CreateAsync(user, model.Password);
