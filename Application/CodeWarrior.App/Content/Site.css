@@ -59,19 +59,24 @@ input[type="checkbox"].input-validation-error {
     width: 200px;
 }
 
-#userNewsFeed .userIcon {
+.userNewsFeed .userIcon {
     height: 80px;
     width: 85px;
 }
 
-#userNewsFeed .postMessage {
+.userNewsFeed .postMessage {
     padding: 10px 0px 2px 0px;
 }
-
-#userNewsFeed .postLike {
-    cursor: pointer;
+.userNewsFeed {
+    margin: 0px 0px 6px;
+    padding: 11px;
+    border: 1px solid rgb(179, 175, 175);
+    background-color: aliceblue;
+}
+.userNewsFeed .postLike {
+   
 }
 
 #userNewsFeed .postComment {
-    cursor: pointer;
+    
 }

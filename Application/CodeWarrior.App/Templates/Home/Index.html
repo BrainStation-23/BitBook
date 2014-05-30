@@ -28,23 +28,24 @@
 
 <hr />
 
-<div ng-if="hasAnyNewsFeed" id="userNewsFeed">
+<div ng-show="posts.length" id="posts">
     
-    <div ng-repeat="post in posts">
+    <div class="row userNewsFeed" ng-repeat="post in posts">
+        <div class="col-xs-12">
+            <img src="" class="userIcon" alt="" /> Atish Kumar Dipongkor
+            <p class="postMessage"> {{post.message}} </p>
 
-        <img src="" class="userIcon" /> Atish Kumar Dipongkor
-        <p class="postMessage"> {{post.message}} </p>
+            <a href="javascript:void(0)" ng-click="toggleLike(post)" class="postLike">{{post.likedByMe ? 'Unlike' : 'Like'}}</a> |
+            <a href="javascript:void(0)" ng-click="comment(post)" class="postComment">Comment</a>
 
-        <a ng-click="toggleLike(post.id)" class="postLike" ng-model="toggleLikeText">{{toggleLikeText}}</a> |
-        <a ng-click="comment(post.id)" class="postComment">Comment</a>
-        
-        <p>{{post.likeCount}} Person like this</p>
+            <p>{{post.likeCount}} Person like this</p>
 
+            <textarea class="col-lg-9" ng-model="comment" name="Comment" id="Comment" placeholder="Write a comment"></textarea>
+        </div>
     </div>
 
 </div>
 
-<div ng-if="!hasAnyNewsFeed">
-    You have no news feed.
+<div ng-if="!posts.length">
+    <div class="alert alert-info">You dont have any news feed.</div>
 </div>
-
