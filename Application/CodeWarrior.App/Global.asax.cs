@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CodeWarrior.App.App_Start;
+using CodeWarrior.App.Controllers;
 
 namespace CodeWarrior.App
 {
@@ -18,6 +20,12 @@ namespace CodeWarrior.App
             UnityConfig.GetConfiguredContainer();
 
             Bootstrapper.Run();
+
+            /*
+            var seeder = new DataSeeder();
+            seeder.SeedUser(1);
+            seeder.SeedPosts(2,2);
+            */
         }
     }
 }
