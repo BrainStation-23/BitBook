@@ -4,8 +4,6 @@
     app.factory("apiService", [
         "$http", "$q", function($http, $q) {
 
-            _$.http = $http;
-
             var get = function(url, config) {
                 return $http.get(url, config);
             };
@@ -28,6 +26,9 @@
             var post = function(url, data, config) {
                 return $http.post(url, data, config);
             };
+            var put = function (url, data, config) {
+                return $http.put(url, data, config);
+            };
             var remove = function(url, config) {
                 $http.delete(url, config);
             };
@@ -35,6 +36,7 @@
                 get: get,
                 save: save,
                 post: post,
+                put: put,
                 remove: remove
             };
         }

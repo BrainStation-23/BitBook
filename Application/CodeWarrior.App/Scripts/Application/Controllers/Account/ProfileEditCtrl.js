@@ -25,7 +25,7 @@
                         headers: identityService.getSecurityHeaders()
                     };
                     user.userName = user.email;
-                    apiService.post("/api/Account/ManageUserProfile", user, config).success(function() {
+                    apiService.put("/api/profile/", user, config).success(function() {
                         $rootScope.authenticatedUser.userName = user.email;
                         notifierService.notify({ responseType: "success", message: "Profile data updated successfully." });
                     }).error(function(error) {
