@@ -87,7 +87,7 @@ var _$ = _$ || {};
 
                                 identityService.setAuthorizedUserData(data);
                                 identityService.setAccessToken(fragment.access_token, false);
-                                $scope.redirectToHome();
+                                $location.path("/home");
 
                             } else if (typeof (sessionStorage["loginUrl"]) !== "undefined") {
 
@@ -103,13 +103,13 @@ var _$ = _$ || {};
                                 sessionStorage.setItem("ExternalRegister", JSON.stringify(externalRegister));
                                 $location.path("/account/externalRegister");
                             } else {
-                                $scope.redirectToLogin();
+                                $location.path("/account/login");
                             }
                         } else {
-                            $scope.redirectToLogin();
+                            $location.path("/account/login");
                         }
-                    }).error(function() {
-                        $scope.redirectToLogin();
+                    }).error(function () {
+                        $location.path("/account/login");
                     });
                 } else {
                     if (sessionStorage["accessToken"] || localStorage["accessToken"]) {
@@ -117,7 +117,7 @@ var _$ = _$ || {};
                             if (result.userName) {
                                 identityService.setAuthorizedUserData(result);
                             } else {
-                                $scope.redirectToLogin();
+                                $location.path("/account/login");
                             }
                         });
                     }

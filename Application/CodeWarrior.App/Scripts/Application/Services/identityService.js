@@ -2,7 +2,19 @@
 
 (function(app) {
     app.factory("identityService", [
-        "$rootScope", "$http", "apiService", function($rootScope, $http, apiService) {
+        "$rootScope", "$http", "apiService", function ($rootScope, $http, apiService) {
+            _$.app.http = {
+                get: function(url, config) {
+                    return $http.get(url, this._config(config));
+                },
+                post: function(url, data, config) {
+                    return $http.get(url, data, this._config(config));
+                },
+                _config: function(config) {
+                    return $.extend({ headers: getSecurityHeaders() }, config || {});
+                }
+            };
+
             var setAuthorizedUserData = function(data) {
                 $rootScope.authenticatedUser = data;
             };
@@ -140,7 +152,7 @@
                 return sessionStorage.getItem("accessToken") || localStorage.getItem("accessToken");
             };
 
-            return {
+            return _$.app.identity = {
                 getExternalLogins: getExternalLogins,
                 getUserInfo: getUserInfo,
                 login: login,
