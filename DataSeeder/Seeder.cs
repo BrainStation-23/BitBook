@@ -2,7 +2,6 @@
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
-using Faker;
 using MongoDB.Bson;
 
 namespace DataSeeder
@@ -20,8 +19,8 @@ namespace DataSeeder
             var question = new Question
             {
                 CreatedBy = ObjectId.GenerateNewId().ToString(),
-                Title = TextFaker.Sentence(),
-                Description = TextFaker.Sentences(5)
+                Title = "dfgd df dfg fgdflgk dlfkg  dlfgjk",
+                Description = "dfg dlfgk dfklgdfgjk\n dflkgj dlfkgdlfkgjdflkgjdfklg\n ldkfgldkfg\n dnflgkdlfkgj d"
             };
 
             var repository = new QuestionRepository(new ApplicationDbContext());

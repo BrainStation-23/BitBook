@@ -1,4 +1,6 @@
 ﻿using CodeWarrior.App.Mappers;
+using CodeWarrior.DAL;
+using CodeWarrior.DAL.DbContext;
 
 namespace CodeWarrior.App
 {
@@ -7,6 +9,7 @@ namespace CodeWarrior.App
         public static void Run()
         {
             AutoMapperConfiguration.Configure();
+            ConfigureDatabase.Configure();
         }
     }
 }

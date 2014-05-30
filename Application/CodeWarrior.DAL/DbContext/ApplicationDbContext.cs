@@ -15,9 +15,10 @@ namespace CodeWarrior.DAL.DbContext
             Database = server.GetDatabase(MongoDbConfiguration.DatabaseName);
         }
 
-        public MongoCollection<Question> Questions
-        {
-            get { return Database.GetCollection<Question>("Questions"); }
-        }
+        //public MongoCollection<Question> Questions
+        //{
+        //    get { return Database.GetCollection<Question>(typeof (Question).Name); }
+        //}
+
     }
 }
