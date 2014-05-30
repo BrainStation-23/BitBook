@@ -1,12 +1,12 @@
-﻿using CodeWarrior.DAL.DbContext;
+﻿using CodeWarrior.App.ViewModels.Account;
+using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
-using CodeWarrior.Model;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ProfileController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
@@ -18,7 +18,7 @@ namespace CodeWarrior.App.Controllers
         }
 
         // GET api/profile
-        public ApplicationUser Get(string id = null)
+        public ApplicationUserViewModel Get(string id = null)
         {
             var user = _userRepository.FindById(id ?? User.Identity.GetUserId());
 
@@ -27,7 +27,12 @@ namespace CodeWarrior.App.Controllers
                 user.FriendRequests = null;
                 user.Friends = null;
             }
-            return user;
+            return new ApplicationUserViewModel
+            {
+                UserName = user.UserName,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
         }
     }
 }
