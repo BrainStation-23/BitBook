@@ -4,7 +4,6 @@
     app.controller("HomeCtrl", [
         "$scope", "identityService", "apiService", "notifierService", function ($scope, identityService, apiService, notifierService) {
             $scope.posts = [];
-            $scope.toggleLikeText = "Like";
 
             $scope.init = function () {
                 if (!identityService.isLoggedIn()) {
@@ -29,6 +28,7 @@
                         headers: identityService.getSecurityHeaders()
                     };
                     apiService.post("/api/posts", post, config).success(function (result) {
+                        console.log(result);
                         $scope.posts.splice(0, 0, result);
                     }).error(function(error) {
                         if (error.modelState) {
