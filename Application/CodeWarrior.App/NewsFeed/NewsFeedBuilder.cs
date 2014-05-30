@@ -68,6 +68,8 @@ namespace CodeWarrior.App.NewsFeed
 
                     _postViews.Add(view);
                 }
+
+                _postViews = _postViews.OrderByDescending(model => model.PostedOn).ToList();
             }
 
             return _postViews;
