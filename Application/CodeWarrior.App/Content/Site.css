@@ -59,37 +59,65 @@ input[type="checkbox"].input-validation-error {
     width: 300px;
 }
 
-.topBarSearchForm input {
-    -ms-border-radius: 0 !important;
-    border-radius: 0 !important;
-}
+    .topBarSearchForm input {
+        -ms-border-radius: 0 !important;
+        border-radius: 0 !important;
+    }
 
 .userNewsFeed .userIcon {
-    height: 80px;
-    width: 85px;
+    height: 70px;
+    width: 74px;
 }
 
 .userNewsFeed {
     margin: 0px 0px 6px;
     padding: 11px;
     border: 1px solid rgb(179, 175, 175);
-    background-color: aliceblue;
 }
 
-.userNewsFeed .commentBox {
-    float: none;
-}
+    .userNewsFeed .commentMessage {
+        float: none;
+    }
 
-.userNewsFeed .postMessage {
-    padding: 10px 0px 2px 0px;
-}
+    .userNewsFeed .commentDisplay {
+        padding: 5px;
+        background-color: aliceblue;
+        margin: 0px 0px 12px 0px;
+        border-radius: 6px;
+        border: 1px solid brown;
+    }
 
-.userNewsFeed .postLike {
-   
-}
+        .userNewsFeed .commentDisplay .userIconMini {
+            height: 34px;
+            width: 41px;
+        }
+
+        .userNewsFeed .commentDisplay .commentedBy {
+            font-family: cursive;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+
+        .userNewsFeed .commentDisplay p.comment {
+            padding: 2px;
+            margin: 0px 1px 6px 0px;
+        }
+
+    .userNewsFeed .postMessage {
+        padding: 10px 0px 2px 0px;
+    }
+
+    .userNewsFeed a.postLike:hover {
+        text-decoration: none;
+    }
+
+    .userNewsFeed .postedBy {
+        font-family: cursive;
+        font-size: 20px;
+        text-transform: capitalize;
+    }
 
 #userNewsFeed .postComment {
-    
 }
 
 
@@ -104,18 +132,20 @@ div.findFriendrow {
     width: 270px;
 }
 
-div.findFriendrow img {
-    float: left;
-    width: 100px;
-    padding-right:10px;
-}
-div.findFriendrow div.infoContainer {
-    float: left;
-}
+    div.findFriendrow img {
+        float: left;
+        width: 100px;
+        padding-right: 10px;
+    }
+
+    div.findFriendrow div.infoContainer {
+        float: left;
+    }
 
 div.info {
     height: 58px;
 }
+
 div.clearBoth {
     clear: both;
-} 
+}
