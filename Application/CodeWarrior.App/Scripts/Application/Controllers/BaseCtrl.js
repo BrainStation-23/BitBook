@@ -19,18 +19,19 @@
                 });
             };
 
-            $scope.search = function() {
+            $scope.search = function (searchKey) {
                 if (identityService.isLoggedIn()) {
-                    var config = {
-                        params: {
-                            q: $scope.searchKey
-                        }
-                    };
-                    apiService.get("/api/users/", config).success(function(result) {
-                        $location.path("/users/searchResult");
-                    }).error(function(error) {
-                        console.log(error);
-                    });
+                    //var config = {
+                    //    params: {
+                    //        q: $scope.searchKey
+                    //    }
+                    //};
+                    $location.path("/search/" + searchKey);
+                    //apiService.get("/api/users/", config).success(function(result) {
+                    //    $location.path("/users/searchResult");
+                    //}).error(function(error) {
+                    //    console.log(error);
+                    //});
                 } else {
                     $scope.redirectToLogin();
                 }

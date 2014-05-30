@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeWarrior.App.NewsFeed;
+using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
@@ -54,9 +55,16 @@ namespace CodeWarrior.App.Controllers
             model.PostedBy = User.Identity.GetUserId();
             _postRepository.Insert(model);
 
-            return Ok(model);
-        }
+            var vModel = new PostViewModel
+            {
+                Id = model.Id,
+                LikeCount = model.LikeCount,
+                LikedBy = new List<ApplicationUserViewModel>(),
+                Comments = new List<CommentViewModel>()
+            };
 
+            return Ok(vModel);
+        }
         // PUT api/post/5
         public IHttpActionResult Put(PostBindingModel post)
         {

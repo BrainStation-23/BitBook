@@ -30,7 +30,7 @@
                 return $http.put(url, data, config);
             };
             var remove = function(url, config) {
-                $http.delete(url, config);
+                return $http.delete(url, config);
             };
             return {
                 get: get,

@@ -59,19 +59,51 @@ input[type="checkbox"].input-validation-error {
     width: 200px;
 }
 
-#userNewsFeed .userIcon {
+.userNewsFeed .userIcon {
     height: 80px;
     width: 85px;
 }
 
-#userNewsFeed .postMessage {
+.userNewsFeed .postMessage {
     padding: 10px 0px 2px 0px;
 }
-
-#userNewsFeed .postLike {
-    cursor: pointer;
+.userNewsFeed {
+    margin: 0px 0px 6px;
+    padding: 11px;
+    border: 1px solid rgb(179, 175, 175);
+    background-color: aliceblue;
+}
+.userNewsFeed .postLike {
+   
 }
 
 #userNewsFeed .postComment {
-    cursor: pointer;
+    
 }
+
+div.findFriendrow {
+    border: 1px solid #BFBFBF;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    float: left;
+    margin: 3px 3px 10px 3px;
+    padding: 3px;
+    width: 270px;
+}
+
+div.findFriendrow img {
+    float: left;
+    width: 100px;
+    padding-right:10px;
+}
+div.findFriendrow div.infoContainer {
+    float: left;
+}
+
+div.info {
+    height: 58px;
+}
+div.clearBoth {
+    clear: both;
+} 

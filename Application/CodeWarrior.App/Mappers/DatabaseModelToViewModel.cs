@@ -13,8 +13,16 @@ namespace CodeWarrior.App.Mappers
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>();
-            Mapper.CreateMap<Post, PostViewModel>();
+            Mapper.CreateMap<ApplicationUser, ApplicationUserViewModel>()
+                .ForMember(viewModel => viewModel.AvatarUrl,
+                    expr => expr.MapFrom(userModel => userModel.AvatarUrl ?? "no_avatar.png"));
+
+            //Mapper.CreateMap<Post, PostViewModel>()
+            //    .ForMember(viewModel => viewModel.LikedBy,
+            //        expr => expr.MapFrom(userModel => new List<ApplicationUserViewModel>()))
+            //        .ForMember(viewModel => viewModel.Comments,
+            //        expr => expr.MapFrom(userModel => new List<CommentViewModel>())); ;
+
             Mapper.CreateMap<Comment, CommentViewModel>();
         }
     }

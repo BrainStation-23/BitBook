@@ -16,7 +16,9 @@ namespace CodeWarrior.App.ViewModels.Posts
         public DateTime PostedOn { get; set; }
 
         public ApplicationUserViewModel PostedBy { get; set; }
-        
+
+        public int LikeCount { get; set; }
+
         public List<ApplicationUserViewModel> LikedBy { get; set; }
         
         public List<CommentViewModel> Comments { get; set; }
