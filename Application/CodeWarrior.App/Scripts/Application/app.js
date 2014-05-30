@@ -29,8 +29,8 @@ var _$ = _$ || {};
                         controller: "ProfileCtrl"
                     }).when(
                     "/account/profile/edit", {
-                        templateUrl: "Templates/Account/Edit.html",
-                        controller: "AccountEditCtrl"
+                        templateUrl: "Templates/Account/ProfileEdit.html",
+                        controller: "ProfileEditCtrl"
                     }).when(
                     "/questions/add", {
                         templateUrl: "Templates/Question/Add.html",
@@ -39,6 +39,10 @@ var _$ = _$ || {};
                     "/questions/allQuestions", {
                         templateUrl: "Templates/Question/all.html",
                         controller: "QuestionListCtrl"
+                    }).when(
+                    "/posts/add", {
+                        templateUrl: "Templates/Post/Add.html",
+                        controller: "PostAddCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }

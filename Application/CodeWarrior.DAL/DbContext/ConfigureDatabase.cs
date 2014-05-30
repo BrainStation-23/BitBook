@@ -19,13 +19,13 @@ namespace CodeWarrior.DAL.DbContext
         public static void Configure()
         {
             IApplicationDbContext dataContext = new ApplicationDbContext();
-            var dataBae = dataContext.Database;
+            //var dataBae = dataContext.Database;
 
-            var users = dataBae.GetCollection<ApplicationUser>(typeof (ApplicationUser).Name);
-            var indexBuilder = new IndexKeysBuilder();
-            var indexByFirstAndLastName = indexBuilder.Text(Name<ApplicationUser>(au => au.FirstName),
-                Name<ApplicationUser>(au => au.LastName));
-            users.CreateIndex(indexByFirstAndLastName, IndexOptions.Null);
+            //var users = dataBae.GetCollection<ApplicationUser>(typeof (ApplicationUser).Name);
+            //var indexBuilder = new IndexKeysBuilder();
+            //var indexByFirstAndLastName = indexBuilder.Text(Name<ApplicationUser>(au => au.FirstName),
+            //    Name<ApplicationUser>(au => au.LastName));
+            //users.CreateIndex(indexByFirstAndLastName, IndexOptions.Null);
         }
     }
 }
