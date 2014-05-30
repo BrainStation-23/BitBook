@@ -29,6 +29,7 @@ namespace CodeWarrior.DAL.DbContext
             var indexByFirstAndLastName = indexBuilder.Text(Name<ApplicationUser>(au => au.FirstName),
                 Name<ApplicationUser>(au => au.LastName));
             //users.CreateIndex(indexByFirstAndLastName, IndexOptions.Null);
+           // users.CreateIndex(indexByFirstAndLastName, IndexOptions.Null);
         }
     }
 }
