@@ -17,7 +17,7 @@ namespace CodeWarrior.Model
         public DateTime PostedOn { get; set; }
 
         [BsonRequired]
-        public string PosteddBy { get; set; }
+        public string PostedBy { get; set; }
 
         [BsonIgnore]
         public int LikeCount

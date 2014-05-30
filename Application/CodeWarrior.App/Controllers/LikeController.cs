@@ -21,6 +21,7 @@ namespace CodeWarrior.App.Controllers
         {
             var post = GetPost(id);
             post.LikedBy.Add(User.Identity.GetUserId());
+            _postRepository.Update(post);
 
             return Ok();
         }
@@ -34,6 +35,7 @@ namespace CodeWarrior.App.Controllers
         {
             var post = GetPost(id);
             post.LikedBy.Remove(User.Identity.GetUserId());
+            _postRepository.Update(post);
 
             return Ok();
         }
