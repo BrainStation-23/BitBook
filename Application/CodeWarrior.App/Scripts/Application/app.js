@@ -28,13 +28,17 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Account/Profile.html",
                         controller: "ProfileCtrl"
                     }).when(
+                    "/account/profile/edit", {
+                        templateUrl: "Templates/Account/Edit.html",
+                        controller: "AccountEditCtrl"
+                    }).when(
                     "/questions/add", {
                         templateUrl: "Templates/Question/Add.html",
                         controller: "QuestionAddCtrl"
                     }).when(
-                    "/home/AllQuestions", {
+                    "/questions/allQuestions", {
                         templateUrl: "Templates/Question/all.html",
-                        controller: "QuestionAllCtrl"
+                        controller: "QuestionListCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }
