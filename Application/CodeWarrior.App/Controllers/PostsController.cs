@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using CodeWarrior.App.NewsFeed;
 using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.Model;
 using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -20,13 +21,14 @@ namespace CodeWarrior.App.Controllers
             _postRepository = postRepository;
         }
 
-        // GET api/post
         public IEnumerable<Post> Get()
         {
-            return _postRepository.FindAll();
+            var userRepository =
+                (IUserRepository)
+                    GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IUserRepository));
+            return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository).Posts;
         }
 
-        // GET api/post/5
         public Post Get(int id)
         {
             return _postRepository.FindById(id);
