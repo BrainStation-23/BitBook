@@ -15,6 +15,10 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Home/Index.html",
                         controller: "HomeCtrl"
                     }).when(
+                    "/friendRequest/", {
+                        templateUrl: "Templates/Request/friendRequest.html",
+                        controller: "FriendRequestCtrl"
+                    }).when(
                     "/search/:key", {
                         templateUrl: "Templates/Search/SearcResult.html",
                         controller: "UserSearchCtrl"
@@ -35,9 +39,9 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Account/Profile.html",
                         controller: "ProfileCtrl"
                     }).when(
-                    "/account/changePassword", {
-                        templateUrl: "Templates/Account/Profile.html",
-                        controller: "ProfileCtrl"
+                    "/account/profile/changePassword", {
+                        templateUrl: "Templates/Account/ChangePassword.html",
+                        controller: "PasswordManageCtrl"
                     }).when(
                     "/account/profile/edit", {
                         templateUrl: "Templates/Account/Edit.html",

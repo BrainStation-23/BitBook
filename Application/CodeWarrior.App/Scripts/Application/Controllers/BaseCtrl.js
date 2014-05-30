@@ -19,6 +19,10 @@
                 });
             };
 
+            $scope.viewFrienRequest = function() {
+                $location.path("/friendRequest/");
+            };
+
             $scope.search = function (searchKey) {
                 if (identityService.isLoggedIn()) {
                     //var config = {

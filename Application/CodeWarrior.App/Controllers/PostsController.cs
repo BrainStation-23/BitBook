@@ -17,6 +17,15 @@ namespace CodeWarrior.App.Controllers
     {
         private readonly IPostRepository _postRepository;
 
+        private IUserRepository _userRepository
+        {
+            get
+            {
+                return (IUserRepository)
+                    GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IUserRepository));
+            }
+        }
+
         public PostsController(IApplicationDbContext applicationDbContext, IPostRepository postRepository)
             : base(applicationDbContext)
         {
@@ -25,9 +34,7 @@ namespace CodeWarrior.App.Controllers
 
         public IEnumerable<PostViewModel> Get()
         {
-            var userRepository =
-                (IUserRepository)
-                    GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IUserRepository));
+            var userRepository = _userRepository;
             return new NewsFeedBuilder(userRepository.FindById(User.Identity.GetUserId()), _postRepository, userRepository).BuildFeed();
         }
 
@@ -44,10 +51,12 @@ namespace CodeWarrior.App.Controllers
                 return BadRequest(ModelState);
             }
 
+            var postedBy = _userRepository.FindById(User.Identity.GetUserId());
+
             var model = new Post()
             {
                 Message = post.Message,
-                PostedBy = User.Identity.GetUserId(),
+                PostedBy = postedBy.Id,
                 PostedOn = DateTime.UtcNow,
                 LikedBy = new List<string>(),
                 Comments = new List<Comment>()
@@ -58,6 +67,8 @@ namespace CodeWarrior.App.Controllers
             var vModel = new PostViewModel
             {
                 Id = model.Id,
+                Message = post.Message,
+                PostedBy = AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>(postedBy),
                 LikeCount = model.LikeCount,
                 LikedBy = new List<ApplicationUserViewModel>(),
                 Comments = new List<CommentViewModel>()
