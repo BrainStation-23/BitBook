@@ -7,13 +7,12 @@ using Microsoft.AspNet.SignalR.Hubs;
 namespace CodeWarrior.App
 {
     [HubName("signalRNotification")]
-    [Authorize]
     public class Notification : Hub
     {
         public void SendMessageByUserId(string userId)
         {
             // Clients.User(userId).SendUserNotification("Click On Your Question.");
-            Clients.Group(userId).SendUserNotification("Click On Your Question.");
+            Clients.All.SendUserNotification("Click On Your Question.", userId);
         }
 
         public void AddQuestionNotification(string question, string userName)
@@ -21,12 +20,12 @@ namespace CodeWarrior.App
             Clients.All.NewQuestionAdded(question, userName);
         }
 
-        public override Task OnConnected()
-        {
-            var name = Context.User.Identity.Name;
-            Groups.Add(Context.ConnectionId, name);
-            return base.OnConnected();
-        }
+        //public override Task OnConnected()
+        //{
+        //    var name = Context.User.Identity.Name;
+        //    Groups.Add(Context.ConnectionId, name);
+        //    return base.OnConnected();
+        //}
 
         //public override Task OnDisconnected()
         //{

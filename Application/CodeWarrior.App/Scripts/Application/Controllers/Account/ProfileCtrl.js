@@ -2,12 +2,16 @@
 
 (function(app) {
     app.controller("ProfileCtrl", [
-        "$scope", "identityService", "notifierService", function($scope, identityService, notifierService) {
+        "$scope", "$location", "identityService", "notifierService", function ($scope, $location, identityService, notifierService) {
             $scope.init = function() {
-                identityService.getUserInfo().success(function(data) {
-                    $scope.user = data;
-                    notifierService.notify({ responseType: "success", message: "Profile data fetched successfully." });
-                });
+                if (!identityService.isLoggedIn()) {
+                    $location.path("/");
+                } else {
+                    identityService.getUserInfo().success(function (data) {
+                        $scope.user = data;
+                        notifierService.notify({ responseType: "success", message: "Profile data fetched successfully." });
+                    });
+                }
             }();
         }
     ]);
