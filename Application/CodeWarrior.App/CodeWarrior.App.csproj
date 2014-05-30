@@ -261,6 +261,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
@@ -278,6 +279,7 @@
     <Compile Include="RealTimeNotification\ConnectionMapping.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\Posts\CommentBindingModel.cs" />
     <Compile Include="ViewModels\Posts\PostBindingModel.cs" />
     <Compile Include="ViewModels\Questions\QuestionBindingModel.cs" />
   </ItemGroup>

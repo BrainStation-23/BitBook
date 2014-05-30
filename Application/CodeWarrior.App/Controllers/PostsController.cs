@@ -7,7 +7,7 @@ using CodeWarrior.Model;
 
 namespace CodeWarrior.App.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Posts")]
     public class PostsController : BaseApiController
     {
