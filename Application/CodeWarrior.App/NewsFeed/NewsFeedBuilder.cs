@@ -48,6 +48,7 @@ namespace CodeWarrior.App.NewsFeed
                         PostedOn = post.PostedOn,
                         LikedBy = post.LikedBy.Select(s => users[s]).ToList()
                     };
+                    view.LikeCount = view.LikedBy.Count;
 
                     var vComments = new List<CommentViewModel>();
                     foreach (var comment in post.Comments)
