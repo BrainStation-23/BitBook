@@ -26,12 +26,16 @@
                 return deferred.promise;
             };
             var post = function(url, data, config) {
-                return $http.post(url, data, config);
+                return $http.post(url, config);
+            };
+            var remove = function(url,config) {
+                $http.delete(url, config);
             };
             return {
                 get: get,
                 save: save,
-                post: post
+                post: post,
+                remove:remove
             };
         }
     ]);

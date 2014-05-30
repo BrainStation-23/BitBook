@@ -58,3 +58,20 @@ input[type="checkbox"].input-validation-error {
     padding: 10px;
     width: 200px;
 }
+
+#userNewsFeed .userIcon {
+    height: 80px;
+    width: 85px;
+}
+
+#userNewsFeed .postMessage {
+    padding: 10px 0px 2px 0px;
+}
+
+#userNewsFeed .postLike {
+    cursor: pointer;
+}
+
+#userNewsFeed .postComment {
+    cursor: pointer;
+}
