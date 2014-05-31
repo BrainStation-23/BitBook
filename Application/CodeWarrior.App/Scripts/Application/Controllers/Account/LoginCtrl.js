@@ -18,13 +18,16 @@
             $scope.login = function (user) {
                 $scope.loginFormSubmitted = true;
                 if ($scope.LoginForm.$valid) {
-                    identityService.login(user).success(function(data) {
+                    $scope.loginInProgress = true;
+                    identityService.login(user).success(function (data) {
+                        $scope.loginInProgress = false;
                         if (data.userName && data.access_token) {
                             identityService.setAccessToken(data.access_token);
                             identityService.setAuthorizedUserData(data);
                             $scope.redirectToHome();
                         }
-                    }).error(function(error) {
+                    }).error(function (error) {
+                        $scope.loginInProgress = false;
                         if (error.error_description) {
                             notifierService.notify({ responseType: "error", message: error.error_description });
                         }

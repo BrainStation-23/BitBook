@@ -4,6 +4,7 @@
     app.controller("HomeCtrl", [
         "$scope", "identityService", "apiService", "notifierService", function ($scope, identityService, apiService, notifierService) {
             $scope.posts = [];
+            $scope.newComment = {};
 
             $scope.init = function () {
                 if (!identityService.isLoggedIn()) {
@@ -15,7 +16,6 @@
                     apiService.get("/api/posts/", config).success(function (result) {
                         if (result) {
                             $scope.posts = result;
-                            console.log($scope.posts);
                         }
                     });
                 }
@@ -28,20 +28,12 @@
                         headers: identityService.getSecurityHeaders()
                     };
                     apiService.post("/api/posts", post, config).success(function (result) {
-                        console.log(result);
                         $scope.posts.splice(0, 0, result);
-                    }).error(function (error) {
-                        if (error.modelState) {
-                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
-                                return items;
-                            }));
-                        } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
-                        }
+                    });
+                } else {
+                    notifierService.notify({
+                        responseType: "error",
+                        message: "Invalid input!"
                     });
                 }
             };
@@ -59,17 +51,18 @@
 
                     apiService.remove("/api/like", config).success(function (result) {
                     }).error(function (error) {
+                        var data = {
+                            responseType: "error"
+                        };
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                                 return items;
                             }));
+                            data.message = $scope.postCreateErrors[0];
                         } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
+                            data.message = error.message;
                         }
+                        notifierService.notify(data);
                     });
                 } else {
 
@@ -78,42 +71,45 @@
 
                     apiService.post("/api/like", {}, config).success(function (result) {
                     }).error(function (error) {
+                        var data = {
+                            responseType: "error"
+                        };
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                                 return items;
                             }));
+                            data.message = $scope.postCreateErrors[0];
                         } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
+                            data.message = error.message;
                         }
+                        notifierService.notify(data);
                     });
                 }
             };
-
+            
             $scope.addComment = function (post, newComment) {
-               
+
                 newComment.postId = post.id;
                 var config = {
                     headers: identityService.getSecurityHeaders()
                 };
 
                 apiService.post("/api/comments", newComment, config).success(function (result) {
-                    console.log(result);
+                    $scope.newComment.description = "";
+                    post.comments.push(result);
                 }).error(function (error) {
+                    var data = {
+                        responseType: "error"
+                    };
                     if (error.modelState) {
                         $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                             return items;
                         }));
+                        data.message = $scope.postCreateErrors[0];
                     } else {
-                        var data = {
-                            responseType: "error",
-                            message: error.message
-                        };
-                        notifierService.notify(data);
+                        data.message = error.message;
                     }
+                    notifierService.notify(data);
                 });
             };
         }

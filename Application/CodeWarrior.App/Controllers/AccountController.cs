@@ -49,6 +49,7 @@ namespace CodeWarrior.App.Controllers
 
             return new UserInfoViewModel
             {
+                Id = User.Identity.GetUserId(),
                 UserName = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null

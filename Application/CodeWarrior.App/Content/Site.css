@@ -66,31 +66,64 @@ input[type="checkbox"].input-validation-error {
 }
 
 .userNewsFeed .userIcon {
-    height: 80px;
-    width: 85px;
+    height: 65px;
+    width: 60px;
 }
 
 .userNewsFeed {
     margin: 0px 0px 6px;
-    padding: 11px;
+    padding: 5px;
     border: 1px solid rgb(179, 175, 175);
-    background-color: aliceblue;
+    -webkit-box-shadow: 0 2px 9px 0 #CCCCCC;
+    -ms-box-shadow: 0 2px 9px 0 #CCCCCC;
+    box-shadow: 0 2px 9px 0 #CCCCCC;
 }
 
-.userNewsFeed .commentBox {
+.userNewsFeed .commentMessage {
     float: none;
+}
+
+.userNewsFeed .commentDisplay {
+    padding: 5px;
+    background-color: aliceblue;
+    margin: 0px 0px 12px 0px;
+    -ms-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid brown;
+}
+
+.userNewsFeed .commentDisplay .userIconMini {
+    height: 34px;
+    width: 41px;
+}
+
+.userNewsFeed .commentDisplay .commentedBy {
+    font-family: cursive;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.userNewsFeed .commentDisplay p.comment {
+    padding: 2px;
+    margin: 0px 1px 6px 0px;
+}
+
+.userNewsFeed .commentDisplay a.userInfoLink:hover {
+    text-decoration: none;
 }
 
 .userNewsFeed .postMessage {
     padding: 10px 0px 2px 0px;
 }
 
-.userNewsFeed .postLike {
-   
+.userNewsFeed a.postLike:hover {
+    text-decoration: none;
 }
 
-#userNewsFeed .postComment {
-    
+.userNewsFeed .postedBy {
+    font-family: cursive;
+    font-size: 20px;
+    text-transform: capitalize;
 }
 
 
@@ -108,8 +141,9 @@ div.findFriendrow {
 div.findFriendrow img {
     float: left;
     width: 100px;
-    padding-right:10px;
+    padding-right: 10px;
 }
+
 div.findFriendrow div.infoContainer {
     float: left;
 }
@@ -117,6 +151,26 @@ div.findFriendrow div.infoContainer {
 div.info {
     height: 58px;
 }
+
 div.clearBoth {
     clear: both;
 } 
+
+.block {
+    border: 1px solid #CCCCCC;
+    -webkit-box-shadow: 0 2px 5px 0 #CCCCCC;
+    -ms-box-shadow: 0 2px 5px 0 #CCCCCC;
+    box-shadow: 0 2px 5px 0 #CCCCCC;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.friendIcon img {
+    height: 50px; width: 60px;
+}
+
+.friendBlock {
+    display: inline-block;
+    width: 335px;
+    margin-right: 10px;
+}

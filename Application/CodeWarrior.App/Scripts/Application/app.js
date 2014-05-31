@@ -46,6 +46,18 @@ var _$ = _$ || {};
                     "/account/profile/edit", {
                         templateUrl: "Templates/Account/Edit.html",
                         controller: "ProfileEditCtrl"
+                    }).when(
+                    "/friends/", {
+                        templateUrl: "Templates/Account/Friends.html",
+                        controller: "AccountFriendListCtrl"
+                    }).when(
+                    "/account/friends/:id", {
+                        templateUrl: "Templates/Friend/Profile.html",
+                        controller: "FriendProfileCtrl"
+                    }).when(
+                    "/profile/:id", {
+                        templateUrl: "Templates/Friend/Profile.html",
+                        controller: "FriendProfileCtrl"
                     })
                 .otherwise({ redirectTo: "/" });
         }
