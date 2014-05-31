@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("ProfileEditCtrl", [
-        "$scope", "identityService", "notifierService", "apiService", "$rootScope", "$location", function ($scope, identityService, notifierService, apiService, $rootScope, $location) {
+        "$scope", "identityService", "notifierService", "apiService", "$rootScope", function ($scope, identityService, notifierService, apiService, $rootScope) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
@@ -16,7 +16,8 @@
                         notifierService.notify({ responseType: "success", message: "Profile data fetched successfully." });
                     });
                 }
-            }();
+            };
+            $scope.init();
 
             $scope.update = function(user) {
                 $scope.profileEditFormSubmitted = true;
@@ -63,7 +64,7 @@
                     data: data,
                     success: function(results) {
                         notifierService.notify({ responseType: "success", message: "Profile picture uploaded successfully" });
-                        window.location.reload(true);
+                        $scope.init();
                     }
                 });
             };
