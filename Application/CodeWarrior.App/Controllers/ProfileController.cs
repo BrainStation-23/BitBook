@@ -35,6 +35,7 @@ namespace CodeWarrior.App.Controllers
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
+                AvatarUrl = user.AvatarUrl,
                 IsMyFriend = myId != id && me.Friends.Contains(id),
                 IsFriendRequestSent = myId != id && !me.Friends.Contains(id) && user.FriendRequests.Contains(id)
             };

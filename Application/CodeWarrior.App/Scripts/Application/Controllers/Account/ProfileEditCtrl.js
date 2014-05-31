@@ -26,11 +26,11 @@
                         headers: identityService.getSecurityHeaders()
                     };
                     user.userName = user.email;
-                    apiService.put("/api/profile/", user, config).success(function () {
+                    apiService.put("/api/profile/", user, config).success(function() {
                         $scope.profileEditInProgresss = false;
                         $rootScope.authenticatedUser.userName = user.email;
                         notifierService.notify({ responseType: "success", message: "Profile data updated successfully." });
-                    }).error(function (error) {
+                    }).error(function(error) {
                         $scope.profileEditInProgresss = false;
                         if (error.modelState) {
                             $scope.localRegisterErrors = _.flatten(_.map(error.modelState, function(items) {
@@ -61,8 +61,8 @@
                         Authorization: "Bearer " + identityService.getAccessToken()
                     },
                     data: data,
-                    success: function (results) {
-                        console.log(results);
+                    success: function(results) {
+                        notifierService.notify({ responseType: "success", message: "Profile picture uploaded successfully" });
                     }
                 });
             };
