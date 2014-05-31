@@ -29,18 +29,11 @@
                     };
                     apiService.post("/api/posts", post, config).success(function (result) {
                         $scope.posts.splice(0, 0, result);
-                    }).error(function (error) {
-                        if (error.modelState) {
-                            $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
-                                return items;
-                            }));
-                        } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
-                        }
+                    });
+                } else {
+                    notifierService.notify({
+                        responseType: "error",
+                        message: "Invalid input!"
                     });
                 }
             };
@@ -58,17 +51,18 @@
 
                     apiService.remove("/api/like", config).success(function (result) {
                     }).error(function (error) {
+                        var data = {
+                            responseType: "error"
+                        };
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                                 return items;
                             }));
+                            data.message = $scope.postCreateErrors[0];
                         } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
+                            data.message = error.message;
                         }
+                        notifierService.notify(data);
                     });
                 } else {
 
@@ -77,17 +71,18 @@
 
                     apiService.post("/api/like", {}, config).success(function (result) {
                     }).error(function (error) {
+                        var data = {
+                            responseType: "error"
+                        };
                         if (error.modelState) {
                             $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                                 return items;
                             }));
+                            data.message = $scope.postCreateErrors[0];
                         } else {
-                            var data = {
-                                responseType: "error",
-                                message: error.message
-                            };
-                            notifierService.notify(data);
+                            data.message = error.message;
                         }
+                        notifierService.notify(data);
                     });
                 }
             };
@@ -103,17 +98,18 @@
                     $scope.newComment.description = "";
                     post.comments.push(result);
                 }).error(function (error) {
+                    var data = {
+                        responseType: "error"
+                    };
                     if (error.modelState) {
                         $scope.postCreateErrors = _.flatten(_.map(error.modelState, function (items) {
                             return items;
                         }));
+                        data.message = $scope.postCreateErrors[0];
                     } else {
-                        var data = {
-                            responseType: "error",
-                            message: error.message
-                        };
-                        notifierService.notify(data);
+                        data.message = error.message;
                     }
+                    notifierService.notify(data);
                 });
             };
         }

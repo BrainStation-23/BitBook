@@ -24,6 +24,7 @@ namespace CodeWarrior.App.ViewModels.Account
 
     public class UserInfoViewModel
     {
+        public string Id { get; set; }
         public string UserName { get; set; }
 
         public bool HasRegistered { get; set; }

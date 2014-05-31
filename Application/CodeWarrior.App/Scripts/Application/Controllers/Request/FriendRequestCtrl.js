@@ -1,12 +1,12 @@
 ﻿"use strict";
 
-(function (app) {
+(function(app) {
     app.controller("FriendRequestCtrl", [
         "$scope", "apiService", "identityService", function($scope, apiService, identityService) {
             $scope.users = [];
 
-            var removeUser = function (user) {
-                $scope.users = _.select($scope.users, function (u) {
+            var removeUser = function(user) {
+                $scope.users = _.select($scope.users, function(u) {
                     return user.id != u.id;
                 });
             };
@@ -26,8 +26,8 @@
 
                 apiService.remove('/api/friend/', config)
                     .success(function() {
-                    removeUser(user);
-                });
+                        removeUser(user);
+                    });
             };
 
             $scope.addFriend = function(user) {

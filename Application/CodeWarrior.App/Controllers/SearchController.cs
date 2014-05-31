@@ -1,5 +1,4 @@
 ﻿using CodeWarrior.App.ViewModels.Account;
-using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
@@ -9,7 +8,7 @@ using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Search")]
     public class SearchController : BaseApiController
     {

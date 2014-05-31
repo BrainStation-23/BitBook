@@ -694,7 +694,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\Application\Controllers\Post\" />
     <Folder Include="Templates\Post\" />
   </ItemGroup>
   <ItemGroup>

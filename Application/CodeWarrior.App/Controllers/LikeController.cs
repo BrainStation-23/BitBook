@@ -6,6 +6,7 @@ using System.Web.Http;
 
 namespace CodeWarrior.App.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/like")]
     public class LikeController : BaseApiController
     {
