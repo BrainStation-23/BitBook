@@ -346,7 +346,9 @@ namespace CodeWarrior.App.Controllers
 
             var user = new ApplicationUser
             {
-                UserName = model.Email
+                UserName = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
             };
             user.Logins.Add(new UserLoginInfo(externalLogin.LoginProvider, externalLogin.ProviderKey));
             var result = await UserManager.CreateAsync(user);

@@ -42,8 +42,8 @@
                     </a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li ng-if="authenticatedUser.hasRegistered">
+                    <ul class="nav navbar-nav" ng-if="authenticatedUser.hasRegistered">
+                        <li>
                             <form novalidate class="topBarSearchForm" ng-submit="search(searchKey)">
                                 <input type="search" class="form-control" ng-model="searchKey" placeholder="search friends by name" />
                             </form>

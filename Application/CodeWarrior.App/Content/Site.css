@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', arial, helvetica, sans-serif;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -109,6 +110,10 @@ input[type="checkbox"].input-validation-error {
 }
 
 .userNewsFeed .commentDisplay a.userInfoLink:hover {
+    text-decoration: none;
+}
+
+.userNewsFeed a.userInfoLink:hover {
     text-decoration: none;
 }
 

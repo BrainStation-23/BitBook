@@ -9,14 +9,14 @@
                     <label for="Email" class="col-md-2 control-label">Email</label>
                     <div class="col-md-10">
                         <input type="email" ng-model="user.email" id="Email" name="Email" class="form-control" ng-required="true" />
-                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.Email.$invalid">The Email field is required.</span>
+                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.Email.$invalid">The Email field is invalid.</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Password" class="col-md-2 control-label">Password</label>
                     <div class="col-md-10">
                         <input type="password" ng-model="user.password" id="Password" name="Password" class="form-control" ng-required="true" />
-                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.Password.$invalid">The Password field is required.</span>
+                        <span class="field-validation-error" ng-if="loginFormSubmitted && LoginForm.Password.$invalid">The Password field is invalid.</span>
                     </div>
                 </div>
                 <div class="form-group">
