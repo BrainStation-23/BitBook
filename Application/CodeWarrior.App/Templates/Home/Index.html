@@ -20,6 +20,8 @@
 
     <div class="row userNewsFeed" ng-repeat="post in posts">
         <div class="col-xs-12">
+            
+            <i class="fa fa-trash-o fa-2x red" style="float: right;cursor: pointer" ng-show="isPostedBySameObject(post)" ng-click="removePost(post, $index)"></i>
 
             <a ng-href="#/profile/{{post.postedBy.id}}" class="userInfoLink">
                 <img ng-src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" />
@@ -32,23 +34,22 @@
                 {{post.likedByMe ? 'Unlike' : 'Like'}}
             </a>
             <p>{{post.likeCount}} Person like this</p>
-
            
-                <div class="commentDisplay" ng-show="post.comments.length">
-                    <p ng-repeat="comment in post.comments" class="comment">
-                        <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
-                            <img ng-src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
-                            <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
-                        </a>
-                        <span> {{comment.description}}</span>
-                    </p>
-                </div>
+            <div class="commentDisplay" ng-show="post.comments.length">
+                <p ng-repeat="comment in post.comments" class="comment">
+                    <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
+                        <img ng-src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
+                        <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
+                    </a>
+                    <span> {{comment.description}}</span>
+                </p>
+            </div>
             
             <textarea class="col-lg-9 commentMessage form-control"
-                      ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
+                      ng-model="post.newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
             <br />
             <div>
-                <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
+                <input type="button" ng-click="addComment(post)" class="btn btn-info btn-sm" value="Add Comment" />
             </div>
 
         </div>

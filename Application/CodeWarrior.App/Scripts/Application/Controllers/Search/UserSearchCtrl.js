@@ -27,18 +27,23 @@
                 }
             };
 
-            $scope.init = function() {
-                if ($routeParams.key) {
-                    var config = $.extend(getConfig(), {
-                        params: {
-                            type: 'user',
-                            key: $routeParams.key
-                        }
-                    });
-
-                    apiService.get('/api/Search/', config).success(function(result) {
-                        $scope.users = result;
-                    });
+            $scope.init = function () {
+                if (!identityService.isLoggedIn()) {
+                    $scope.redirectToLogin();
+                } else {
+                    if ($routeParams.key) {
+                        var config = $.extend(getConfig(), {
+                            params: {
+                                type: 'user',
+                                key: $routeParams.key
+                            }
+                        });
+                        $scope.userSearchInProgress = true;
+                        apiService.get('/api/Search/', config).success(function (result) {
+                            $scope.users = result;
+                            $scope.userSearchInProgress = false;
+                        });
+                    }
                 }
             }();
         }

@@ -67,8 +67,7 @@ input[type="checkbox"].input-validation-error {
 }
 
 .userNewsFeed .userIcon {
-    height: 65px;
-    width: 60px;
+    width: 70px;
 }
 
 .userNewsFeed {
@@ -178,4 +177,13 @@ div.clearBoth {
     display: inline-block;
     width: 335px;
     margin-right: 10px;
+}
+.red {
+    color: red;
+}
+
+.yellowHeader3 {
+    color: #FF9900;
+    font-weight: 600;
+    margin-bottom: 0.75em;
 }
