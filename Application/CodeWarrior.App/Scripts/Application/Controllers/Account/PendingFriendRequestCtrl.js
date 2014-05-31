@@ -20,18 +20,26 @@
                 }
             }();
 
+            var removeUser = function(user) {
+                _$.select($scope.pendingRequests, function(u) {
+                    return u.id != user.id;
+                });
+            };
+
             $scope.addFriend = function (user) {
                 if (user.isMyFriend) {
                     friendService.unFriend(user).success(function () {
                         user.isMyFriend = false;
                         user.isFriendRequestedRejected = true;
                         user.isFriendActionDisabled = true;
+                        removeUser(user);
                         notifierService.notify({ responseType: "success", "message": "Friend rejected successfully!" });
                     });
                 } else {
                     friendService.addFriend(user).success(function () {
                         user.isFriendRequestSent = true;
                         user.isFriendActionDisabled = true;
+                        removeUser(user);
                         notifierService.notify({responseType: "success", "message": "Friend added successfully!"});
                     });
                 }

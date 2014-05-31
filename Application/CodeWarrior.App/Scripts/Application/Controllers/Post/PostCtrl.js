@@ -103,7 +103,7 @@
             };
             
             $scope.addComment = function (post) {
-
+                post.newComment = post.newComment || {};
                 post.newComment.postId = post.id;
                 var config = {
                     headers: identityService.getSecurityHeaders()
