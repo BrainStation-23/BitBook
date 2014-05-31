@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using CodeWarrior.App.App_Start;
 using CodeWarrior.App.Providers;
 using CodeWarrior.App.Results;
 using CodeWarrior.App.ViewModels.Account;
@@ -15,6 +16,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
+using MongoDB.Bson;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -474,20 +476,9 @@ namespace CodeWarrior.App.Controllers
 
         #endregion
 
-        public async void CreateFakeUser(int count, int userCount)
+        public void CreateFakeUser(int count)
         {
-            for (var i = 0; i < count; i++)
-            {
-                userCount++;
-
-                var user = new ApplicationUser
-                {
-                    FirstName = Faker.NameFaker.FirstName(),
-                    LastName = Faker.NameFaker.LastName(),
-                    UserName = userCount + Faker.InternetFaker.Email()
-                };
-                await UserManager.CreateAsync(user, "12345678");
-            }
+            new DataSeeder().SeedUser(this, count);
         }
     }
 }
