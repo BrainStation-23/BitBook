@@ -56,7 +56,7 @@ namespace CodeWarrior.App.Controllers
             {
                 CommentedBy = new ApplicationUserViewModel
                 {
-                    AvatarUrl = user.AvatarUrl,
+                    AvatarUrl = string.IsNullOrEmpty(user.AvatarUrl) ? "/Content/Images/noimage.png" : user.AvatarUrl,
                     FirstName = user.FirstName,
                     Id = user.Id,
                     LastName = user.LastName,
