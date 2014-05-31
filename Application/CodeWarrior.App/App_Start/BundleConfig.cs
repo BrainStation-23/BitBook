@@ -30,7 +30,7 @@ namespace CodeWarrior.App
                 "~/Scripts/Application/Directives/topbarDirective.js",
                 "~/Scripts/Application/Directives/ExternalLoginList.js",
                 "~/Scripts/Application/Controllers/BaseCtrl.js",
-                "~/Scripts/Application/Controllers/Home/HomeCtrl.js",
+                "~/Scripts/Application/Controllers/Post/PostCtrl.js",
                 "~/Scripts/Application/Controllers/Account/RegisterCtrl.js",
                 "~/Scripts/Application/Controllers/Account/ExternalRegisterCtrl.js",
                 "~/Scripts/Application/Controllers/Account/LoginCtrl.js",

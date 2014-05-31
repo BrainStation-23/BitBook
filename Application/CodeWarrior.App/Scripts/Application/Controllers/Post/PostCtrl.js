@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 (function (app) {
-    app.controller("HomeCtrl", [
+    app.controller("PostCtrl", [
         "$scope", "identityService", "apiService", "notifierService", function ($scope, identityService, apiService, notifierService) {
             $scope.posts = [];
             $scope.newComment = {};
@@ -10,10 +10,12 @@
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
                 } else {
+                    $scope.postFetchInProgresss = true;
                     var config = {
                         headers: identityService.getSecurityHeaders()
                     };
                     apiService.get("/api/posts/", config).success(function (result) {
+                        $scope.postFetchInProgresss = false;
                         if (result) {
                             $scope.posts = result;
                         }

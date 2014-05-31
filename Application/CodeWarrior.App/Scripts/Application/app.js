@@ -13,7 +13,7 @@ var _$ = _$ || {};
                 }).when(
                     "/home", {
                         templateUrl: "Templates/Home/Index.html",
-                        controller: "HomeCtrl"
+                        controller: "PostCtrl"
                     }).when(
                     "/friendRequest/", {
                         templateUrl: "Templates/Request/friendRequest.html",

@@ -345,7 +345,7 @@
     <Content Include="Scripts\Application\Controllers\Account\RegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\BaseCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Friend\FriendProfileCtrl.js" />
-    <Content Include="Scripts\Application\Controllers\Home\HomeCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Post\PostCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionAddCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Question\QuestionListCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Request\FriendRequestCtrl.js" />
