@@ -33,11 +33,22 @@ namespace CodeWarrior.App.Controllers
         {
             var id = User.Identity.GetUserId();
             var repository = new UserRepository(ApplicationDbContext);
-            return
-                repository.SearchByName(criteria.Key)
-                    .Select(AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>)
-                    .Where(model => model.Id!=id)
-                    .ToList();
+            var users = repository.SearchByName(criteria.Key)
+                .Where(model => model.Id != id)
+                .ToList();
+
+            var me = repository.FindById(id);
+            var vUsers = new List<ApplicationUserViewModel>();
+            foreach (var user in users)
+            {
+                var vUser = AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>(user);
+                var isMyFriend = me.Id != user.Id && me.Friends.Contains(user.Id);
+                vUser.IsMyFriend = isMyFriend;
+                vUser.IsFriendRequestSent = !isMyFriend && user.FriendRequests.Contains(id);
+                vUsers.Add(vUser);
+            }
+
+            return vUsers;
         }
     }
 }
