@@ -66,7 +66,14 @@ namespace CodeWarrior.App.Controllers
 
             var file = HttpContext.Current.Request.Files[0];
             var url = BuildAvatarUrl(file.FileName);
-            file.SaveAs(url);
+            var fullPath = HttpContext.Current.Server.MapPath(url);
+            var dir = Path.GetDirectoryName(fullPath) ?? "";
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            file.SaveAs(fullPath);
             var user = _userRepository.FindById(User.Identity.GetUserId());
             user.AvatarUrl = url;
             _userRepository.Update(user);
@@ -76,7 +83,8 @@ namespace CodeWarrior.App.Controllers
 
         private string BuildAvatarUrl(string name)
         {
-            return Path.Combine(User.Identity.GetUserId(), "_avatar", (Path.GetExtension(name) ?? ".png"));
+            return Path.Combine("/Content/Images/",
+                User.Identity.GetUserId() + "_avatar" + (Path.GetExtension(name) ?? ".png"));
         }
 
         public class UploadBindingModel
