@@ -1,6 +1,12 @@
-﻿<h2>Friend Request(s)</h2>
+﻿<h3>Pending Friend Requests</h3>
 
-<div class="findFriendrow" ng-repeat="user in users">
+<div ng-if="pendingRequestsFetchInProgress">
+    <i class="fa fa-spinner fa-spin fa-2x"></i> Loading Request...
+</div>
+
+<hr />
+
+<div class="findFriendrow" ng-repeat="user in pendingRequests">
     <img ng-src='{{user.avatarUrl}}' alt="{{user.firstName}}" />
     <div class="infoContainer">
         <div class="info"><a ng-href="#/profile/{{user.id}}"><i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}</a></div>
@@ -15,7 +21,8 @@
 </div>
 
 <div class="clearBoth"></div>
-<div ng-if="!users.length">
+
+<div ng-if="!pendingRequests.length">
     <div class="alert alert-info">
         You have no pending friend request!
     </div>
