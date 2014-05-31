@@ -38,6 +38,10 @@
 
 </form>
 
+<div ng-if="user.avatarUrl" style="width: 78px;">
+    <img ng-src="{{user.avatarUrl}}" alt="user.userName" class="img-thumbnail" />
+</div>
+
 <form>
     <input type="file" name="avatar" onchange="uploadAvatar()" />
 </form>
