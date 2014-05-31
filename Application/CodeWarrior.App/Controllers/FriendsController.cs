@@ -22,19 +22,21 @@ namespace CodeWarrior.App.Controllers
             _userRepository = userRepository;
         }
 
-        public IEnumerable<ApplicationUser> Get(string id = null)
+        public IEnumerable<ApplicationUserViewModel> Get(string id = null)
         {
-            var firends = new List<ApplicationUser>();
             var me = _userRepository.FindById(id ?? User.Identity.GetUserId());
-            if (null == me.Friends) return firends;
+            if (null == me.Friends) return new List<ApplicationUserViewModel>();
 
-            foreach (var friend in me.Friends.Select(friendId => _userRepository.FindById(friendId)))
-            {
-                friend.Friends = friend.FriendRequests = new List<string>();
-                firends.Add(friend);
-            }
+            return SearchController.ApplicationUserToViewModel(me,
+                me.Friends.Select(friendId => _userRepository.FindById(friendId)).ToList());
 
-            return firends;
+            //foreach (var friend in me.Friends.Select(friendId => _userRepository.FindById(friendId)))
+            //{
+            //    friend.Friends = friend.FriendRequests = new List<string>();
+            //    firends.Add(friend);
+            //}
+
+            //return firends;
         }
 
         [Route("Requests")]
@@ -43,7 +45,9 @@ namespace CodeWarrior.App.Controllers
             var me = _userRepository.FindById(User.Identity.GetUserId());
             var pendingFriends = me.FriendRequests.Select(_userRepository.FindById).ToList();
 
-            return pendingFriends.Select(Mapper.Map<ApplicationUser, ApplicationUserViewModel>).ToList();
+            return SearchController.ApplicationUserToViewModel(me, pendingFriends);
+
+            //return pendingFriends.Select(Mapper.Map<ApplicationUser, ApplicationUserViewModel>).ToList();
         }
 
         public IHttpActionResult Post(string id)
@@ -59,12 +63,20 @@ namespace CodeWarrior.App.Controllers
                 friend.Friends.Add(me.Id);
                 me.FriendRequests.Remove(friend.Id);
                 me.Friends.Add(friend.Id);
-                
+
+                me.Friends = me.Friends.Distinct().ToList();
+                friend.Friends = friend.Friends.Distinct().ToList();
+                me.FriendRequests = me.FriendRequests.Distinct().ToList();
+                friend.FriendRequests = friend.FriendRequests.Distinct().ToList();
+
                 _userRepository.Update(me);
                 _userRepository.Update(friend);
             }
             else
             {
+                friend.Friends = friend.Friends.Distinct().ToList();
+                friend.FriendRequests = friend.FriendRequests.Distinct().ToList();
+
                 friend.FriendRequests.Add(me.Id);
                 _userRepository.Update(friend);
             }

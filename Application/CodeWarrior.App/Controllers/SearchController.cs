@@ -1,5 +1,6 @@
 ﻿using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.DAL.DbContext;
+using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
 using System.Collections.Generic;
@@ -36,15 +37,20 @@ namespace CodeWarrior.App.Controllers
             var users = repository.SearchByName(criteria.Key)
                 .Where(model => model.Id != id)
                 .ToList();
-
             var me = repository.FindById(id);
+
+            return ApplicationUserToViewModel(me, users);
+        }
+
+        public static IEnumerable<ApplicationUserViewModel> ApplicationUserToViewModel(ApplicationUser me, IEnumerable<ApplicationUser> users)
+        {
             var vUsers = new List<ApplicationUserViewModel>();
             foreach (var user in users)
             {
                 var vUser = AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>(user);
                 var isMyFriend = me.Id != user.Id && me.Friends.Contains(user.Id);
                 vUser.IsMyFriend = isMyFriend;
-                vUser.IsFriendRequestSent = !isMyFriend && user.FriendRequests.Contains(id);
+                vUser.IsFriendRequestSent = !isMyFriend && user.FriendRequests.Contains(me.Id);
                 vUsers.Add(vUser);
             }
 

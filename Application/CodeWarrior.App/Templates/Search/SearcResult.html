@@ -9,9 +9,13 @@
 <div class="findFriendrow" ng-repeat="user in users">
     <img ng-src="{{user.avatarUrl}}" alt="{{user.firstName}}" />
     <div class="infoContainer">
-        <div class="info"><a ng-href="#/profile/{{user.id}}"><i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}</a></div>
+        <div class="info">
+            <a ng-href="#/profile/{{user.id}}">
+                <i class="fa fa-user"></i> {{user.firstName}} {{user.lastName}}
+            </a>
+        </div>
         <div>
-            <button class="btn btn-primary" ng-click="addFriend(user)" ng-disabled="user.isFriendActionDisabled || user.isFriendRequestSent">
+            <button class="btn btn-primary btn-sm" ng-click="addFriend(user)" ng-disabled="user.isFriendActionDisabled || user.isFriendRequestSent">
                 {{user.isFriendRequestSent ? 'Friend Request Sent' : (user.isMyFriend ? 'Unfriend' : 'Add Friend')}}
             </button>
         </div>

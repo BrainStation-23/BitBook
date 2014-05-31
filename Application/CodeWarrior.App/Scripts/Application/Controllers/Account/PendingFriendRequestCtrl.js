@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("PendingFriendRequestCtrl", [
-        "$scope", "$location", "identityService", "notifierService", "apiService", function($scope, $location, identityService, notifierService, apiService) {
+        "$scope", "$location", "identityService", "notifierService", "apiService", "friendService", function ($scope, $location, identityService, notifierService, apiService, friendService) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
@@ -19,6 +19,23 @@
                     });
                 }
             }();
+
+            $scope.addFriend = function (user) {
+                if (user.isMyFriend) {
+                    friendService.unFriend(user).success(function () {
+                        user.isMyFriend = false;
+                        user.isFriendRequestedRejected = true;
+                        user.isFriendActionDisabled = true;
+                        notifierService.notify({ responseType: "success", "message": "Friend rejected successfully!" });
+                    });
+                } else {
+                    friendService.addFriend(user).success(function () {
+                        user.isFriendRequestSent = true;
+                        user.isFriendActionDisabled = true;
+                        notifierService.notify({responseType: "success", "message": "Friend added successfully!"});
+                    });
+                }
+            };
         }
     ]);
 })(_$.app);

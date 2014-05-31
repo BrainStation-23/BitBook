@@ -9,13 +9,13 @@
 <div ng-if="friends.length">
     <div ng-repeat="friend in friends" class="block well friendBlock">
         <div>
-            <img ng-src="{{friend.avatarUrl}}" alt="" />
+            <img ng-src="{{friend.avatarUrl}}" alt="" style="width: 120px;" />
             {{friend.firstName}} {{friend.lastName}}
         </div>
         <hr />
         <div class="pull-right">
             <a ng-href="#/account/friends/{{friend.id}}" class="btn btn-primary btn-sm">View Profile</a>
-            <a class="btn btn-danger btn-sm">Unfriend</a>
+            <a class="btn btn-danger btn-sm" ng-click="toggleFriend(friend)">Unfriend</a>
         </div>
     </div>
 </div>
