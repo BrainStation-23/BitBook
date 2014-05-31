@@ -1,0 +1,13 @@
+﻿<h3>Pending Friend Requests</h3>
+
+<div ng-if="pendingRequestsFetchInProgress">
+    <i class="fa fa-spinner fa-spin fa-2x"></i> Loading Request...
+</div>
+
+<hr />
+
+<div class="alert alert-info" ng-if="!pendingRequests.length">
+    You don't have any pending friend request.
+</div>
+
+<div ng-if="pendingRequests.length"></div>

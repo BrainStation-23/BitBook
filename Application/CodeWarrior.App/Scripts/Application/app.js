@@ -47,6 +47,10 @@ var _$ = _$ || {};
                         templateUrl: "Templates/Account/Edit.html",
                         controller: "ProfileEditCtrl"
                     }).when(
+                    "/friends/requests", {
+                        templateUrl: "Templates/Account/PendingFriendRequests.html",
+                        controller: "PendingFriendRequestCtrl"
+                    }).when(
                     "/friends/", {
                         templateUrl: "Templates/Account/Friends.html",
                         controller: "AccountFriendListCtrl"

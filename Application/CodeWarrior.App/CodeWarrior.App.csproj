@@ -339,6 +339,7 @@
     <Content Include="Scripts\Application\Controllers\Account\AccountFriendListCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ExternalRegisterCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\LoginCtrl.js" />
+    <Content Include="Scripts\Application\Controllers\Account\PendingFriendRequestCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileEditCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\ProfileCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Account\PasswordManageCtrl.js" />
@@ -665,6 +666,7 @@
     <Content Include="Templates\Account\ChangePassword.html" />
     <Content Include="Templates\Account\Edit.html" />
     <Content Include="Templates\Account\ExternalRegister.html" />
+    <Content Include="Templates\Account\PendingFriendRequests.html" />
     <Content Include="Templates\Account\Friends.html" />
     <Content Include="Templates\Account\Login.html" />
     <Content Include="Templates\Account\Profile.html" />
