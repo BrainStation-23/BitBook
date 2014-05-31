@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using CodeWarrior.App.Controllers;
+﻿using CodeWarrior.App.Controllers;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
 using Microsoft.AspNet.Identity;
 using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeWarrior.App.App_Start
 {
@@ -65,6 +64,7 @@ namespace CodeWarrior.App.App_Start
         public void SeedUser(AccountController accountController, int count)
         {
             var uCount = GetAllUser().Count() + 1;
+
             var fakeUsers = Enumerable.Range(0, count).Select(i => new ApplicationUser
             {
                 Id = ObjectId.GenerateNewId().ToString(),
@@ -74,11 +74,13 @@ namespace CodeWarrior.App.App_Start
             }).ToList();
 
             var random = new Random();
+
             var userIds = fakeUsers.Select(fakeUser => fakeUser.Id).ToList();
+
             foreach (var fakeUser in fakeUsers)
             {
                 var index = random.Next(0, count);
-                int last = index + 10;
+                var last = index + 10;
                 if (last > count) last = count;
                 if(last == index) continue;
                 var randomIds = userIds.GetRange(index, last-index);
@@ -99,21 +101,6 @@ namespace CodeWarrior.App.App_Start
             {
                 accountController.UserManager.Create(fakeUser, "12345678");
             }
-
-
-
-            //for (var i = 0; i < count; i++)
-            //{
-            //    userCount++;
-
-            //    var user = new ApplicationUser
-            //    {
-            //        FirstName = Faker.NameFaker.FirstName(),
-            //        LastName = Faker.NameFaker.LastName(),
-            //        UserName = userCount + Faker.InternetFaker.Email()
-            //    };
-            //    await UserManager.CreateAsync(user, "12345678");
-            //}
         }
     }
 }
