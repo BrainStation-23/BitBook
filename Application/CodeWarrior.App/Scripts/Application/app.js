@@ -4,7 +4,7 @@ var _$ = _$ || {};
 
 (function() {
 
-    var app = _$.app = angular.module("bitBookApp", ["ngRoute", "ngResource", "angularFileUpload"]);
+    var app = _$.app = angular.module("bitBookApp", ["ngRoute", "ngResource"]);
 
     app.config([
         "$routeProvider", "$locationProvider", function($routeProvider) {
@@ -14,10 +14,6 @@ var _$ = _$ || {};
                     "/home", {
                         templateUrl: "Templates/Home/Index.html",
                         controller: "PostCtrl"
-                    }).when(
-                    "/friendRequest/", {
-                        templateUrl: "Templates/Request/friendRequest.html",
-                        controller: "FriendRequestCtrl"
                     }).when(
                     "/search/:key", {
                         templateUrl: "Templates/Search/SearcResult.html",

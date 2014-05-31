@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("ProfileEditCtrl", [
-        "$scope", "identityService", "notifierService", "apiService", "$rootScope", "$fileUploader", function($scope, identityService, notifierService, apiService, $rootScope, $fileUploader) {
+        "$scope", "identityService", "notifierService", "apiService", "$rootScope", function($scope, identityService, notifierService, apiService, $rootScope) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
@@ -17,7 +17,6 @@
                     });
                 }
             }();
-            
 
             $scope.update = function(user) {
                 $scope.profileEditFormSubmitted = true;
