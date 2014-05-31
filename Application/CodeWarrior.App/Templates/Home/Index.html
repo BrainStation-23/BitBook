@@ -34,7 +34,6 @@
                 {{post.likedByMe ? 'Unlike' : 'Like'}}
             </a>
             <p>{{post.likeCount}} Person like this</p>
-
            
             <div class="commentDisplay" ng-show="post.comments.length">
                 <p ng-repeat="comment in post.comments" class="comment">
@@ -50,7 +49,7 @@
                       ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
             <br />
             <div>
-                <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
+                <input type="button" ng-click="addComment(post, newComment)" class="btn btn-info btn-sm" value="Add Comment" />
             </div>
 
         </div>

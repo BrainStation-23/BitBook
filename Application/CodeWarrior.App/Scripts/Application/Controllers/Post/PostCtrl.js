@@ -25,7 +25,6 @@
                         result.forEach(function(item) {
                             userFriends.push(item.id);
                         });
-                        console.log(userFriends);
                     });
                 }
             }();
@@ -110,8 +109,8 @@
                 var config = {
                     headers: identityService.getSecurityHeaders()
                 };
-
                 apiService.post("/api/comments", newComment, config).success(function (result) {
+                    notifierService.notify({responseType: "success", message: "Comment posted successfully!"});
                     $scope.newComment.description = "";
                     post.comments.push(result);
 
@@ -175,7 +174,6 @@
                 if (users.indexOf($rootScope.authenticatedUser.id) >= 0) {
                     $scope.posts.splice(0, 0, post);
                     $scope.$apply();
-                    console.log(post);
                 }
             };
         }
