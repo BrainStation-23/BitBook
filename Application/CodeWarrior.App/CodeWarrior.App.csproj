@@ -352,6 +352,7 @@
     <Content Include="Scripts\Application\Controllers\Request\FriendRequestCtrl.js" />
     <Content Include="Scripts\Application\Controllers\Search\UserSearchCtrl.js" />
     <Content Include="Scripts\Application\Directives\topbarDirective.js" />
+    <Content Include="Scripts\Application\Services\friendService.js" />
     <Content Include="Scripts\Application\Services\userService.js" />
     <Content Include="Scripts\Application\Services\utilityService.js" />
     <Content Include="Scripts\Application\Services\apiService.js" />

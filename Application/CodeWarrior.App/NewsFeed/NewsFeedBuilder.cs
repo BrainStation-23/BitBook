@@ -50,18 +50,13 @@ namespace CodeWarrior.App.NewsFeed
                     };
                     view.LikeCount = view.LikedBy.Count;
 
-                    var vComments = new List<CommentViewModel>();
-                    foreach (var comment in post.Comments)
+                    var vComments = post.Comments.Select(comment => new CommentViewModel
                     {
-                        var vComment = new CommentViewModel
-                        {
-                            CommentedOn = comment.CommentedOn.ToLocalTime(),
-                            Description = comment.Description,
-                            Id = comment.Id
-                        };
-                        vComment.CommentedBy = users[comment.CommentedBy];
-                        vComments.Add(vComment);
-                    }
+                        CommentedOn = comment.CommentedOn.ToLocalTime(),
+                        Description = comment.Description,
+                        Id = comment.Id,
+                        CommentedBy = users[comment.CommentedBy]
+                    }).ToList();
                     view.Comments = vComments;
 
                     view.LikedByMe = post.LikedBy.Any(u => u.Equals(_user.Id));
@@ -69,7 +64,7 @@ namespace CodeWarrior.App.NewsFeed
                     _postViews.Add(view);
                 }
 
-                _postViews = _postViews.OrderByDescending(model => model.PostedOn).ToList();
+                _postViews = _postViews.OrderByDescending(model => model.PostedOn).Take(30).ToList();
             }
 
             return _postViews;

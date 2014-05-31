@@ -22,18 +22,18 @@ namespace CodeWarrior.App.Controllers
         // GET api/profile
         public ApplicationUserViewModel Get(string id = null)
         {
-            var user = _userRepository.FindById(id ?? User.Identity.GetUserId());
+            var myId = User.Identity.GetUserId();
+            var me = _userRepository.FindById(myId);
+            var user = null == id ? me : _userRepository.FindById(id);
 
-            if (user != null)
-            {
-                user.FriendRequests = null;
-                user.Friends = null;
-            }
             return new ApplicationUserViewModel
             {
+                Id = user.Id,
                 UserName = user.UserName,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                IsMyFriend = myId != id && me.Friends.Contains(id),
+                IsFriendRequestSent = myId != id && !me.Friends.Contains(id) && user.FriendRequests.Contains(id)
             };
         }
 

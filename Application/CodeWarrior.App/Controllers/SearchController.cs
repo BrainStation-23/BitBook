@@ -5,6 +5,7 @@ using CodeWarrior.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Microsoft.AspNet.Identity;
 
 namespace CodeWarrior.App.Controllers
 {
@@ -30,10 +31,12 @@ namespace CodeWarrior.App.Controllers
 
         private IEnumerable<ApplicationUserViewModel> SearchUser(ViewModels.SearchCriteria criteria)
         {
+            var id = User.Identity.GetUserId();
             var repository = new UserRepository(ApplicationDbContext);
             return
                 repository.SearchByName(criteria.Key)
                     .Select(AutoMapper.Mapper.Map<ApplicationUser, ApplicationUserViewModel>)
+                    .Where(model => model.Id!=id)
                     .ToList();
         }
     }
