@@ -9,7 +9,7 @@
                     $scope.redirectToLogin();
                 } else {
                     if ($rootScope.authenticatedUser.id == $routeParams.id) {
-                        $location.path("/account/profile");
+                        $location.path("/account/profile").replace();
                     } else {
                         var config = {
                             headers: identityService.getSecurityHeaders(),

@@ -304,7 +304,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\Images\friendRequest.png" />
     <Content Include="Content\Images\noimage.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -695,7 +694,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Templates\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

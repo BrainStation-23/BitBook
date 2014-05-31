@@ -10,26 +10,29 @@
                 }
             }();
 
-            $scope.registerExternal = function() {
-                if ($scope.externalRegisterInfo) {
-                    var config = {
-                        headers: identityService.getAuthorizedHeaders($scope.externalRegisterInfo.fragment.access_token)
-                    };
+            $scope.registerExternal = function () {
+                $scope.externalRegisterFormSubmitted = true;
+                if ($scope.ExternalRegisterForm.$valid) {
+                    if ($scope.externalRegisterInfo) {
+                        var config = {
+                            headers: identityService.getAuthorizedHeaders($scope.externalRegisterInfo.fragment.access_token)
+                        };
 
-                    apiService.post("/api/Account/RegisterExternal", { email: $scope.externalRegisterInfo.data.email }, config).success(function () {
+                        apiService.post("/api/Account/RegisterExternal", $scope.externalRegisterInfo.data, config).success(function () {
 
-                        sessionStorage["state"] = $scope.externalRegisterInfo.fragment.state;
-                        identityService.archiveSessionStorageToLocalStorage();
-                        sessionStorage.removeItem("ExternalRegister");
-                        window.location = $scope.externalRegisterInfo.loginUrl;
+                            sessionStorage["state"] = $scope.externalRegisterInfo.fragment.state;
+                            identityService.archiveSessionStorageToLocalStorage();
+                            sessionStorage.removeItem("ExternalRegister");
+                            window.location = $scope.externalRegisterInfo.loginUrl;
 
-                    }).error(function(result) {
-                        if (result.modelState) {
-                            $scope.externalRegisterErrors = _.flatten(_.map(result.modelState, function(items) {
-                                return items;
-                            }));
-                        }
-                    });
+                        }).error(function (result) {
+                            if (result.modelState) {
+                                $scope.externalRegisterErrors = _.flatten(_.map(result.modelState, function (items) {
+                                    return items;
+                                }));
+                            }
+                        });
+                    }
                 }
             };
         }
