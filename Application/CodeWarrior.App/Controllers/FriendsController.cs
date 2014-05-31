@@ -11,12 +11,12 @@ using System.Web.Http;
 namespace CodeWarrior.App.Controllers
 {
     [Authorize]
-    [RoutePrefix("api/Friend")]
-    public class FriendController : BaseApiController
+    [RoutePrefix("api/Friends")]
+    public class FriendsController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
 
-        public FriendController(IApplicationDbContext dbContext, IUserRepository userRepository)
+        public FriendsController(IApplicationDbContext dbContext, IUserRepository userRepository)
             : base(dbContext)
         {
             _userRepository = userRepository;

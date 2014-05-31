@@ -21,40 +21,19 @@
                 friendService.unFriend(user).success(function() {
                     removeUser(user);
                 });
-
-                //var config = $.extend(getConfig(), {
-                //    params: {
-                //        id: user.id
-                //    }
-                //});
-
-                //apiService.remove('/api/friend/', config)
-                //    .success(function() {
-                //        removeUser(user);
-                //    });
             };
 
             $scope.addFriend = function (user) {
                 friendService.addFriend(user).success(function() {
                     removeUser(user);
                 });
-                //var config = $.extend(getConfig(), {
-                //    params: {
-                //        id: user.id
-                //    }
-                //});
-
-                //apiService.post('/api/friend/', {}, config)
-                //    .success(function() {
-                //        removeUser(user);
-                //    });
             };
 
             $scope.init = function() {
-                apiService.get('/api/friend/requests/', getConfig()).success(function(result) {
+                apiService.get('/api/friends/requests/', getConfig()).success(function(result) {
                     $scope.users = result;
                 }).error(function(error) {
-                    console.log(error);
+                    //console.log(error);
                 });
             }();
         }

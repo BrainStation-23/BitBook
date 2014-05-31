@@ -12,14 +12,27 @@
                 };
             };
 
-            $scope.addFriend = function(user) {
-                if (user.friendRequestSent) {
-                    notifierService.notify({ responseType: 'warning', message: 'Friend request alredy sent!' });
+            $scope.addFriend = function (user) {
+                if (user.isMyFriend) {
+                    friendService.unFriend(user).success(function() {
+                        user.isMyFriend = false;
+                        user.isFriendRequestedRejected = true;
+                        user.isFriendActionDisabled = true;
+                    });
                 } else {
-                    friendService.addFriend(user).success(function() {
-                        user.friendRequestSent = true;
+                    friendService.addFriend(user).success(function () {
+                        user.isFriendRequestSent = true;
+                        user.isFriendActionDisabled = true;
                     });
                 }
+                //user.IsFriendRequestSent ? 'Friend Request Sent' : (user.IsMyFriend
+                //if (user.friendRequestSent) {
+                //    notifierService.notify({ responseType: 'warning', message: 'Friend request alredy sent!' });
+                //} else {
+                //    friendService.addFriend(user).success(function() {
+                //        user.friendRequestSent = true;
+                //    });
+                //}
             };
 
             $scope.init = function() {

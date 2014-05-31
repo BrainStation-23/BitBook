@@ -14,7 +14,7 @@ namespace CodeWarrior.DAL.Repositories
 {
     public class UserRepository : BaseRepository<ApplicationUser>, IUserRepository
     {
-        public UserRepository(IApplicationDbContext applicationDbContext) 
+        public UserRepository(IApplicationDbContext applicationDbContext)
             : base(applicationDbContext)
         {
             Collection = ApplicationDbContext.Database.GetCollection<ApplicationUser>("AspNetUsers");
@@ -23,7 +23,9 @@ namespace CodeWarrior.DAL.Repositories
         public IEnumerable<ApplicationUser> SearchByName(string name)
         {
             return Collection.AsQueryable()
-                .Where(user => user.UserName.Contains(name) || user.FirstName.Contains(name) || user.LastName.Contains(name));
+                .Where( user => user.UserName.Contains(name)
+                            || user.FirstName.Contains(name)
+                            || user.LastName.Contains(name));
         }
     }
 }
