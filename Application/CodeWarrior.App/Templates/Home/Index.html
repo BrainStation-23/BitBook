@@ -2,7 +2,7 @@
 <hr />
 
 <form class="form-horizontal" role="form" name="AddPostForm" novalidate>
-    <textarea style="float: none" placeholder="What's on your mind?'" class="form-control col-lg-9" ng-model="post.message" name="Message" id="Message" ng-required="true"></textarea>
+    <textarea style="float: none" placeholder="What's on your mind?" class="form-control col-lg-9" ng-model="post.message" name="Message" id="Message" ng-required="true"></textarea>
     <br />
     <div><input type="submit" class="btn btn-success" value="Share Post" ng-click="addPost(post)" /></div>
 
@@ -16,35 +16,40 @@
 
     <div class="row userNewsFeed" ng-repeat="post in posts">
         <div class="col-xs-12">
-            <img src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" /> <span class="postedBy">{{post.postedBy.firstName}} {{post.postedBy.lastName}}</span>
-            <p class="postMessage"> {{post.message}} </p>
             
-            <a href="javascript:void(0)" ng-click="toggleLike(post)" class="postLike">
-                <i class="fa fa-thumbs-o-{{post.likedByMe ? 'down' : 'up'}}"></i>
-                {{post.likedByMe ? 'Unlike' : 'Like'}}
+            <a ng-href="#/profile/{{post.postedBy.id}}" class="userInfoLink">
+                <img src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" />
+                <span class="postedBy">{{post.postedBy.firstName}} {{post.postedBy.lastName}}</span>
             </a>
 
-            <p>{{post.likeCount}} Person like this</p>
+                <p class="postMessage"> {{post.message}} </p>
 
-            <div class="commentDisplay" ng-show="post.comments.length">
-                <p ng-repeat="comment in post.comments" class="comment">
-                    
-                    <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
-                        <img src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
-                        <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
-                    </a>
-                    <span>said {{comment.description}}</span>
+                <a href="javascript:void(0)" ng-click="toggleLike(post)" class="postLike">
+                    <i class="fa fa-thumbs-o-{{post.likedByMe ? 'down' : 'up'}}"></i>
+                    {{post.likedByMe ? 'Unlike' : 'Like'}}
+                </a>
 
-                </p>
-            </div>
+                <p>{{post.likeCount}} Person like this</p>
 
-            <textarea class="col-lg-9 commentMessage form-control" ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
-            <br />
-            <div>
-                <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
-            </div>
+                <div class="commentDisplay" ng-show="post.comments.length">
+                    <p ng-repeat="comment in post.comments" class="comment">
 
-        </div>
+                        <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
+                            <img src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
+                            <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
+                        </a>
+                        <span>said {{comment.description}}</span>
+
+                    </p>
+                </div>
+
+                <textarea class="col-lg-9 commentMessage form-control" ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
+                <br />
+                <div>
+                    <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
+                </div>
+
+</div>
     </div>
 
 </div>

@@ -97,6 +97,7 @@
                 apiService.post("/api/comments", newComment, config).success(function (result) {
                     $scope.newComment.description = "";
                     post.comments.push(result);
+                    console.log(result);
                 }).error(function (error) {
                     var data = {
                         responseType: "error"
