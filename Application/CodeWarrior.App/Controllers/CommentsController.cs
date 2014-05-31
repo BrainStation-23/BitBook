@@ -1,4 +1,5 @@
 ﻿using System;
+using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Posts;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
@@ -14,10 +15,15 @@ namespace CodeWarrior.App.Controllers
     {
         private readonly IPostRepository _postRepository;
 
-        public CommentsController(IApplicationDbContext applicationDbContext, IPostRepository postRepository)
+        private readonly IUserRepository _userRepository;
+
+        public CommentsController(IApplicationDbContext applicationDbContext, IPostRepository postRepository,
+            IUserRepository userRepository)
             : base(applicationDbContext)
         {
             _postRepository = postRepository;
+
+            _userRepository = userRepository;
         }
 
         // POST api/comments
@@ -44,7 +50,24 @@ namespace CodeWarrior.App.Controllers
 
             _postRepository.Update(post);
 
-            return Ok(commentTobeSaved);
+            var user = _userRepository.FindById(commentTobeSaved.CommentedBy);
+
+            var commentViewModel = new CommentViewModel
+            {
+                CommentedBy = new ApplicationUserViewModel
+                {
+                    AvatarUrl = user.AvatarUrl,
+                    FirstName = user.FirstName,
+                    Id = user.Id,
+                    LastName = user.LastName,
+                    UserName = user.UserName
+                },
+                Id = commentTobeSaved.Id,
+                Description = commentTobeSaved.Description,
+                CommentedOn = commentTobeSaved.CommentedOn
+            };
+
+            return Ok(commentViewModel);
         }
     }
 }
