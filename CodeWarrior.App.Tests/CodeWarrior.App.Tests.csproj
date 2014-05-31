@@ -103,6 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CommentsControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,10 +117,16 @@
       <Project>{B327F69D-9CCC-4780-96BA-ECBF714A45BA}</Project>
       <Name>CodeWarrior.App</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Application\CodeWarrior.DAL\CodeWarrior.DAL.csproj">
+      <Project>{a8eef792-7be0-49ac-b3c1-edc3e15d1737}</Project>
+      <Name>CodeWarrior.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Application\CodeWarrior.Model\CodeWarrior.Model.csproj">
+      <Project>{4cc4a1ab-7a4a-41ac-ad2a-6536c7128aef}</Project>
+      <Name>CodeWarrior.Model</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

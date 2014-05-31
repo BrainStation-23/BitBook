@@ -21,11 +21,13 @@ namespace CodeWarrior.App
 
             Bootstrapper.Run();
 
-            /*
-            var seeder = new DataSeeder();
-            seeder.SeedUser(1);
-            seeder.SeedPosts(2,2);
-            */
+            //InsertSeedData();
+        }
+
+        public void InsertSeedData()
+        {
+            new AccountController().CreateFakeUser(100);
+            new DataSeeder().SeedPosts(10,100);
         }
     }
 }

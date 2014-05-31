@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using CodeWarrior.App.Controllers;
+﻿using CodeWarrior.App.Controllers;
 using CodeWarrior.DAL.DbContext;
 using CodeWarrior.DAL.Interfaces;
 using CodeWarrior.DAL.Repositories;
 using CodeWarrior.Model;
+using Microsoft.AspNet.Identity;
+using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeWarrior.App.App_Start
 {
@@ -46,21 +47,60 @@ namespace CodeWarrior.App.App_Start
                                 new Comment
                                 {
                                     Description = Faker.TextFaker.Sentence(),
-                                    CommentedBy = user.Id
+                                    CommentedBy = user.Id,
+                                    CommentedOn = DateTime.UtcNow,
+                                    Id = ObjectId.GenerateNewId().ToString()
                                 }
                             },
                             PostedBy = user.Id,
-                            LikedBy = new List<string> { user.Id }
+                            LikedBy = new List<string> { user.Id },
+                            PostedOn = DateTime.UtcNow
                         }
                         );
                 }
             }
         }
 
-        public void SeedUser(int count)
+        public void SeedUser(AccountController accountController, int count)
         {
-            var users = GetAllUser();
-            new AccountController().CreateFakeUser(count,users.Count());
+            var uCount = GetAllUser().Count() + 1;
+
+            var fakeUsers = Enumerable.Range(0, count).Select(i => new ApplicationUser
+            {
+                Id = ObjectId.GenerateNewId().ToString(),
+                FirstName = Faker.NameFaker.FirstName(),
+                LastName = Faker.NameFaker.LastName(),
+                UserName = (uCount + i) + Faker.InternetFaker.Email()
+            }).ToList();
+
+            var random = new Random();
+
+            var userIds = fakeUsers.Select(fakeUser => fakeUser.Id).ToList();
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                var index = random.Next(0, count);
+                var last = index + 10;
+                if (last > count) last = count;
+                if(last == index) continue;
+                var randomIds = userIds.GetRange(index, last-index);
+                fakeUser.Friends.AddRange(randomIds);
+                foreach (var result in fakeUsers.Where(user => randomIds.Contains(user.Id)))
+                {
+                    result.Friends.Add(fakeUser.Id);
+                }
+            }
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                fakeUser.Friends = fakeUser.Friends.Distinct().ToList();
+            }
+
+
+            foreach (var fakeUser in fakeUsers)
+            {
+                accountController.UserManager.Create(fakeUser, "12345678");
+            }
         }
     }
 }
