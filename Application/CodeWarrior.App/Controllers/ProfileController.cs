@@ -1,4 +1,7 @@
-﻿using System.Web;
+﻿using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Web;
 using CodeWarrior.App.ViewModels.Account;
 using CodeWarrior.App.ViewModels.Profile;
 using CodeWarrior.DAL.DbContext;
@@ -54,9 +57,26 @@ namespace CodeWarrior.App.Controllers
         }
 
         // POST api/Profile/Upload
-        public IHttpActionResult Post([FromBody] HttpPostedFile avatar)
+        public IHttpActionResult Post()
         {
+            if (HttpContext.Current.Request.Files.Count == 0)
+            {
+                return BadRequest();
+            }
+
+            var file = HttpContext.Current.Request.Files[0];
+            var url = BuildAvatarUrl(file.FileName);
+            file.SaveAs(url);
+            var user = _userRepository.FindById(User.Identity.GetUserId());
+            user.AvatarUrl = url;
+            _userRepository.Update(user);
+
             return Ok();
+        }
+
+        private string BuildAvatarUrl(string name)
+        {
+            return Path.Combine(User.Identity.GetUserId(), "_avatar", (Path.GetExtension(name) ?? ".png"));
         }
 
         public class UploadBindingModel
