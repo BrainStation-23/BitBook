@@ -16,4 +16,4 @@
 
 <p><span class="bold">Last Name:</span> {{user.lastName ? user.lastName : 'Not available'}}</p>
 
-<a class="btn btn-danger">Unfriend</a>
+<a class="btn btn-danger">{{user.isMyFriend? 'Unfriend' : (user.isFriendRequestSent? 'Request sent':'Add Friend')}}</a>

@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("FriendRequestCtrl", [
-        "$scope", "apiService", "identityService", function($scope, apiService, identityService) {
+        "$scope", "apiService", "friendService", "identityService", function ($scope, apiService, friendService, identityService) {
             $scope.users = [];
 
             var removeUser = function(user) {
@@ -17,30 +17,37 @@
                 };
             };
 
-            $scope.rejectFriend = function(user) {
-                var config = $.extend(getConfig(), {
-                    params: {
-                        id: user.id
-                    }
+            $scope.rejectFriend = function (user) {
+                friendService.unFriend(user).success(function() {
+                    removeUser(user);
                 });
 
-                apiService.remove('/api/friend/', config)
-                    .success(function() {
-                        removeUser(user);
-                    });
+                //var config = $.extend(getConfig(), {
+                //    params: {
+                //        id: user.id
+                //    }
+                //});
+
+                //apiService.remove('/api/friend/', config)
+                //    .success(function() {
+                //        removeUser(user);
+                //    });
             };
 
-            $scope.addFriend = function(user) {
-                var config = $.extend(getConfig(), {
-                    params: {
-                        id: user.id
-                    }
+            $scope.addFriend = function (user) {
+                friendService.addFriend(user).success(function() {
+                    removeUser(user);
                 });
+                //var config = $.extend(getConfig(), {
+                //    params: {
+                //        id: user.id
+                //    }
+                //});
 
-                apiService.post('/api/friend/', {}, config)
-                    .success(function() {
-                        removeUser(user);
-                    });
+                //apiService.post('/api/friend/', {}, config)
+                //    .success(function() {
+                //        removeUser(user);
+                //    });
             };
 
             $scope.init = function() {

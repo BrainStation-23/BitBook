@@ -26,6 +26,7 @@ namespace CodeWarrior.App
                 "~/Scripts/Application/Services/utilityService.js",
                 "~/Scripts/Application/Services/notifierService.js",
                 "~/Scripts/Application/Services/signalRConnectionService.js",
+                "~/Scripts/Application/Services/friendService.js",
                 "~/Scripts/Application/Directives/topbarDirective.js",
                 "~/Scripts/Application/Directives/ExternalLoginList.js",
                 "~/Scripts/Application/Controllers/BaseCtrl.js",

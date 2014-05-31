@@ -12,5 +12,9 @@ namespace CodeWarrior.App.ViewModels.Account
         public string AvatarUrl { get; set; }
 
         public string UserName { get; set; }
+
+        public bool IsMyFriend { get; set; }
+
+        public bool? IsFriendRequestSent { get; set; }
     }
 }
