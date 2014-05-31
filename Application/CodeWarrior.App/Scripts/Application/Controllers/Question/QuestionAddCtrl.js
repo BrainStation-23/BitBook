@@ -20,10 +20,8 @@
             signalRConnection.client.sendUserNotification = function (message,name) {
                 if (userName == name) {
                     $scope.userNotification = ++$scope.userNotification;
-                    console.log(message);
                     $scope.$apply();
                 }
-                console.log(name);
             };
         }
     ]);

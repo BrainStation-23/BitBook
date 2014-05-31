@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web;
 using CodeWarrior.App.RealTimeNotification;
+using CodeWarrior.Model;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 
@@ -20,32 +21,25 @@ namespace CodeWarrior.App
             Clients.All.NewQuestionAdded(question, userName);
         }
 
-        //public override Task OnConnected()
-        //{
-        //    var name = Context.User.Identity.Name;
-        //    Groups.Add(Context.ConnectionId, name);
-        //    return base.OnConnected();
-        //}
+        public void LikeInMyPost(string message, string userName)
+        {
+            Clients.Others.MyNotification(message, userName);
+        }
 
-        //public override Task OnDisconnected()
-        //{
-        //    string name = Context.User.Identity.Name;
+        public void CommentInMyPost(string message, string userName)
+        {
+            Clients.Others.MyNotification(message, userName);
+        }
 
-        //    Connections.Remove(name, Context.ConnectionId);
+        public void NewPostAdded(object post, string[] users)
+        {
+            Clients.Others.UpdateMyFeed(post, users);
+        }
 
-        //    return base.OnDisconnected();
-        //}
-
-        //public override Task OnReconnected()
-        //{
-        //    string name = Context.User.Identity.Name;
-
-        //    if (!Connections.GetConnections(name).Contains(Context.ConnectionId))
-        //    {
-        //        Connections.Add(name, Context.ConnectionId);
-        //    }
-
-        //    return base.OnReconnected();
-        //}
+        public void AddFriendNotification(string message, string userName)
+        {
+            Clients.Others.MyNotification(message, userName);
+        }
     }
+
 }

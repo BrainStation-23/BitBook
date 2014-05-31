@@ -178,6 +178,9 @@ div.clearBoth {
     width: 335px;
     margin-right: 10px;
 }
+.red {
+    color: red;
+}
 
 .yellowHeader3 {
     color: #FF9900;

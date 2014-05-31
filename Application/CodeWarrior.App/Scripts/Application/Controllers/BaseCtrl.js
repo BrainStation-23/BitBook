@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("BaseCtrl", [
-        "$scope", "$location", "identityService", "apiService", function($scope, $location, identityService, apiService) {
+        "$scope", "$location", "identityService", "apiService", "signalRConnectionService", "notifierService", "$rootScope", function ($scope, $location, identityService, apiService, signalRConnectionService, notifierService, $rootScope) {
             $scope.redirectToLogin = function() {
                 $location.path("/account/login");
             };
@@ -39,6 +39,18 @@
                 } else {
                     $scope.redirectToLogin();
                 }
+            };
+            var signalRConnection = signalRConnectionService.getSignalRConnection();
+            signalRConnection.client.myNotification = function (message, userId) {
+                if (userId == $rootScope.authenticatedUser.id) {
+                    notifierService.notify({
+                        responseType: "success",
+                        message: message
+                    });
+                    console.log(message);
+                    $scope.$apply();
+                }
+                console.log(name);
             };
         }
     ]);
