@@ -35,7 +35,7 @@ namespace CodeWarrior.App.Controllers
                 UserName = user.UserName,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                AvatarUrl = user.AvatarUrl,
+                AvatarUrl = user.AvatarUrl ?? "/Content/Images/noimage.png",
                 IsMyFriend = myId != id && me.Friends.Contains(id),
                 IsFriendRequestSent = myId != id && !me.Friends.Contains(id) && user.FriendRequests.Contains(id)
             };

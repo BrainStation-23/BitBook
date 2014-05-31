@@ -51,6 +51,7 @@ namespace CodeWarrior.App.Controllers
                 var isMyFriend = me.Id != user.Id && me.Friends.Contains(user.Id);
                 vUser.IsMyFriend = isMyFriend;
                 vUser.IsFriendRequestSent = !isMyFriend && user.FriendRequests.Contains(me.Id);
+                vUser.AvatarUrl = user.AvatarUrl ?? "/Content/Images/noimage.png";
                 vUsers.Add(vUser);
             }
 

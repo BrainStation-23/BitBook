@@ -2,7 +2,7 @@
 
 (function(app) {
     app.controller("ProfileEditCtrl", [
-        "$scope", "identityService", "notifierService", "apiService", "$rootScope", function($scope, identityService, notifierService, apiService, $rootScope) {
+        "$scope", "identityService", "notifierService", "apiService", "$rootScope", "$location", function ($scope, identityService, notifierService, apiService, $rootScope, $location) {
             $scope.init = function() {
                 if (!identityService.isLoggedIn()) {
                     $scope.redirectToLogin();
@@ -63,6 +63,7 @@
                     data: data,
                     success: function(results) {
                         notifierService.notify({ responseType: "success", message: "Profile picture uploaded successfully" });
+                        window.location.reload(true);
                     }
                 });
             };
