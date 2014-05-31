@@ -4,7 +4,6 @@
     app.controller("PostCtrl", [
         "$scope", "identityService", "apiService", "notifierService", "$rootScope", "signalRConnectionService", function ($scope, identityService, apiService, notifierService, $rootScope, signalRConnectionService) {
             $scope.posts = [];
-            $scope.newComment = {};
             var signalRConnection = signalRConnectionService.getSignalRConnection();
             var userFriends = [];
             $scope.init = function () {
@@ -103,15 +102,16 @@
                 }
             };
             
-            $scope.addComment = function (post, newComment) {
+            $scope.addComment = function (post) {
 
-                newComment.postId = post.id;
+                post.newComment.postId = post.id;
                 var config = {
                     headers: identityService.getSecurityHeaders()
                 };
+                var newComment = post.newComment;
                 apiService.post("/api/comments", newComment, config).success(function (result) {
                     notifierService.notify({responseType: "success", message: "Comment posted successfully!"});
-                    $scope.newComment.description = "";
+                    newComment.description = "";
                     post.comments.push(result);
 
                     var notificationMessage = post.postedBy.firstName + " " + post.postedBy.lastName + " comments in your post";
