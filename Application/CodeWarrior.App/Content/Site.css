@@ -182,3 +182,9 @@ div.clearBoth {
 .red {
     color: red;
 }
+
+.yellowHeader3 {
+    color: #FF9900;
+    font-weight: 600;
+    margin-bottom: 0.75em;
+}

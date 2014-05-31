@@ -25,30 +25,25 @@
                         user.isFriendActionDisabled = true;
                     });
                 }
-                //user.IsFriendRequestSent ? 'Friend Request Sent' : (user.IsMyFriend
-                //if (user.friendRequestSent) {
-                //    notifierService.notify({ responseType: 'warning', message: 'Friend request alredy sent!' });
-                //} else {
-                //    friendService.addFriend(user).success(function() {
-                //        user.friendRequestSent = true;
-                //    });
-                //}
             };
 
-            $scope.init = function() {
-                if ($routeParams.key) {
-                    var config = $.extend(getConfig(), {
-                        params: {
-                            type: 'user',
-                            key: $routeParams.key
-                        }
-                    });
-
-                    apiService.get('/api/Search/', config).success(function(result) {
-                        $scope.users = result;
-                    }).error(function(error) {
-                        //console.log(error);
-                    });
+            $scope.init = function () {
+                if (!identityService.isLoggedIn()) {
+                    $scope.redirectToLogin();
+                } else {
+                    if ($routeParams.key) {
+                        var config = $.extend(getConfig(), {
+                            params: {
+                                type: 'user',
+                                key: $routeParams.key
+                            }
+                        });
+                        $scope.userSearchInProgress = true;
+                        apiService.get('/api/Search/', config).success(function (result) {
+                            $scope.users = result;
+                            $scope.userSearchInProgress = false;
+                        });
+                    }
                 }
             }();
         }

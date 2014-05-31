@@ -1,5 +1,11 @@
 ﻿<h2>Search Result</h2>
 
+<div ng-if="userSearchInProgress">
+    <i class="fa fa-spinner fa-spin fa-2x"></i> Loading Search Results...
+</div>
+
+<hr />
+
 <div class="findFriendrow" ng-repeat="user in users">
     <img ng-src="{{user.avatarUrl}}" alt="{{user.firstName}}" />
     <div class="infoContainer">
@@ -14,6 +20,7 @@
 </div>
 
 <div class="clearBoth"></div>
+
 <div ng-if="!users.length">
     <div class="alert alert-info">
         No result found based on your search!

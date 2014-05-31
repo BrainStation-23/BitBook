@@ -1,19 +1,22 @@
-﻿<style>
-    h3 {
-        color: #FF9900;
-        font-weight: 600;
-        margin-bottom: 0.75em;
-    }
-</style>
-
-<h3>Account Profile Page</h3>
+﻿<h3 class="yellowHeader3">Account Profile Page</h3>
 
 <hr />
 
-<p><span class="bold">Email:</span> {{user.userName ? user.userName : 'Not available'}}</p>
+<div class="row">
+    <div class="col-xs-5" style="float: left;">
+        <p><span class="bold">Email:</span> {{user.userName ? user.userName : 'Not available'}}</p>
 
-<p><span class="bold">First Name:</span> {{user.firstName ? user.firstName : 'Not available'}}</p>
+        <p><span class="bold">First Name:</span> {{user.firstName ? user.firstName : 'Not available'}}</p>
 
-<p><span class="bold">Last Name:</span> {{user.lastName ? user.lastName : 'Not available'}}</p>
+        <p><span class="bold">Last Name:</span> {{user.lastName ? user.lastName : 'Not available'}}</p>
 
-<a ng-href="#/account/profile/edit" class="btn btn-primary">Edit Profile</a>
+        <a ng-href="#/account/profile/edit" class="btn btn-primary">Edit Profile</a>
+    </div>
+    <div class="col-xs-5" style="float: left;">
+        <div ng-if="user.avatarUrl" style="float: right; width: 200px;">
+            <img ng-src="{{user.avatarUrl}}" alt="user.userName" class="img-thumbnail" />
+        </div>
+    </div>
+</div>
+
+<div class="clearBoth"></div>

@@ -51,7 +51,13 @@
                         <li>
                             <a ng-href="#/friends">
                                 <i class="fa fa-users"></i>
-                                Friends
+                                My Friends
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-href="#/friends/requests">
+                                <i class="fa fa-users"></i>
+                                Pending Friend Requests
                             </a>
                         </li>
                     </ul>
@@ -62,7 +68,7 @@
         <div class="container body-content">
             <div ng-view></div>
             <hr />
-            <footer>
+            <footer class="pull-right">
                 <p>&copy; @DateTime.Now.Year - BitBook</p>
             </footer>
         </div>
