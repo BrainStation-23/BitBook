@@ -21,7 +21,7 @@
             }();
 
             var removeUser = function(user) {
-                _$.select($scope.pendingRequests, function(u) {
+                $scope.pendingRequests = _.select($scope.pendingRequests, function (u) {
                     return u.id != user.id;
                 });
             };
@@ -33,14 +33,14 @@
                         user.isFriendRequestedRejected = true;
                         user.isFriendActionDisabled = true;
                         removeUser(user);
-                        notifierService.notify({ responseType: "success", "message": "Friend rejected successfully!" });
+                        notifierService.notify({ responseType: "success", "message": "Operation successfull!" });
                     });
                 } else {
                     friendService.addFriend(user).success(function () {
                         user.isFriendRequestSent = true;
                         user.isFriendActionDisabled = true;
                         removeUser(user);
-                        notifierService.notify({responseType: "success", "message": "Friend added successfully!"});
+                        notifierService.notify({ responseType: "success", "message": "Operation successfull!" });
                     });
                 }
             };
