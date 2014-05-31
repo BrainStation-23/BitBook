@@ -17,7 +17,7 @@
                     }
                 });
 
-                return apiService.remove('/api/friend/', config);
+                return apiService.remove('/api/friends/', config);
             };
 
             var addFriend = function (user) {
@@ -27,7 +27,7 @@
                     }
                 });
 
-                return apiService.post('/api/friend/', {}, config);
+                return apiService.post('/api/friends/', {}, config);
             };
 
             return {

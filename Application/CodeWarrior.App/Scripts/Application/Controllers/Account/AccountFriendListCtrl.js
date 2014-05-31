@@ -10,7 +10,7 @@
                     var config = {
                         headers: identityService.getSecurityHeaders()
                     };
-                    apiService.get("/api/friend", config).success(function(data) {
+                    apiService.get("/api/friends", config).success(function(data) {
                         $scope.friends = data;
                         notifierService.notify({ responseType: "success", message: "Record fetched successfully." });
                     });

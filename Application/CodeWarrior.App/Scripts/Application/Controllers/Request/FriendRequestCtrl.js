@@ -30,7 +30,7 @@
             };
 
             $scope.init = function() {
-                apiService.get('/api/friend/requests/', getConfig()).success(function(result) {
+                apiService.get('/api/friends/requests/', getConfig()).success(function(result) {
                     $scope.users = result;
                 }).error(function(error) {
                     //console.log(error);
