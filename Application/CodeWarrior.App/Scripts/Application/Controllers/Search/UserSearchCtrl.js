@@ -2,8 +2,8 @@
 
 (function(app) {
     app.controller("UserSearchCtrl", [
-        "$scope", "apiService", "identityService", "$routeParams", "notifierService",
-        function($scope, apiService, identityService, $routeParams, notifierService) {
+        "$scope", "apiService", "identityService", "$routeParams", "notifierService", "friendService",
+        function ($scope, apiService, identityService, $routeParams, notifierService, friendService) {
             $scope.users = [];
 
             var getConfig = function() {
@@ -14,17 +14,11 @@
 
             $scope.addFriend = function(user) {
                 if (user.friendRequestSent) {
-                    notifierService.notify({responseType: 'warning', message: 'Friend request alredy sent!'});
+                    notifierService.notify({ responseType: 'warning', message: 'Friend request alredy sent!' });
                 } else {
-                    var config = $.extend(getConfig(), {
-                        params: {
-                            id: user.id
-                        }
+                    friendService.addFriend(user).success(function() {
+                        user.friendRequestSent = true;
                     });
-                    apiService.post('/api/friend/', {}, config)
-                        .success(function() {
-                            user.friendRequestSent = true;
-                        });
                 }
             };
 
@@ -40,7 +34,7 @@
                     apiService.get('/api/Search/', config).success(function(result) {
                         $scope.users = result;
                     }).error(function(error) {
-                        console.log(error);
+                        //console.log(error);
                     });
                 }
             }();
