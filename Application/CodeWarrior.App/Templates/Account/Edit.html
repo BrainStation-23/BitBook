@@ -30,13 +30,16 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="button" class="btn btn-success" value="Update" ng-click="update(user)" />
+            <span ng-if="profileEditInProgresss">
+                <i class="fa fa-spinner fa-spin fa-lg"></i> In Progress...
+            </span>
         </div>
     </div>
 
 </form>
 
 <form>
-    <input ng-file-select type="file" name="avatar" />
+    <input type="file" name="avatar" onchange="uploadAvatar()" />
 </form>
 
 <table class="table">

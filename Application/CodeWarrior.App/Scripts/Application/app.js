@@ -13,7 +13,7 @@ var _$ = _$ || {};
                 }).when(
                     "/home", {
                         templateUrl: "Templates/Home/Index.html",
-                        controller: "HomeCtrl"
+                        controller: "PostCtrl"
                     }).when(
                     "/friendRequest/", {
                         templateUrl: "Templates/Request/friendRequest.html",
@@ -46,6 +46,10 @@ var _$ = _$ || {};
                     "/account/profile/edit", {
                         templateUrl: "Templates/Account/Edit.html",
                         controller: "ProfileEditCtrl"
+                    }).when(
+                    "/friends/requests", {
+                        templateUrl: "Templates/Account/PendingFriendRequests.html",
+                        controller: "PendingFriendRequestCtrl"
                     }).when(
                     "/friends/", {
                         templateUrl: "Templates/Account/Friends.html",

@@ -17,18 +17,22 @@
                     });
                 }
             }();
+            
 
             $scope.update = function(user) {
                 $scope.profileEditFormSubmitted = true;
                 if ($scope.ProfileEditForm.$valid) {
+                    $scope.profileEditInProgresss = true;
                     var config = {
                         headers: identityService.getSecurityHeaders()
                     };
                     user.userName = user.email;
-                    apiService.put("/api/profile/", user, config).success(function() {
+                    apiService.put("/api/profile/", user, config).success(function () {
+                        $scope.profileEditInProgresss = false;
                         $rootScope.authenticatedUser.userName = user.email;
                         notifierService.notify({ responseType: "success", message: "Profile data updated successfully." });
-                    }).error(function(error) {
+                    }).error(function (error) {
+                        $scope.profileEditInProgresss = false;
                         if (error.modelState) {
                             $scope.localRegisterErrors = _.flatten(_.map(error.modelState, function(items) {
                                 return items;
@@ -44,20 +48,25 @@
                 }
             };
 
-            $scope.uploader = $fileUploader.create({
-                scope: $scope,
-                url: "/api/profile",
-                filters: [
-                    function(item) {
-                        return true;
+            window.uploadAvatar = function() {
+                var files = $('input[name="avatar"]').get(0).files;
+                var data = new FormData();
+                data.append("avatar", files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/Profile/",
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        Authorization: "Bearer " + identityService.getAccessToken()
+                    },
+                    data: data,
+                    success: function (results) {
+                        console.log(results);
                     }
-                ],
-                headers: {
-                    "Accept": 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + sessionStorage.getItem('accessToken')
-                }
-            });
+                });
+            };
         }
     ]);
 })(_$.app);

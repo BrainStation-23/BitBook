@@ -10,55 +10,49 @@
 
 <h2>Post Feeds</h2>
 
+<div ng-if="postFetchInProgresss">
+    <i class="fa fa-spinner fa-spin fa-2x"></i> Loading Feeds...
+</div>
+
 <hr />
 
 <div ng-show="posts.length" id="posts">
 
     <div class="row userNewsFeed" ng-repeat="post in posts">
         <div class="col-xs-12">
-            <img ng-src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" />
-            <span class="postedBy">{{post.postedBy.firstName}} {{post.postedBy.lastName}}</span>
-            <p class="postMessage"> {{post.message}} </p>
-            
+
             <a ng-href="#/profile/{{post.postedBy.id}}" class="userInfoLink">
-                <img src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" />
+                <img ng-src="{{post.postedBy.avatarUrl}}" class="userIcon" alt="" />
                 <span class="postedBy">{{post.postedBy.firstName}} {{post.postedBy.lastName}}</span>
             </a>
 
-                <p class="postMessage"> {{post.message}} </p>
+            <p class="postMessage"> {{post.message}} </p>
+            <a href="javascript:void(0)" ng-click="toggleLike(post)" class="postLike">
+                <i class="fa fa-thumbs-o-{{post.likedByMe ? 'down' : 'up'}}"></i>
+                {{post.likedByMe ? 'Unlike' : 'Like'}}
+            </a>
+            <p>{{post.likeCount}} Person like this</p>
 
-            <div class="commentDisplay" ng-show="post.comments.length">
-                <p ng-repeat="comment in post.comments" class="comment">
-                    
-                    <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
-                        <img ng-src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
-                        <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
-                    </a>
-                    <span>said {{comment.description}}</span>
-
-                <p>{{post.likeCount}} Person like this</p>
-
+           
                 <div class="commentDisplay" ng-show="post.comments.length">
                     <p ng-repeat="comment in post.comments" class="comment">
-
                         <a ng-href="#/profile/{{comment.commentedBy.id}}" class="userInfoLink">
-                            <img src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
+                            <img ng-src="{{comment.commentedBy.avatarUrl}}" alt="commentedBy" class="userIconMini" />
                             <span class="commentedBy">{{comment.commentedBy.firstName}} {{comment.commentedBy.lastName}}</span>
                         </a>
-                        <span>said {{comment.description}}</span>
-
+                        <span> {{comment.description}}</span>
                     </p>
                 </div>
+            
+            <textarea class="col-lg-9 commentMessage form-control"
+                      ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
+            <br />
+            <div>
+                <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
+            </div>
 
-                <textarea class="col-lg-9 commentMessage form-control" ng-model="newComment.description" name="NewComment" id="NewComment" placeholder="Write a comment"></textarea>
-                <br />
-                <div>
-                    <input type="button" ng-click="addComment(post, newComment)" class="btn btn-success" value="Add" />
-                </div>
-
-</div>
+        </div>
     </div>
-
 </div>
 
 <div ng-if="!posts.length">
