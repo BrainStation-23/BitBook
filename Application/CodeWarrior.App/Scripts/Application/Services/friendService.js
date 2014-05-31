@@ -2,8 +2,9 @@
 
 (function (app) {
     app.factory("friendService", [
-        "$rootScope", "identityService", "apiService",
-        function ($rootScope, identityService, apiService) {
+        "$rootScope", "identityService", "apiService","signalRConnectionService",
+        function ($rootScope, identityService, apiService, signalRConnectionService) {
+            var signalRConnection = signalRConnectionService.getSignalRConnection();
             var getConfig = function () {
                 return {
                     headers: identityService.getSecurityHeaders(),
@@ -26,8 +27,13 @@
                         id: user.id
                     }
                 });
-
-                return apiService.post('/api/friends/', {}, config);
+                
+                var promise = apiService.post('/api/friends/', {}, config);
+                promise.success(function () {
+                    var notificationMesage =  user.firstName + " " + user.lastName + "</a> send you a friend request.";
+                    signalRConnection.server.addFriendNotification(notificationMesage, user.id);
+                });
+                return promise;
             };
 
             return {
