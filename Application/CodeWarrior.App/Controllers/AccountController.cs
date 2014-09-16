@@ -16,7 +16,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using MongoDB.Bson;
 
 namespace CodeWarrior.App.Controllers
 {

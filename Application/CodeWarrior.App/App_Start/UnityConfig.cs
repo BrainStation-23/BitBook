@@ -1,8 +1,5 @@
 using System;
 using CodeWarrior.App.Controllers;
-using CodeWarrior.DAL.DbContext;
-using CodeWarrior.DAL.Interfaces;
-using CodeWarrior.DAL.Repositories;
 using Microsoft.Practices.Unity;
 
 namespace CodeWarrior.App
@@ -30,12 +27,6 @@ namespace CodeWarrior.App
                 );
 
             container.RegisterType<AccountController>(new InjectionConstructor());
-
-            /*
-            container.RegisterType<IApplicationDbContext, ApplicationDbContext>();
-            container.RegisterType<IQuestionRepository, QuestionRepository>();
-            container.RegisterType<IPostRepository, PostRepository>();
-             */
         }
     }
 }

@@ -26,8 +26,8 @@ namespace CodeWarrior.App
 
         public void InsertSeedData()
         {
-            new AccountController().CreateFakeUser(100);
-            new DataSeeder().SeedPosts(10,100);
+            new AccountController().CreateFakeUser(50);
+            new DataSeeder().SeedPosts(10, 20);
         }
     }
 }

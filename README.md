@@ -1,4 +1,7 @@
-# BitBook App
+# BitBook
+A single page application based on social networking that brings us the championship trophy in 2014 BASIS Code Warriors Challenge. [More Info](http://codewarrior.bitm.org.bd/)
+
+[See the live application](http://bitbook.shibbir.net/)
 
 Tools and Technology used in this project:
 
@@ -8,10 +11,11 @@ Tools and Technology used in this project:
 * [Twitter Bootstrap](http://getbootstrap.com/)
 * [AngularJS](http://angularjs.org/)
 * [AutoMapper](http://automapper.org/)
+* [Unity](https://unity.codeplex.com/)
 
-Project Developed By:
+Project Contributors([BrainStation-23 Team](http://www.brainstation-23.com/)):
 
-* [Sheikh Abdur Rahman](https://github.com/skarahman)
-* [Sufian Saory](https://github.com/thesufian)
 * [Atish Dipongkor](https://github.com/dipongkor)
+* [Sheikh Abdur Rahman](https://github.com/skarahman)
 * [Shibbir Ahmed](https://github.com/shibbir)
+* [Sufian Saory](https://github.com/thesufian)
